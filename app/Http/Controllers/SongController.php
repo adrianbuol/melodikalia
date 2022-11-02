@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Song;
 use Illuminate\Http\Request;
 
-class UsersController extends Controller
+class SongController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +14,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        // Lista de un recurso
-        $users = User::latest()->get();
-
-        return view('user.index', ['user' => $users]);
+        //
     }
 
     /**
@@ -27,8 +24,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        // Muestra una vista para crear un nuevo recurso
-        return view('users.create');
+        //
     }
 
     /**
@@ -39,54 +35,51 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        // Guarda el recurso
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Song  $song
      * @return \Illuminate\Http\Response
      */
-    public function show(User $id)
+    public function show(Song $song)
     {
-        // Muestra un solo recurso
-        $user = User::find($id);
-
-        return view('user.show', ['user' => $user]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Song  $song
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Song $song)
     {
-        // Muestra una vista para editar el recurso
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Song  $song
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, Song $song)
     {
-        // Actualiza el recurso
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Song  $song
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Song $song)
     {
-        // Elimina un recurso
+        //
     }
 }
