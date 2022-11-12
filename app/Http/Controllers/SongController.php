@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Genre;
 use App\Models\Song;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class SongController extends Controller
@@ -24,7 +26,8 @@ class SongController extends Controller
      */
     public function create()
     {
-        //
+        $genres = Genre::all();
+        return view('songs.create', compact(["genres"]));
     }
 
     /**
@@ -35,7 +38,7 @@ class SongController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        ddd($request);
     }
 
     /**

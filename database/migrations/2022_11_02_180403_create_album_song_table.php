@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('songs_users', function (Blueprint $table) {
+        Schema::create('album_song', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('album_id')->constrained();
             $table->foreignId('song_id')->constrained();
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('songs_users');
+        Schema::dropIfExists('album_song');
     }
 };
