@@ -9,8 +9,7 @@
             <div class="d-flex flex-column justify-content-center align-items-center">
                 <h3>CRUD - SONGS</h3>
                 <div class="d-flex justify-content-md-between align-items-center p-3 w-75">
-                    <a href="{{ route('songs.create') }}"
-                        class="border border-dark col-2 d-flex justify-content-center">Create</a>
+                    <a href="/songs/create" class="border border-dark col-2 d-flex justify-content-center">Create</a>
                     <a href="#" class="border border-dark col-2 d-flex justify-content-center">Read</a>
                     <a href="#" class="border border-dark col-2 d-flex justify-content-center">Update</a>
                     <a href="#" class="border border-dark col-2 d-flex justify-content-center">Delete</a>

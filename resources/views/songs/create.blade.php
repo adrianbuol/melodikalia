@@ -24,8 +24,11 @@
                 <!-- De momento solo archivos ".mp3" -->
                 <input type="file" name="musicFile" accept="audio/mp3">
 
-                <button type="submit" name="submit">Subir</button>
+                <button type="submit" name="submit">Subir Audio</button>
             </form>
+
+            {{-- Añadir si admin, boton visible --}}
+            <a href="/song" class="border border-dark col-2 d-flex justify-content-center">Back</a>
         </main>
     @endsection
 </body>

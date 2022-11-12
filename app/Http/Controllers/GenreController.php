@@ -24,7 +24,7 @@ class GenreController extends Controller
      */
     public function create()
     {
-        //
+        return view('genres.create');
     }
 
     /**
@@ -35,7 +35,16 @@ class GenreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $genre = new Genre;
+            $genre->name = $request->name;
+            $genre->save();
+            $message = "<p class='text-success'>¡Nuevo genero creado correctamente!</p>";
+        } catch (\Throwable $th) {
+            $errorMessage = $th->getMessage();
+            $message = "<p class='text-danger'>Error creando un nuevo genero: $errorMessage</p>";
+        }
+        return view('genres.create', compact(['message']));
     }
 
     /**

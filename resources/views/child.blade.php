@@ -38,7 +38,7 @@
             <h6>Genero</h6>
             <p>Likes - 666</p>
         </div>
-        
+
         <div class="d-flex flex-column justify-content-center align-items-center col-2 border p-3 m-2">
             <h4>Titulo Canción</h4>
             <img src="" alt="IMG PLACEHOLDER">
