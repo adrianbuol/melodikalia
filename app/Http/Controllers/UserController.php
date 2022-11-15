@@ -24,7 +24,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.create');
     }
 
     /**
@@ -35,7 +35,25 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $user = new User;
+            $user->username = $request->userName;
+            $user->password = $request->password;
+            $user->email = $request->email;
+            $user->name = $request->name;
+            $user->surname = $request->surname;
+            $path = $request->file('avatar')->store('/images/avatars', 'public');
+            $user->profile_pic = $path;
+            $user->save();
+
+            session(['user' => $user]);
+            return redirect('/');
+        } catch (\Throwable $th) {
+            $errorMessage = $th->getMessage();
+            $message = "<p class='text-danger'>Error creando un nuevo usuario: $errorMessage</p>";
+
+            return view('users.create', compact(['message']));
+        }
     }
 
     /**

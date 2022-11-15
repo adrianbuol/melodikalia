@@ -5,6 +5,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\GenreController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SongController;
 use App\Http\Controllers\UserController;
 
@@ -23,6 +24,13 @@ use App\Http\Controllers\UserController;
 Route::get('/', function () {
     return view('child');
 });
+
+//Login - Logout
+Route::get('/login/view', function () {
+    return view('/login');
+});
+Route::get('/login', [LoginController::class, 'login']);
+Route::get('/logout', [LoginController::class, 'logout']);
 
 
 // Vista Admin (Menu CRUD)
@@ -72,12 +80,8 @@ Route::get('/followers', function () {
 
 
 // CRUD Usuarios
-Route::get('/users', 'UserController@index');
-Route::get('/users/create', [UserController::class, 'create']); //Este formato para las vistas
-Route::get('/users/{user}', 'UserController@show');
-Route::get('/users/{user}/edit', 'UserController@edit');
-Route::get('/users/{user}/update', 'UserController@update');
-
+Route::get('/users/create', [UserController::class, 'create']);
+Route::post('/users/store', [UserController::class, 'store']);
 
 // GET, POST, PUT, DELETE
 

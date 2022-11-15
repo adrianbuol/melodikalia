@@ -6,7 +6,6 @@
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
 
-    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
     <link href="{{ asset('css/header.css') }}" rel="stylesheet">
 
     <title>Melodikalia</title>
@@ -15,6 +14,11 @@
 <body class="h-100">
     <header class="d-flex justify-content-md-between align-items-center">
         <a href="/" class="border border-dark col-2 d-flex justify-content-center">Home</a>
+
+        {{-- @if (session('user'))
+            <h5>Bienvenido: {{ session('user')->name }}</h5>
+        @endif --}}
+
         <a href="/admin" class="border border-dark col-2 d-flex justify-content-center">Admin</a>
         <a href="/songs/create" class="border border-dark col-2 d-flex justify-content-center">Subir
             Archivo</a>
@@ -33,8 +37,13 @@
                 <a class="dropdown-item border-bottom" href="/followers">Me siguen</a>
             </div>
         </div>
+        @if (session('user'))
+            <a href="/logout" class="border border-dark col-2 d-flex justify-content-center">Cerrar Sesion</a>
+        @else
+            <a href="/users/create" class="border border-dark col-2 d-flex justify-content-center">Registrarse</a>
+            <a href="/login/view" class="border border-dark col-2 d-flex justify-content-center">Iniciar Sesion</a>
+        @endif
 
-        <a href="#" class="border border-dark col-2 d-flex justify-content-center">Logout</a>
     </header>
 
 

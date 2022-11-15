@@ -37,7 +37,7 @@ class SongController extends Controller
      */
     public function store(Request $request)
     {
-        ddd($request);
+        // ddd($request);
     }
 
     /**

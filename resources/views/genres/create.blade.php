@@ -10,13 +10,14 @@
 
     @section('content')
         <main class="d-flex flex-column align-items-center">
+            <h3>Crear nuevo género</h3>
+
             @isset($message)
                 <div class="p-3">
                     {!! $message !!}
                 </div>
             @endisset
 
-            <h3>Crear nuevo género</h3>
             <form class="d-flex flex-column align-items-center" action="/genres/store" method="post">
                 @csrf
                 <label for="name">Introduce nombre para el genero</label>
