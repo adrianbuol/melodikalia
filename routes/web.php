@@ -40,13 +40,13 @@ Route::get('/admin', function () {
 
 
 // Crud Albumes
-Route::get('/album', function () {
+Route::get('/admin/album', function () {
     return view('/admin/album');
 });
 
 
 // Crud Generos
-Route::get('/genre', function () {
+Route::get('/admin/genre', function () {
     return view('/admin/genre');
 });
 Route::get('/genres/create', [GenreController::class, 'create']);
@@ -54,7 +54,7 @@ Route::post('/genres/store', [GenreController::class, 'store']);
 
 
 // Crud Canciones
-Route::get('/song', function () {
+Route::get('/admin/song', function () {
     return view('/admin/song');
 });
 Route::get('/songs/create', [SongController::class, 'create']);
@@ -62,11 +62,8 @@ Route::post('/songs/store', [SongController::class, 'store']);
 
 
 // Usuarios => Sub menu
-Route::get('/user', function () {
+Route::get('/admin/user', function () {
     return view('/admin/user');
-});
-Route::get('/profile', function () {
-    return view('/users/submenu/profile');
 });
 Route::get('/like', function () {
     return view('/users/submenu/like');
@@ -80,8 +77,12 @@ Route::get('/followers', function () {
 
 
 // CRUD Usuarios
-Route::get('/users/create', [UserController::class, 'create']);
-Route::post('/users/store', [UserController::class, 'store']);
+// Route::get('/users/create', [UserController::class, 'create']);
+// Route::post('/users/store', [UserController::class, 'store']);
+// Route::get('/users/{id}', [UserController::class, 'show']);
+
+Route::resource('users', UserController::class);
+
 
 // GET, POST, PUT, DELETE
 

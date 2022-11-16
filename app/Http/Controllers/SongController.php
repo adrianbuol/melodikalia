@@ -37,7 +37,21 @@ class SongController extends Controller
      */
     public function store(Request $request)
     {
-        // ddd($request);
+        try {
+            $song = new Song;
+            $song->name = $request->songName;
+            $song->user_id = $request->userId;
+            $path = $request->file('musicFile')->store('/songs', 'public');
+            $song->song_path = $path;
+            $song->save();
+
+            return redirect('/');
+        } catch (\Throwable $th) {
+            $errorMessage = $th->getMessage();
+            $message = "<p class='text-danger'>Error creando canción: $errorMessage</p>";
+
+            return view('songs.create', compact(['message']));
+        }
     }
 
     /**

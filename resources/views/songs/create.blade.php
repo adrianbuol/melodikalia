@@ -11,7 +11,15 @@
     @section('content')
         <main class="d-flex flex-column align-items-center">
             <h3>Subir una canción</h3>
-            <form class="d-flex flex-column align-items-center" action="/songs/store" method="post">
+
+            @isset($message)
+                <div class="p-3">
+                    {!! $message !!}
+                </div>
+            @endisset
+
+            <form class="d-flex flex-column align-items-center" action="/songs/store" method="post"
+                enctype="multipart/form-data">
                 @csrf
                 <label for="songName">Nombre</label>
                 <input type="text" name="songName">
@@ -24,7 +32,9 @@
                 <!-- De momento solo archivos ".mp3" -->
                 <input type="file" name="musicFile" accept="audio/mp3">
 
-                <button type="submit" name="submit">Subir Audio</button>
+                <input type="hidden" name="userId" value="{{ session('user')->id }}">
+                <button type="submit" name="submit">Subir
+                    Audio</button>
             </form>
 
             {{-- Añadir si admin, boton visible --}}

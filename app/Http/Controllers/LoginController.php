@@ -26,35 +26,15 @@ class LoginController extends Controller
     {
         try {
             $username = $request->input('username');
-            $result = DB::table('users')->where('username', $username)->get();
-            if ($result[0]->username == $request->input('username') && $result[0]->password == $request->input('password')) {
-                session(['user' => $username]);
-                return redirect('/');
-            } else {
-                throw new Exception('Contraseña incorrecta.');
+            $password = $request->input('password');
+            $user = User::where('username', $username)->where('password', $password)->firstOrFail();
 
-                return view('/login');
-            }
+            session(['user' => $user]);
+            return redirect('/');
         } catch (\Throwable $th) {
-            $errorMessage = $th->getMessage();
-            $message = "<p class='text-danger'>Error de inicio de sesion: $errorMessage</p>";
+            $message = "<p class='text-danger'>Error de inicio de sesion: El nombre de usuario o la contraseña son incorrectos.</p>";
 
             return view('/login', compact(['message']));
         }
-
-
-        // if (DB::table('users')->where('username', $request->username)->exists()) {
-        //     $user = new User();
-        //     $user->name = $request->username;
-
-        //     if (password_verify('password', $user->password)) {
-        //         session(['user' => $user]);
-        //         return redirect('/');
-        //     } else {
-        //         return view('/login');
-        //     }
-        // } else {
-        //     return view('/login');
-        // }
     }
 }

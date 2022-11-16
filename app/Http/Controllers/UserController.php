@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -52,7 +53,7 @@ class UserController extends Controller
             $errorMessage = $th->getMessage();
             $message = "<p class='text-danger'>Error creando un nuevo usuario: $errorMessage</p>";
 
-            return view('users.create', compact(['message']));
+            return view('users.create', compact('message'));
         }
     }
 
@@ -64,7 +65,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        $imgPath = Storage::url($user->profile_pic);
+        return view('users.submenu.profile', compact('user', 'imgPath'));
     }
 
     /**
