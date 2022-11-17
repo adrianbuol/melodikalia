@@ -21,7 +21,12 @@
                 $user = session('user');
             @endphp
             <h5>Bienvenido: {{ $user->name }}</h5>
-            <a href="/admin" class="border border-dark col-2 d-flex justify-content-center">Admin</a>
+
+            {{-- Si user es administrador --}}
+            @if ($user->admin == 1)
+                <a href="/admin" class="border border-dark col-2 d-flex justify-content-center">Admin</a>
+            @endif
+
             <a href="/songs/create" class="border border-dark col-2 d-flex justify-content-center">Subir
                 Archivo</a>
 

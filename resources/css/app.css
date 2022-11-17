@@ -18,3 +18,12 @@ a:hover {
 a:active {
     background-color: rgb(231, 14, 14);
 }
+
+table {
+    border: 1px solid black;
+    background-color: blue;
+}
+
+td {
+    padding: 10px;
+}

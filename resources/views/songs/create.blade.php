@@ -37,8 +37,10 @@
                     Audio</button>
             </form>
 
-            {{-- Añadir si admin, boton visible --}}
-            <a href="/song" class="border border-dark col-2 d-flex justify-content-center">Back</a>
+            {{-- Si admin, boton visible --}}
+            @if (session('user')->admin == 1)
+                <a href="/admin/song" class="border border-dark col-2 d-flex justify-content-center">Back</a>
+            @endif
         </main>
     @endsection
 </body>

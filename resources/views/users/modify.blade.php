@@ -18,40 +18,34 @@
                 </div>
             @endisset
 
-            <form class="d-flex flex-column align-items-center" action="/users" method="POST"
+            <form class="d-flex flex-column align-items-center" action="/users/update" method="PATCH"
                 enctype="multipart/form-data">
                 @csrf
                 <label for="userName">Nombre de usuario</label>
-                <input type="text" name="userName">
+                <input type="text" name="userName" value="{{ $user->username }}">
 
                 <label for="password">Contraseña</label>
-                <input type="password" name="password" id="password">
-                <label for="confirmPassword">Confirma Contraseña</label>
-                <input type="password" name="confirmPassword" id="confirmPassword">
+                <input type="password" name="password" id="password" value="{{ $user->username }}">
+                {{-- <label for="confirmPassword">Confirma Contraseña</label>
+                <input type="password" name="confirmPassword" id="confirmPassword"> --}}
 
                 <label for="avatar">Avatar</label>
+                <img class="w-25 h-25" src="{{ $imgPath }}" alt="{{ $user->username }} avatar" />
                 <input type="file" name="avatar" accept="image/png, image/jpeg">
 
                 <label for="email">E-Mail</label>
-                <input type="email" name="email">
+                <input type="email" name="email" value="{{ $user->email }}">
 
                 <label for="name">Nombre</label>
-                <input type="text" name="name">
+                <input type="text" name="name" value="{{ $user->name }}">
                 <label for="surname">Apellidos</label>
-                <input type="text" name="surname">
+                <input type="text" name="surname" value="{{ $user->surname }}">
 
                 <div class="d-flex">
                     <button type="submit" name="submit">Registro</button>
                     <button type="reset">Reiniciar</button>
                 </div>
             </form>
-
-            {{-- Añadir si admin, boton visible --}}
-            @if (session('user'))
-                @if (session('user')->admin == 1)
-                    <a href="/admin/user" class="border border-dark col-2 d-flex justify-content-center">Back</a>
-                @endif
-            @endif
         </main>
     @endsection
     {{-- <script type="text/javascript" src="{{ URL::asset('js/form.js') }}"></script> --}}

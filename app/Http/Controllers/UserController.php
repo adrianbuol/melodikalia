@@ -15,7 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $allUsers = User::all();
+        return view('admin.user', compact('allUsers'));
     }
 
     /**
@@ -77,7 +78,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('users.edit');
     }
 
     /**
@@ -98,8 +99,15 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(User $id)
     {
-        //
+        // User::where('id', $id->id)->delete();
+        User::destroy($id);
+        if ($id->id == session('user')->id) {
+            session()->forget('user');
+            return redirect('/');
+        } else {
+            return redirect('/users');
+        }
     }
 }

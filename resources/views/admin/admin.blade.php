@@ -12,7 +12,7 @@
                     <a href="/admin/album" class="border border-dark col-2 d-flex justify-content-center">Albums</a>
                     <a href="/admin/genre" class="border border-dark col-2 d-flex justify-content-center">Genres</a>
                     <a href="/admin/song" class="border border-dark col-2 d-flex justify-content-center">Songs</a>
-                    <a href="/admin/user" class="border border-dark col-2 d-flex justify-content-center">Users</a>
+                    <a href="/users" class="border border-dark col-2 d-flex justify-content-center">Users</a>
                 </div>
             </div>
 
