@@ -3,25 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 
 class LoginController extends Controller
 {
-
-    public function logout()
-    {
-        session()->forget('user');
-        return redirect('/');
-    }
-
-    public function username()
-    {
-        return 'username';
-    }
-
     public function login(Request $request)
     {
         try {
@@ -36,5 +22,11 @@ class LoginController extends Controller
 
             return view('/login', compact(['message']));
         }
+    }
+
+    public function logout()
+    {
+        session()->forget('user');
+        return redirect('/');
     }
 }

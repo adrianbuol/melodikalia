@@ -43,6 +43,7 @@ class SongController extends Controller
             $song->user_id = $request->userId;
             $path = $request->file('musicFile')->store('/songs', 'public');
             $song->song_path = $path;
+            $song->genre_id = $request->genre;
             $song->save();
 
             return redirect('/');

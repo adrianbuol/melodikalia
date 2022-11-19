@@ -16,8 +16,9 @@ return new class extends Migration
         Schema::create('songs', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('song_path');
+            $table->foreignId('genre_id')->constrained();
             $table->timestamps();
         });
     }

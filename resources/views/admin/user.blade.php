@@ -33,33 +33,33 @@
                             <td>Updated At</td>
                             <td colspan="3"></td>
                         </tr>
-                        @foreach ($allUsers as $all)
+                        @foreach ($allUsers as $user)
                             <tr>
-                                <td>{{ $all->id }}</td>
-                                <td>{{ $all->username }}</td>
-                                <td>{{ $all->password }}</td>
-                                <td>{{ $all->email }}</td>
-                                <td>{{ $all->name }}</td>
-                                <td>{{ $all->surname }}</td>
-                                <td>{{ $all->admin }}</td>
-                                <td>{{ $all->created_at }}</td>
-                                <td>{{ $all->updated_at }}</td>
+                                <td>{{ $user->id }}</td>
+                                <td>{{ $user->username }}</td>
+                                <td>{{ $user->password }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->surname }}</td>
+                                <td>{{ $user->admin }}</td>
+                                <td>{{ $user->created_at }}</td>
+                                <td>{{ $user->updated_at }}</td>
                                 <td>
-                                    <form action="/users/{{ $all->id }}" method="GET">
+                                    <form action="/users/{{ $user->id }}" method="GET">
                                         @csrf
                                         <input type="submit" value="Read">
                                     </form>
                                 </td>
                                 <td>
-                                    <form action="/users/{{ $all->id }}" method="PUT">
+                                    <form action="/users/{{ $user->id }}" method="PUT">
                                         @csrf
                                         <input type="submit" value="Update">
                                     </form>
                                 </td>
                                 <td>
                                     <form action="/users/{{ $user->id }}" method="POST">
-                                        @method('DELETE')
                                         @csrf
+                                        @method('DELETE')
                                         <input type="submit" value="Delete">
                                     </form>
                                 </td>

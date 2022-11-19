@@ -99,15 +99,17 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $id)
+    public function destroy(User $user)
     {
-        // User::where('id', $id->id)->delete();
-        User::destroy($id);
-        if ($id->id == session('user')->id) {
-            session()->forget('user');
-            return redirect('/');
-        } else {
-            return redirect('/users');
+        if (!session('user')->admin) {
+            $loginController = new LoginController;
+            $loginController->logout();
         }
+        // Borrar avatar
+        $path = $user->profile_pic;
+        Storage::disk('public')->delete($path);
+        // Borrar User
+        $user->delete();
+        return redirect('/');
     }
 }

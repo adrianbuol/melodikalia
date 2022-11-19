@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('surname');
             $table->string('profile_pic')->nullable();
-            $table->boolean('admin');
+            $table->boolean('admin')->default(false);
             $table->timestamps();
         });
     }
