@@ -13,11 +13,17 @@
         <h6>Surname: <span>{{ $user->surname }}</span> </h6>
         <h6>Avatar: </h6>
         <img src="{{ $imgPath }}" alt="{{ $user->username }} avatar" />
-        <form action="/users/{{ $user->id }}" method="POST">
-            @csrf
-            @method('DELETE')
-            <input type="submit" value="Eliminar">
-        </form>
+        <div class="d-flex">
+            <form class="m-1" action="/users/{{ $user->id }}/edit" method="GET">
+                @csrf
+                <input type="submit" value="Editar">
+            </form>
+            <form class="m-1" action="/users/{{ $user->id }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <input type="submit" value="Eliminar">
+            </form>
+        </div>
     @endsection
 
 </body>

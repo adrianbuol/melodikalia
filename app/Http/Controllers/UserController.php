@@ -78,7 +78,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('users.edit');
+        $imgPath = Storage::url($user->profile_pic);
+        return view('users.edit', compact('user', 'imgPath'));
     }
 
     /**
@@ -88,9 +89,20 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->username = $request->userName;
+        $user->password = $request->password;
+        $user->email = $request->email;
+        $user->name = $request->name;
+        $user->surname = $request->surname;
+        $path = $request->file('avatar')->store('/images/avatars', 'public');
+        $user->profile_pic = $path;
+        $user->save();
+
+        $imgPath = Storage::url($user->profile_pic);
+        return view('users.submenu.profile', compact('user', 'imgPath'));
     }
 
     /**

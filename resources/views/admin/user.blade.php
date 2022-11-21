@@ -51,7 +51,7 @@
                                     </form>
                                 </td>
                                 <td>
-                                    <form action="/users/{{ $user->id }}" method="PUT">
+                                    <form action="/users/{{ $user->id }}/edit" method="GET">
                                         @csrf
                                         <input type="submit" value="Update">
                                     </form>
