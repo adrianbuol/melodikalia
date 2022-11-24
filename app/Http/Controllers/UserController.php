@@ -97,8 +97,18 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->name = $request->name;
         $user->surname = $request->surname;
-        $path = $request->file('avatar')->store('/images/avatars', 'public');
-        $user->profile_pic = $path;
+
+        // Si el input tiene imagen
+        if ($request->hasFile('avatar')) {
+            // Borrar imagen vieja
+            $oldPath = $user->profile_pic;
+            Storage::disk('public')->delete($oldPath);
+
+            // Actualizar imagen
+            $path = $request->file('avatar')->store('/images/avatars', 'public');
+            $user->profile_pic = $path;
+        }
+
         $user->save();
 
         $imgPath = Storage::url($user->profile_pic);
