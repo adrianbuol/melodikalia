@@ -32,6 +32,11 @@ Route::get('/login/view', function () {
 Route::get('/login', [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout']);
 
+// Crud
+Route::resource('users', UserController::class);
+Route::resource('songs', SongController::class);
+Route::resource('genres', GenreController::class);
+
 
 // Vista Admin (Menu CRUD)
 Route::get('/admin', function () {
@@ -49,16 +54,12 @@ Route::get('/admin/album', function () {
 Route::get('/admin/genre', function () {
     return view('/admin/genre');
 });
-Route::get('/genres/create', [GenreController::class, 'create']);
-Route::post('/genres/store', [GenreController::class, 'store']);
 
 
 // Crud Canciones
 Route::get('/admin/song', function () {
     return view('/admin/song');
 });
-Route::get('/songs/create', [SongController::class, 'create']);
-Route::post('/songs/store', [SongController::class, 'store']);
 
 
 // Usuarios => Sub menu
@@ -74,14 +75,6 @@ Route::get('/following', function () {
 Route::get('/followers', function () {
     return view('/users/submenu/followers');
 });
-
-
-// CRUD Usuarios
-// Route::get('/users/create', [UserController::class, 'create']);
-// Route::post('/users/store', [UserController::class, 'store']);
-// Route::get('/users/{id}', [UserController::class, 'show']);
-
-Route::resource('users', UserController::class);
 
 
 // GET, POST, PUT, DELETE

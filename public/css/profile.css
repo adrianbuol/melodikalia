@@ -1,0 +1,52 @@
+img {
+    height: 30vh;
+    width: 100%;
+    object-fit: contain;
+}
+
+.col-6 {
+    height: fit-content;
+}
+
+#parent {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+#avatar {
+    grid-area: 1 / 1 / 5 / 4;
+}
+
+#info {
+    grid-area: 1 / 4 / 4 / 6;
+}
+
+#buttons {
+    grid-area: 4 / 4 / 5 / 6;
+}
+
+.campo {
+    display: flex;
+    border-bottom: 1px solid rgb(190, 182, 182);
+    margin: 10px 0;
+}
+
+#avatar>h6 {
+    font-weight: bold;
+    width: 100%;
+}
+
+.campo>h6 {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.campo>p {
+    font-weight: normal;
+    margin-bottom: .5rem;
+    font-weight: 500;
+    line-height: 1.2;
+}

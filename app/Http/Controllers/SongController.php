@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Genre;
 use App\Models\Song;
+use App\Models\Genre;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class SongController extends Controller
@@ -15,7 +16,10 @@ class SongController extends Controller
      */
     public function index()
     {
-        //
+        $allSongs = Song::all();
+        $allUsers = User::all();
+        $allGenres = Genre::all();
+        return view('admin.song', compact('allSongs', 'allGenres', 'allUsers'));
     }
 
     /**

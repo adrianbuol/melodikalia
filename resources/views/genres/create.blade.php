@@ -28,7 +28,7 @@
                 </div>
             </form>
 
-            <a href="/genre" class="border border-dark col-2 d-flex justify-content-center">Back</a>
+            <a href="/admin/genre" class="border border-dark col-2 d-flex justify-content-center">Back</a>
         </main>
     @endsection
 </body>
