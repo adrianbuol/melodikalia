@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Genre;
+use App\Models\Song;
 use Illuminate\Http\Request;
 
 class GenreController extends Controller
@@ -14,7 +15,8 @@ class GenreController extends Controller
      */
     public function index()
     {
-        //
+        $allGenres = Genre::all();
+        return view('admin.genre', compact('allGenres'));
     }
 
     /**
@@ -44,7 +46,7 @@ class GenreController extends Controller
             $errorMessage = $th->getMessage();
             $message = "<p class='text-danger'>Error creando un nuevo genero: $errorMessage</p>";
         }
-        return view('genres.create', compact(['message']));
+        return view('genres.create', compact('message'));
     }
 
     /**
@@ -55,7 +57,9 @@ class GenreController extends Controller
      */
     public function show(Genre $genre)
     {
-        //
+        $allSongs = Song::all();
+        // $author = User::get()->where('id', $song->user_id)->value('username');
+        return view('genres.show', compact('genre', 'allSongs'));
     }
 
     /**
@@ -66,8 +70,9 @@ class GenreController extends Controller
      */
     public function edit(Genre $genre)
     {
-        //
+        return view('genres.edit', compact('genre'));
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -76,9 +81,14 @@ class GenreController extends Controller
      * @param  \App\Models\Genre  $genre
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Genre $genre)
+    public function update(Request $request, $id)
     {
-        //
+        $genre = Genre::find($id);
+        $genre->name = $request->genreName;
+        $genre->save();
+        $message = "<p class='text-success'>¡Genero actualizado correctamente!</p>";
+
+        return view('admin.admin');
     }
 
     /**
@@ -89,6 +99,7 @@ class GenreController extends Controller
      */
     public function destroy(Genre $genre)
     {
-        //
+        $genre->delete();
+        return redirect('/');
     }
 }

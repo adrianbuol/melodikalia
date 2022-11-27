@@ -18,8 +18,7 @@
                 </div>
             @endisset
 
-            <form class="d-flex flex-column align-items-center" action="/songs/store" method="post"
-                enctype="multipart/form-data">
+            <form class="d-flex flex-column align-items-center" action="/songs" method="POST" enctype="multipart/form-data">
                 @csrf
                 <label for="songName">Nombre</label>
                 <input type="text" name="songName">
@@ -36,10 +35,10 @@
                 <button type="submit" name="submit">Subir
                     Audio</button>
             </form>
-
-            {{-- Si admin, boton visible --}}
             @if (session('user')->admin == 1)
-                <a href="/admin/song" class="border border-dark col-2 d-flex justify-content-center">Back</a>
+                <div class="d-flex justify-content-center">
+                    <a href="/admin" class="border border-dark d-flex justify-content-center p-2 w-25">Back</a>
+                </div>
             @endif
         </main>
     @endsection

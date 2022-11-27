@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Song;
+use App\Models\Genre;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -67,7 +69,14 @@ class UserController extends Controller
     public function show(User $user)
     {
         $imgPath = Storage::url($user->profile_pic);
-        return view('users.submenu.profile', compact('user', 'imgPath'));
+
+        $userSongs = Song::get()->where('user_id', $user->id);
+
+        // $genres = Genre::get()->where('id', $userSongs->genre_id)->value('name');
+        $genres = Genre::all();
+
+
+        return view('users.submenu.profile', compact('user', 'imgPath', 'userSongs', 'genres'));
     }
 
     /**

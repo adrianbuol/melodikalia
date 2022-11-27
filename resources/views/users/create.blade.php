@@ -18,8 +18,7 @@
                 </div>
             @endisset
 
-            <form class="d-flex flex-column align-items-center" action="/users" method="POST"
-                enctype="multipart/form-data">
+            <form class="d-flex flex-column align-items-center" action="/users" method="POST" enctype="multipart/form-data">
                 @csrf
                 <label for="userName">Nombre de usuario</label>
                 <input type="text" name="userName">
@@ -47,10 +46,10 @@
             </form>
 
             {{-- Añadir si admin, boton visible --}}
-            @if (session('user'))
-                @if (session('user')->admin == 1)
-                    <a href="/admin/user" class="border border-dark col-2 d-flex justify-content-center">Back</a>
-                @endif
+            @if (session('user')->admin == 1)
+                <div class="d-flex justify-content-center">
+                    <a href="/admin" class="border border-dark d-flex justify-content-center px-5 py-2 w-25">Back</a>
+                </div>
             @endif
         </main>
     @endsection

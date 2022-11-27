@@ -6,6 +6,7 @@ use App\Models\Song;
 use App\Models\Genre;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SongController extends Controller
 {
@@ -67,7 +68,12 @@ class SongController extends Controller
      */
     public function show(Song $song)
     {
-        //
+        $songPath = Storage::url($song->song_path);
+        $author = User::get()->where('id', $song->user_id)->value('username');
+        $songName = $song->name;
+        $genre = Genre::get()->where('id', $song->genre_id)->value('name');
+
+        return view('songs.show', compact('song', 'songPath', 'songName', 'author', 'genre'));
     }
 
     /**
@@ -78,7 +84,9 @@ class SongController extends Controller
      */
     public function edit(Song $song)
     {
-        //
+        $songPath = Storage::url($song->song_path);
+        $genres = Genre::all();
+        return view('songs.edit', compact('song', 'songPath', 'genres'));
     }
 
     /**
@@ -88,9 +96,28 @@ class SongController extends Controller
      * @param  \App\Models\Song  $song
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Song $song)
+    public function update(Request $request, $id)
     {
-        //
+        $song = Song::find($id);
+        $song->name = $request->songName;
+        if ($request->hasFile('musicFile')) {
+            // Borrar imagen vieja
+            $oldPath = $song->song_path;
+            Storage::disk('public')->delete($oldPath);
+
+            // Actualizar imagen
+            $path = $request->file('musicFile')->store('/songs', 'public');
+            $song->song_path = $path;
+        }
+        $song->genre_id = $request->genre;
+        $song->save();
+
+        $songPath = Storage::url($song->song_path);
+        $author = User::get()->where('id', $song->user_id)->value('username');
+        $songName = $song->name;
+        $genre = Genre::get()->where('id', $song->genre_id)->value('name');
+
+        return view('songs.show', compact('song', 'songPath', 'songName', 'author', 'genre'));
     }
 
     /**
@@ -101,6 +128,11 @@ class SongController extends Controller
      */
     public function destroy(Song $song)
     {
-        //
+        // Borrar Cancion
+        $path = $song->song_path;
+        Storage::disk('public')->delete($path);
+        // Borrar User
+        $song->delete();
+        return redirect('/');
     }
 }

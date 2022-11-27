@@ -3,6 +3,7 @@
 
 <head>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
 
 <body>
@@ -26,12 +27,12 @@
                             <td>Genre</td>
                             <td>Created At</td>
                             <td>Updated At</td>
-                            <td colspan="3"></td>
+                            <td colspan="2"></td>
                         </tr>
                         @foreach ($allSongs as $song)
                             <tr>
                                 <td>{{ $song->id }}</td>
-                                <td>{{ $song->name }}</td>
+                                <td><a href="/songs/{{ $song->id }}">{{ $song->name }}</a></td>
                                 <td>
                                     @foreach ($allUsers as $user)
                                         @if ($user->id == $song->user_id)
@@ -54,22 +55,18 @@
                                 <td>{{ $song->created_at }}</td>
                                 <td>{{ $song->updated_at }}</td>
                                 <td>
-                                    <form action="/songs/{{ $song->id }}" method="GET">
-                                        @csrf
-                                        <input type="submit" value="Read">
-                                    </form>
-                                </td>
-                                <td>
-                                    <form action="/songs/{{ $song->id }}/edit" method="GET">
+                                    {{-- <form action="/songs/{{ $song->id }}/edit" method="GET">
                                         @csrf
                                         <input type="submit" value="Update">
-                                    </form>
+                                    </form> --}}
+                                    <a href="/songs/{{ $song->id }}/edit"><i class="bi bi-pencil-square"></i></a>
                                 </td>
                                 <td>
                                     <form action="/songs/{{ $song->id }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <input type="submit" value="Delete">
+                                        <button id="destroy" type="submit"><i class="bi bi-trash"></i></button>
+                                        {{-- <input type="submit" value="Delete"> --}}
                                     </form>
                                 </td>
                             </tr>

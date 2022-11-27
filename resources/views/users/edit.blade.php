@@ -11,11 +11,6 @@
     @section('content')
         <main class="d-flex flex-column align-items-center">
             <h3>Modificar Usuario</h3>
-            @isset($message)
-                <div class="p-3">
-                    {!! $message !!}
-                </div>
-            @endisset
             <form class="d-flex flex-column align-items-center" action="/users/{{ $user->id }}" method="POST"
                 enctype="multipart/form-data">
                 @csrf
@@ -47,6 +42,11 @@
                     <button type="reset">Reiniciar</button>
                 </div>
             </form>
+            @if (session('user')->admin == 1)
+                <div class="d-flex justify-content-center">
+                    <a href="/admin" class="border border-dark d-flex justify-content-center px-5 py-2 w-25">Back</a>
+                </div>
+            @endif
         </main>
     @endsection
     {{-- <script type="text/javascript" src="{{ URL::asset('js/form.js') }}"></script> --}}

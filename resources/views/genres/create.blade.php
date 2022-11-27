@@ -18,7 +18,7 @@
                 </div>
             @endisset
 
-            <form class="d-flex flex-column align-items-center" action="/genres/store" method="post">
+            <form class="d-flex flex-column align-items-center" action="/genres" method="post">
                 @csrf
                 <label for="name">Introduce nombre para el genero</label>
                 <input type="text" name="name">
@@ -28,7 +28,7 @@
                 </div>
             </form>
 
-            <a href="/admin/genre" class="border border-dark col-2 d-flex justify-content-center">Back</a>
+            <a href="/admin" class="border border-dark col-2 d-flex justify-content-center">Back</a>
         </main>
     @endsection
 </body>

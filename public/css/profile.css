@@ -50,3 +50,9 @@ img {
     font-weight: 500;
     line-height: 1.2;
 }
+
+audio {
+    display: flex;
+    align-items: center;
+}
+

@@ -5,6 +5,8 @@
 a {
     text-decoration: none;
     color: black;
+    height: 100%;
+    width: 100%;
 }
 
 a:hover {
@@ -19,9 +21,11 @@ a:active {
 
 table {
     border: 1px solid black;
-    background-color: blue;
 }
 
 td {
     padding: 10px;
+    border-right: 1px solid black;
+    border-bottom: 1px solid rgba(85, 85, 85, 0.61);
 }
+

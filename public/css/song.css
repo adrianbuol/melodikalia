@@ -1,0 +1,5 @@
+@import url(profile.css);
+
+#song {
+    grid-area: 1 / 1 / 5 / 4;
+}
