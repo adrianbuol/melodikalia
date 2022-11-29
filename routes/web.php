@@ -36,6 +36,7 @@ Route::get('/logout', [LoginController::class, 'logout']);
 Route::resource('users', UserController::class);
 Route::resource('songs', SongController::class);
 Route::resource('genres', GenreController::class);
+Route::resource('albums', AlbumController::class);
 
 
 // Vista Admin (Menu CRUD)

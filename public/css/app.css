@@ -28,3 +28,9 @@ td {
     border-right: 1px solid black;
     border-bottom: 1px solid rgba(85, 85, 85, 0.61);
 }
+
+td>img{
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+}

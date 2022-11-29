@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Album;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AlbumController extends Controller
 {
@@ -14,7 +15,8 @@ class AlbumController extends Controller
      */
     public function index()
     {
-        //
+        $allAlbums = Album::all();
+        return view('admin.album', compact('allAlbums'));
     }
 
     /**
@@ -24,7 +26,7 @@ class AlbumController extends Controller
      */
     public function create()
     {
-        //
+        return view('albums.create');
     }
 
     /**
@@ -35,7 +37,20 @@ class AlbumController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $album = new Album;
+            $album->user_id = session('user')->id;
+            $album->name = $request->name;
+            $path = $request->file('cover')->store('/images/covers', 'public');
+            $album->cover = $path;
+            $album->save();
+            return redirect('/');
+        } catch (\Throwable $th) {
+            $errorMessage = $th->getMessage();
+            $message = "<p class='text-danger'>Error creando canción: $errorMessage</p>";
+
+            return view('albums.create', compact(['message']));
+        }
     }
 
     /**
@@ -46,7 +61,9 @@ class AlbumController extends Controller
      */
     public function show(Album $album)
     {
-        //
+        $coverPath = Storage::url($album->cover);
+
+        return view('albums.show', compact('album', 'coverPath'));
     }
 
     /**
@@ -57,7 +74,8 @@ class AlbumController extends Controller
      */
     public function edit(Album $album)
     {
-        //
+        $coverPath = Storage::url($album->cover);
+        return view('albums.edit', compact('album', 'coverPath'));
     }
 
     /**
@@ -67,9 +85,22 @@ class AlbumController extends Controller
      * @param  \App\Models\Album  $album
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Album $album)
+    public function update(Request $request, $id)
     {
-        //
+        $album = Album::find($id);
+        $album->name = $request->name;
+
+        if ($request->hasFile('cover')) {
+            $oldPath = $album->cover;
+            Storage::disk('public')->delete($oldPath);
+
+            $path = $request->file('cover')->store('/images/covers', 'public');
+            $album->cover = $path;
+        }
+        $album->save();
+        $coverPath = Storage::url($album->cover);
+
+        return view('albums.show', compact('album', 'coverPath'));
     }
 
     /**
@@ -80,6 +111,11 @@ class AlbumController extends Controller
      */
     public function destroy(Album $album)
     {
-        //
+        // Borrar archivo imagen
+        $path = $album->cover;
+        Storage::disk('public')->delete($path);
+        // Borrar Album
+        $album->delete();
+        return redirect('/');
     }
 }

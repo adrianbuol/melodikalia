@@ -18,7 +18,6 @@
                 <h3>CRUD - USERS</h3>
                 <div class="d-flex justify-content-md-between align-items-center p-3 w-75">
                     <a href="/users/create" class="border border-dark col-2 d-flex justify-content-center">Create</a>
-
                 </div>
                 <div class="d-flex justify-content-center align-items-center ">
                     <table class="m-4">

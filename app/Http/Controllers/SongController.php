@@ -128,10 +128,10 @@ class SongController extends Controller
      */
     public function destroy(Song $song)
     {
-        // Borrar Cancion
+        // Borrar archivo audio
         $path = $song->song_path;
         Storage::disk('public')->delete($path);
-        // Borrar User
+        // Borrar Cancion
         $song->delete();
         return redirect('/');
     }
