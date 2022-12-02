@@ -62,7 +62,7 @@
                     </table>
                 </div>
             </div>
-            @if (session('user')->admin == 1)
+            @if (session('user')->admin)
                 <div class="d-flex justify-content-center">
                     <a id="backButton" href="/admin" class="border border-dark d-flex justify-content-center p-2 w-25">Back</a>
                 </div>

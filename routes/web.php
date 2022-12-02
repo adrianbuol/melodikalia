@@ -46,27 +46,23 @@ Route::get('/admin', function () {
 
 
 // Crud Albumes
-Route::get('/admin/album', function () {
-    return view('/admin/album');
-});
+Route::get('/admin/album', [AlbumController::class, 'index']);
+Route::get('/albums/user-albums/{user}', [AlbumController::class, 'list']);
+
 
 
 // Crud Generos
-Route::get('/admin/genre', function () {
-    return view('/admin/genre');
-});
+Route::get('/admin/genre', [GenreController::class, 'index']);
 
 
 // Crud Canciones
-Route::get('/admin/song', function () {
-    return view('/admin/song');
-});
+Route::get('/admin/song', [SongController::class, 'index']);
+Route::post('/songs/add-to-album', [SongController::class, 'addToAlbum']);
 
 
 // Usuarios => Sub menu
-Route::get('/admin/user', function () {
-    return view('/admin/user');
-});
+Route::get('/admin/user', [UserController::class, 'index']);
+
 Route::get('/like', function () {
     return view('/users/submenu/like');
 });
@@ -76,14 +72,3 @@ Route::get('/following', function () {
 Route::get('/followers', function () {
     return view('/users/submenu/followers');
 });
-
-
-// GET, POST, PUT, DELETE
-
-// GET /users
-// GET /users/create    //Muestra la vista con el formulario de registro
-// POST /users          //Publica los cambios
-// GET /users/:id
-// POST /users
-// PUT /users/:id
-// DELETE /users/:id

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Album;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -117,5 +118,14 @@ class AlbumController extends Controller
         // Borrar Album
         $album->delete();
         return redirect('/');
+    }
+
+    /**
+     * Lista todos los albumes por usuario
+     *
+     */
+    public function list(User $user)
+    {
+        return $user->albums;
     }
 }

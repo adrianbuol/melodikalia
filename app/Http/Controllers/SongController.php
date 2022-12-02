@@ -69,7 +69,7 @@ class SongController extends Controller
     public function show(Song $song)
     {
         $songPath = Storage::url($song->song_path);
-        $author = User::get()->where('id', $song->user_id)->value('username');
+        $author = $song->user;
         $songName = $song->name;
         $genre = Genre::get()->where('id', $song->genre_id)->value('name');
 
@@ -134,5 +134,11 @@ class SongController extends Controller
         // Borrar Cancion
         $song->delete();
         return redirect('/');
+    }
+
+    public function addToAlbum(Request $request)
+    {
+        $song = Song::find($request->song_id);
+        $song->albums()->attach($request->album_id);
     }
 }
