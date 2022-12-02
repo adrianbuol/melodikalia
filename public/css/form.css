@@ -102,6 +102,7 @@ option {
 #buttonSub,
 #buttonRes {
     color: white;
+    text-decoration: none;
     height: 40px;
     background-color: #222429;
     width: 100px;
@@ -123,10 +124,12 @@ option {
 }
 
 #backButton {
-    margin-top: 10px;
     height: 40px;
-    background-color: #222429;
     width: 100px;
+    margin-top: 10px;
+    text-decoration: none;
+    color: rgb(233, 229, 229);
+    background-color: #222429;
     cursor: pointer;
 }
 
@@ -136,7 +139,21 @@ option {
     width: 100% !important;
 }
 
-#backButton>a:hover {
+#crudLinks>a,
+#btnCreate {
+    color: white;
+    text-decoration: none;
+    height: 30px;
+    background-color: #222429;
+    width: 100px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+#backButton:hover,
+#backButton>a:hover,
+#crudLinks>a:hover,
+#btnCreate:hover {
     color: rgb(255, 255, 255);
     text-shadow:
         0 0 7px rgb(255, 255, 255),

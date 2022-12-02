@@ -3,6 +3,7 @@
 
 <head>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/form.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
 
@@ -14,7 +15,7 @@
             <div class="d-flex flex-column justify-content-center align-items-center">
                 <h3>CRUD - GENRES</h3>
                 <div class="d-flex justify-content-md-between align-items-center p-3 w-75">
-                    <a href="/genres/create" class="border border-dark col-2 d-flex justify-content-center">Create</a>
+                    <a id="btnCreate" href="/genres/create" class="border border-dark col-2 d-flex justify-content-center">Create</a>
                 </div>
                 <div class="d-flex justify-content-center align-items-center ">
                     <table class="m-4">
@@ -52,10 +53,8 @@
                         @endforeach
                     </table>
                 </div>
-                {{-- <a href="#" class="border border-dark col-2 d-flex justify-content-center">Read</a>
-                    <a href="#" class="border border-dark col-2 d-flex justify-content-center">Update</a>
-                    <a href="#" class="border border-dark col-2 d-flex justify-content-center">Delete</a> --}}
-                <a href="/admin" class="border border-dark col-2 d-flex justify-content-center">Back</a>
+
+                <a id="backButton" href="/admin" class="border border-dark col-2 d-flex justify-content-center">Back</a>
             </div>
 
         </main>

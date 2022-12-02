@@ -3,6 +3,7 @@
 
 <head>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/form.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
 
@@ -17,7 +18,7 @@
             <div class="d-flex flex-column justify-content-center align-items-center">
                 <h3>CRUD - ALBUMS</h3>
                 <div class="d-flex justify-content-md-between align-items-center p-3 w-75">
-                    <a href="/albums/create" class="border border-dark col-2 d-flex justify-content-center">Create</a>
+                    <a id="btnCreate" href="/albums/create" class="border border-dark col-2 d-flex justify-content-center">Create</a>
                 </div>
             </div>
             <div class="d-flex justify-content-center align-items-center ">
@@ -61,7 +62,7 @@
             </div>
             @if (session('user')->admin == 1)
                 <div class="d-flex justify-content-center">
-                    <a href="/admin" class="border border-dark d-flex justify-content-center p-2 w-25">Back</a>
+                    <a id="backButton" href="/admin" class="border border-dark d-flex justify-content-center p-2 w-25">Back</a>
                 </div>
             @endif
         </main>
