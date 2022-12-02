@@ -2,7 +2,8 @@
 <html>
 
 <head>
-    <!-- CSS only -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link href="{{ asset('css/form.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -25,11 +26,13 @@
 
                 <label for="password">Contraseña</label>
                 <input type="password" name="password" id="password">
-                <label for="confirmPassword">Confirma Contraseña</label>
-                <input type="password" name="confirmPassword" id="confirmPassword">
+
+                {{-- <label for="confirmPassword">Confirma Contraseña</label>
+                <input type="password" name="confirmPassword" id="confirmPassword"> --}}
 
                 <label for="avatar">Avatar</label>
-                <input type="file" name="avatar" accept="image/png, image/jpeg">
+                {{-- <label for="avatar"><i id="iconUpload" class="bi bi-cloud-upload"></i></label> --}}
+                <input id="imgFile" type="file" name="avatar" accept="image/png, image/jpeg">
 
                 <label for="email">E-Mail</label>
                 <input type="email" name="email">
@@ -40,17 +43,15 @@
                 <input type="text" name="surname">
 
                 <div class="d-flex">
-                    <button type="submit" name="submit">Registro</button>
-                    <button type="reset">Reiniciar</button>
+                    <button id="buttonSub" type="submit" name="submit">Registro</button>
+                    <button id="buttonRes" type="reset">Reiniciar</button>
                 </div>
             </form>
 
-            {{-- Añadir si admin, boton visible --}}
-            @if (session('user')->admin == 1)
-                <div class="d-flex justify-content-center">
-                    <a href="/admin" class="border border-dark d-flex justify-content-center px-5 py-2 w-25">Back</a>
-                </div>
-            @endif
+            <div id="backButton" class="d-flex justify-content-center">
+                <a href="/" class="border border-dark d-flex justify-content-center px-5 py-2 w-25">Back</a>
+            </div>
+
         </main>
     @endsection
     {{-- <script type="text/javascript" src="{{ URL::asset('js/form.js') }}"></script> --}}

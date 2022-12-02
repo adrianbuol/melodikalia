@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <!-- CSS only -->
+    <link href="{{ asset('css/form.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -23,12 +23,14 @@
                 <label for="name">Introduce nombre para el genero</label>
                 <input type="text" name="name">
                 <div class="d-flex">
-                    <button type="submit" name="submit">Añadir Genero</button>
-                    <button type="reset">Reiniciar</button>
+                    <button id="buttonSub" type="submit" name="submit">Añadir</button>
+                    <button id="buttonRes" type="reset">Reiniciar</button>
                 </div>
             </form>
 
-            <a href="/admin" class="border border-dark col-2 d-flex justify-content-center">Back</a>
+            <div id="backButton" class="d-flex justify-content-center">
+                <a href="/admin" class="border border-dark d-flex justify-content-center px-5 py-2 w-25">Back</a>
+            </div>
         </main>
     @endsection
 </body>

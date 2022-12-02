@@ -1,17 +1,61 @@
-@import url(app.css);
-
 header {
     height: 40px;
-    background-color: #0093E9;
-    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    background-color: #222429;
+    color: rgb(233, 229, 229);
+    /* background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%); */
 }
 
-header>a {
-    padding: 6px 12px 6px 12px;
+nav {
+    height: 100%;
 }
+
+#home {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: left;
+}
+
+#home>h5 {
+    width: 300px;
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#menu>a,
+#home>a {
+    padding: 6px 12px 6px 12px;
+    text-decoration: none;
+}
+
+#menu {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: right;
+}
+
+#menu>*,
+#home>* {
+    width: 150px;
+    height: 100%;
+    margin-right: 5px;
+}
+
+#dropdownMenuLink {
+    background-color: #222429;
+    border: none;
+    width: 100%;
+}
+
 
 .dropdown-menu {
     background-color: rgb(241, 239, 239);
+    color: black;
     border-radius: 0;
 }
 
@@ -20,27 +64,64 @@ header>a {
     margin-top: 0;
 }
 
-.dropdown-menu>a {
-    background-color: white;
-}
-
-header>a,
-.dropdown,
-.dropdown>a {
-    background-color: #0093E9;
-    background-image: linear-gradient(348deg, #0093E9 0%, #80D0C7 100%);
-    border-radius: 0;
-    height: 100%;
+a.dropdown-item {
     color: black;
 }
 
-a:active,
-.dropdown-menu>a:active {
-    background-color: rgb(231, 14, 14);
+#menu>a,
+#home>a,
+#dropdownMenuLink {
+    color: rgb(233, 229, 229) !important;
+    height: 100%;
 }
 
-a:hover {
-    background-color: #0062ff;
-    background-image: linear-gradient(155deg, #0062ff 0%, #ffffff 100%);
+#menu>a:active,
+#home>a:active,
+#dropdownMenuLink>a:active,
+.dropdownMenuLink:active {
+    color: rgb(255, 255, 255);
+    text-shadow:
+        0 0 7px rgb(136, 12, 12),
+        0 0 10px rgb(136, 12, 12),
+        0 0 21px rgb(136, 12, 12),
+        0 0 42px rgb(253, 30, 0),
+        0 0 82px rgb(253, 30, 0),
+        0 0 92px rgb(253, 30, 0),
+        0 0 102px rgb(253, 30, 0),
+        0 0 151px rgb(253, 30, 0)
+}
 
+#menu>a:hover,
+#home>a:hover,
+.dropdown:hover,
+#dropdownMenuLink>a:hover {
+    color: rgb(255, 255, 255);
+    text-shadow:
+        0 0 7px rgb(255, 255, 255),
+        0 0 10px rgb(255, 255, 255),
+        0 0 21px rgb(255, 255, 255),
+        0 0 42px rgb(236, 240, 239),
+        0 0 82px rgb(233, 240, 238),
+        0 0 92px rgb(239, 241, 241),
+        0 0 102px rgb(224, 233, 230),
+        0 0 151px rgb(236, 241, 240);
+
+    background: rgb(34, 36, 41);
+    background: linear-gradient(149deg, rgba(34, 36, 41, 1) 24%, rgb(69, 69, 73) 100%);
+}
+
+.dropdown-menu>a:hover {
+    color: rgb(255, 255, 255);
+    text-shadow:
+        0 0 7px rgb(255, 255, 255),
+        0 0 10px rgb(255, 255, 255),
+        0 0 21px rgb(255, 255, 255),
+        0 0 42px rgb(236, 240, 239),
+        0 0 82px rgb(233, 240, 238),
+        0 0 92px rgb(239, 241, 241),
+        0 0 102px rgb(224, 233, 230),
+        0 0 151px rgb(236, 241, 240);
+
+    background: rgb(34, 36, 41);
+    background: linear-gradient(149deg, rgba(34, 36, 41, 1) 24%, rgb(69, 69, 73) 100%);
 }

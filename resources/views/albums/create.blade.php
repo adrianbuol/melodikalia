@@ -2,7 +2,8 @@
 <html>
 
 <head>
-    <!-- CSS only -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link href="{{ asset('css/form.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -25,17 +26,18 @@
                 <input type="text" name="name">
 
                 <label for="cover">Cover</label>
-                <input type="file" name="cover" accept="image/png, image/jpeg">
+                {{-- <label for="cover"><i id="iconUpload" class="bi bi-cloud-upload"></i></label> --}}
+                <input id="imgFile" type="file" name="cover" accept="image/png, image/jpeg">
 
                 <div class="d-flex">
-                    <button type="submit" name="submit">Registro</button>
-                    <button type="reset">Reiniciar</button>
+                    <button id="buttonSub" type="submit" name="submit">Registro</button>
+                    <button id="buttonRes" type="reset">Reiniciar</button>
                 </div>
             </form>
 
             {{-- Añadir si admin, boton visible --}}
             @if (session('user')->admin == 1)
-                <div class="d-flex justify-content-center">
+                <div id="backButton" class="d-flex justify-content-center">
                     <a href="/admin" class="border border-dark d-flex justify-content-center px-5 py-2 w-25">Back</a>
                 </div>
             @endif

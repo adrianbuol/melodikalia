@@ -2,7 +2,8 @@
 <html>
 
 <head>
-    <!-- CSS only -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link href="{{ asset('css/form.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -29,14 +30,15 @@
                     @endforeach
                 </select>
                 <!-- De momento solo archivos ".mp3" -->
-                <input type="file" name="musicFile" accept="audio/mp3">
+                <label for="musicFile"><i id="iconUpload" class="bi bi-cloud-upload"></i></label>
+                <input type="file" id="musicFile" name="musicFile" accept="audio/mp3" required>
 
                 <input type="hidden" name="userId" value="{{ session('user')->id }}">
-                <button type="submit" name="submit">Subir
+                <button id="buttonSub" type="submit" name="submit">Subir
                     Audio</button>
             </form>
             @if (session('user')->admin == 1)
-                <div class="d-flex justify-content-center">
+                <div id="backButton" class="d-flex justify-content-center">
                     <a href="/admin" class="border border-dark d-flex justify-content-center p-2 w-25">Back</a>
                 </div>
             @endif
