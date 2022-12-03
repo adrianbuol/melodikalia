@@ -1,9 +1,10 @@
+@vite(['resources/css/form.css'])
+@vite(['resources/js/form.js'])
 <!DOCTYPE html>
 <html>
 
 <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <link href="{{ asset('css/form.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -25,25 +26,27 @@
                 <label for="name">Nombre del Album</label>
                 <input type="text" name="name">
 
-                <label for="cover">Cover</label>
-                {{-- <label for="cover"><i id="iconUpload" class="bi bi-cloud-upload"></i></label> --}}
-                <input id="imgFile" type="file" name="cover" accept="image/png, image/jpeg">
+                <label>Cover</label>
+                <label id="label-file" for="imgFile"><i id="iconUpload" class="bi bi-cloud-upload"></i></label>
+                <input type="file" id="imgFile" name="imgFile" accept="image/png, image/jpeg">
 
-                <div class="d-flex">
-                    <button id="buttonSub" type="submit" name="submit">Registro</button>
-                    <button id="buttonRes" type="reset">Reiniciar</button>
-                </div>
+
+                <button id="buttonSub" type="submit" name="submit">Registrar</button>
             </form>
 
             {{-- Añadir si admin, boton visible --}}
-            @if (session('user')->admin == 1)
+            @if (session('user')->admin)
                 <div id="backButton" class="d-flex justify-content-center">
                     <a href="/admin" class="border border-dark d-flex justify-content-center px-5 py-2 w-25">Back</a>
+                </div>
+            @else
+                <div id="backButton" class="d-flex justify-content-center">
+                    <a href="/users/{{ session('user')->id }}"
+                        class="border border-dark d-flex justify-content-center p-2 w-25">Back</a>
                 </div>
             @endif
         </main>
     @endsection
-    {{-- <script type="text/javascript" src="{{ URL::asset('js/form.js') }}"></script> --}}
 </body>
 
 </html>

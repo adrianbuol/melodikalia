@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Album;
 use App\Models\User;
 use App\Models\Song;
 use App\Models\Genre;
@@ -71,12 +72,11 @@ class UserController extends Controller
         $imgPath = Storage::url($user->profile_pic);
 
         $userSongs = Song::get()->where('user_id', $user->id);
-
-        // $genres = Genre::get()->where('id', $userSongs->genre_id)->value('name');
+        $userAlbums = Album::get()->where('user_id', $user->id);
         $genres = Genre::all();
 
 
-        return view('users.submenu.profile', compact('user', 'imgPath', 'userSongs', 'genres'));
+        return view('users.submenu.profile', compact('user', 'imgPath', 'userSongs', 'userAlbums', 'genres'));
     }
 
     /**

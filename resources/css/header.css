@@ -74,22 +74,6 @@ a.dropdown-item {
     height: 100%;
 }
 
-#menu>a:active,
-#home>a:active,
-#dropdownMenuLink>a:active,
-.dropdownMenuLink:active {
-    color: rgb(255, 255, 255);
-    text-shadow:
-        0 0 7px rgb(136, 12, 12),
-        0 0 10px rgb(136, 12, 12),
-        0 0 21px rgb(136, 12, 12),
-        0 0 42px rgb(253, 30, 0),
-        0 0 82px rgb(253, 30, 0),
-        0 0 92px rgb(253, 30, 0),
-        0 0 102px rgb(253, 30, 0),
-        0 0 151px rgb(253, 30, 0)
-}
-
 #menu>a:hover,
 #home>a:hover,
 .dropdown:hover,

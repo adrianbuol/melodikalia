@@ -12,9 +12,14 @@ export default defineConfig({
             'resources/css/form.css',
             'resources/css/header.css',
             'resources/css/profile.css',
+            'resources/css/register.css',
             'resources/css/song.css',
+            'resources/css/list.css',
             'resources/js/app.js',
-            'resources/js/song.js',
+            'resources/js/form.js',
+            'resources/js/profile.js',
+            'resources/js/register.js',
+            'resources/js/song.js'
         ]),
     ],
 });

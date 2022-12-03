@@ -42,14 +42,14 @@
                     <button type="reset">Reiniciar</button>
                 </div>
             </form>
-            @if (session('user')->admin == 1)
+            @if (session('user')->id == $user->id || session('user')->admin)
                 <div class="d-flex justify-content-center">
-                    <a href="/admin" class="border border-dark d-flex justify-content-center px-5 py-2 w-25">Back</a>
+                    {{-- <a href="/admin" class="border border-dark d-flex justify-content-center px-5 py-2 w-25">Back</a> --}}
+                    <a href="/users/{{ $user->id }}">Back</a>
                 </div>
             @endif
         </main>
     @endsection
-    {{-- <script type="text/javascript" src="{{ URL::asset('js/form.js') }}"></script> --}}
 </body>
 
 </html>

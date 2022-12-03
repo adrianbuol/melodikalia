@@ -1,9 +1,10 @@
+@vite(['resources/css/form.css'])
+@vite(['resources/js/form.js'])
 <!DOCTYPE html>
 <html>
 
 <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <link href="{{ asset('css/form.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -29,17 +30,22 @@
                         <option value="{{ $genre->id }}">{{ $genre->name }}</option>
                     @endforeach
                 </select>
+
                 <!-- De momento solo archivos ".mp3" -->
-                <label for="musicFile"><i id="iconUpload" class="bi bi-cloud-upload"></i></label>
+                <label id="label-music-file" for="musicFile"><i id="iconUpload" class="bi bi-cloud-upload"></i></label>
                 <input type="file" id="musicFile" name="musicFile" accept="audio/mp3" required>
 
                 <input type="hidden" name="userId" value="{{ session('user')->id }}">
                 <button id="buttonSub" type="submit" name="submit">Subir
                     Audio</button>
             </form>
-            @if (session('user')->admin == 1)
+            @if (session('user')->admin)
                 <div id="backButton" class="d-flex justify-content-center">
                     <a href="/admin" class="border border-dark d-flex justify-content-center p-2 w-25">Back</a>
+                </div>
+            @else
+                <div id="backButton" class="d-flex justify-content-center">
+                    <a href="/" class="border border-dark d-flex justify-content-center p-2 w-25">Back</a>
                 </div>
             @endif
         </main>

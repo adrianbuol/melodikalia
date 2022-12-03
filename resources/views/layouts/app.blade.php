@@ -57,7 +57,7 @@
     </header>
 
 
-    <div class="container container border border-dark mt-5 p-5 h-50">
+    <div class="container container border border-dark mt-5 mb-5 p-5">
 
         @yield('content')
     </div>

@@ -1,9 +1,9 @@
+@vite(['resources/css/app.css'])
+@vite(['resources/css/form.css'])
 <!DOCTYPE html>
 <html>
 
 <head>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/form.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
 
