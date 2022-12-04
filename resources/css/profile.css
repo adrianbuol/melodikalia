@@ -24,6 +24,7 @@ img {
 #buttons,
 #back-buttons {
     grid-area: 4 / 4 / 5 / 6;
+    overflow: auto;
 }
 
 button {
@@ -59,6 +60,27 @@ a:hover {
     margin: 10px 0;
 }
 
+#campo-likes {
+    font-size: xx-large;
+}
+
+#campo-likes>a {
+    color: red;
+}
+
+#campo-likes>a:hover {
+    background: none !important;
+    text-shadow:
+        0 0 7px rgb(255, 0, 0),
+        0 0 10px rgb(255, 0, 0),
+        0 0 21px rgb(255, 0, 0),
+        0 0 42px rgb(226, 0, 0),
+        0 0 82px rgb(226, 0, 0),
+        0 0 92px rgb(226, 0, 0),
+        0 0 102px rgb(207, 14, 14),
+        0 0 151px rgb(214, 17, 17);
+}
+
 #avatar>h6 {
     font-weight: bold;
     width: 100%;
@@ -77,11 +99,15 @@ a:hover {
 }
 
 #buttons>form>* {
-    padding: 15px 32px;
     background-color: black;
     color: white;
     display: inline-block;
     border: none;
+}
+
+#buttons>form>*,
+#add-to-album {
+    height: 50px !important;
 }
 
 #title {

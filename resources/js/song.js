@@ -9,14 +9,20 @@ $("#add-to-album").on("click", function () {
             res.forEach(album => {
                 $("#lista-albumes").append('<option value="' + album.id + '">' + album.name + '</option>');
             });
-            $("#add-to-album-modal").show();
+
+
+            $("#add-to-album-modal").css("display", "flex");
+            // $("#add-to-album-modal").show();
         }
     });
 });
 
 $("#cerrar-album-modal").on("click", function () {
     $("#lista-albumes").html("");
-    $("#add-to-album-modal").hide();
+
+
+    $("#add-to-album-modal").css("display", "none");
+    // $("#add-to-album-modal").hide();
 });
 
 $("#aceptar-album-modal").on("click", function () {
@@ -36,7 +42,12 @@ $("#aceptar-album-modal").on("click", function () {
         success: function () {
             $("#add-to-album-modal").html("<h2>Cancion añadida correctamente</h2>");
             setTimeout(function () {
-                $("#add-to-album-modal").hide();
+
+                $("#add-to-album-modal").css("display", "none");
+                // $("#add-to-album-modal").hide();
+            }, 2000);
+            setTimeout(function () {
+                location.reload();
             }, 2000);
         }
     });

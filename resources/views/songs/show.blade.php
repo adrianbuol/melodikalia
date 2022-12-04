@@ -5,6 +5,7 @@
 <html>
 
 <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 </head>
 
@@ -34,9 +35,20 @@
                     <h6>Genero: </h6>
                     <p>{{ $genre }}</p>
                 </div>
+                <div class="campo">
+                    <h6>Nº Likes:</h6>
+                    <p>666</p>
+                </div>
+                <div id="campo-likes">
+                    <a href="#" id="like"><i class="bi bi-heart"></i></a>
+                    <a href="#" id="remove-like"><i class="bi bi-heart-fill"></i></a>
+                </div>
             </div>
             <div id="buttons" class="d-flex m-2 p-2 border border-dark">
-                <button class="m-1" id="add-to-album" data-user-id="{{ $author->id }}">Añadir a un Album</button>
+                <button class="m-1" id="add-to-album" data-user-id="{{ $author->id }}">
+                    <i class="bi bi-plus-circle mr-2"></i>
+                    <span>Album</span>
+                </button>
 
                 <form class="m-1" action="/songs/{{ $song->id }}/edit" method="GET">
                     @csrf
@@ -63,8 +75,11 @@
         <div id="add-to-album-modal">
             <h2>Añadir canción al Album</h2>
             <select id="lista-albumes"></select>
-            <button id="cerrar-album-modal">Cancelar</button>
-            <button id="aceptar-album-modal" data-song-id="{{ $song->id }}">Añadir</button>
+            <div class="d-flex">
+                <button id="cerrar-album-modal" class="mr-2">Cancelar</button>
+                <button id="aceptar-album-modal" class="mr-2" data-song-id="{{ $song->id }}">Añadir</button>
+            </div>
+
         </div>
     @endsection
 

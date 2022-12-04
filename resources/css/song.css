@@ -4,7 +4,6 @@
 
 #add-to-album {
     padding: 0;
-    width: 100px;
     border: 1px solid rgb(199, 180, 180);
     box-shadow: 10px 5px 5px rgb(201, 200, 200);
 }
@@ -12,8 +11,45 @@
 #add-to-album-modal {
     display: none;
     position: fixed;
-    background-color: wheat;
+    background-color: #0000004f;
+    backdrop-filter: blur(8px);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    border-radius: 20px;
+    border: 4px solid black;
+    padding: 20px;
+    width: 75%;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#add-to-album-modal>h2 {
+    color: white;
+    font-weight: bold;
+}
+
+#add-to-album-modal>div>button {
+    margin: 10px;
+}
+
+select {
+    border: 3px solid black;
+    border-radius: 10px 5px;
+    cursor: pointer;
+    width: 200px;
+
+    text-align: center;
+    color: rgb(255, 255, 255);
+
+
+    background: rgb(34, 36, 41);
+    background: linear-gradient(149deg, rgba(34, 36, 41, 1) 24%, rgb(69, 69, 73) 100%);
+}
+
+option {
+    color: black !important;
 }
