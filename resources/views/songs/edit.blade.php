@@ -1,3 +1,5 @@
+@vite(['resources/css/form.css'])
+@vite(['resources/css/register.css'])
 <!DOCTYPE html>
 <html>
 
@@ -18,7 +20,7 @@
                 <label for="songName">Nombre de Canción: </label>
                 <input type="text" name="songName" value="{{ $song->name }}">
 
-                <select name="genre">
+                <select class="mt-2" name="genre">
                     @foreach ($genres as $genre)
                         @if ($song->genre_id == $genre->id)
                             <option value="{{ $genre->id }}" selected>{{ $genre->name }}</option>
@@ -28,21 +30,29 @@
                     @endforeach
                 </select>
 
-                <label for="musicFile">Input de musica</label>
+                <label for="musicFile">Archivo de audio</label>
                 <!-- De momento solo archivos ".mp3" -->
                 <input type="file" name="musicFile" accept="audio/mp3">
 
-                <div class="d-flex">
-                    <button type="submit" name="submit">Actualizar</button>
-                    <button type="reset">Reiniciar</button>
-                    {{-- Si admin, boton visible --}}
+                <div id="div8" class="d-flex justify-content-center">
+                    <button type="submit" name="submit"
+                        class="border border-dark d-flex justify-content-center px-5 py-2 m-2 w-25">Actualizar</button>
+                    <button type="reset"
+                        class="border border-dark d-flex justify-content-center px-5 py-2 m-2 w-25">Reiniciar</button>
                 </div>
             </form>
-            @if (session('user')->admin == 1)
+            <div class="d-flex">
                 <div class="d-flex justify-content-center">
-                    <a href="/admin" class="border border-dark d-flex justify-content-center p-2 w-25">Back</a>
+                    <a href="/songs/{{ $song->id }}"
+                        class="back-button border border-dark d-flex justify-content-center p-2">Back</a>
                 </div>
-            @endif
+                @if (session('user')->admin)
+                    <div class="d-flex justify-content-center">
+                        <a href="/songs" class="back-button border border-dark d-flex justify-content-center p-2">Back to
+                            Crud</a>
+                    </div>
+                @endif
+            </div>
         </main>
     @endsection
 </body>

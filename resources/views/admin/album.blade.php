@@ -1,5 +1,5 @@
 @vite(['resources/css/app.css'])
-@vite(['resources/css/form.css'])
+@vite(['resources/css/list.css'])
 <!DOCTYPE html>
 <html>
 
@@ -18,12 +18,13 @@
             <div class="d-flex flex-column justify-content-center align-items-center">
                 <h3>CRUD - ALBUMS</h3>
                 <div class="d-flex justify-content-md-between align-items-center p-3 w-75">
-                    <a id="btnCreate" href="/albums/create" class="border border-dark col-2 d-flex justify-content-center">Create</a>
+                    <a id="btn-create" href="/albums/create"
+                        class="border border-dark col-2 d-flex justify-content-center">Create</a>
                 </div>
             </div>
             <div class="d-flex justify-content-center align-items-center ">
                 <table class="m-4">
-                    <tr>
+                    <tr class="tableRow">
                         <td>ID</td>
                         <td>User</td>
                         <td>Name</td>
@@ -33,7 +34,7 @@
                         <td colspan="2"></td>
                     </tr>
                     @foreach ($allAlbums as $album)
-                        <tr>
+                        <tr class="tableRow">
                             <td>{{ $album->id }}</td>
                             <td>{{ $album->user_id }} </td>
                             <td>
@@ -46,7 +47,8 @@
                             <td>{{ $album->created_at }}</td>
                             <td>{{ $album->updated_at }}</td>
                             <td>
-                                <a href="/albums/{{ $album->id }}/edit"><i class="bi bi-pencil-square"></i></a>
+                                <a href="/albums/{{ $album->id }}/edit" id="edit"><i
+                                        class="bi bi-pencil-square"></i></a>
                             </td>
                             <td>
                                 <form action="/albums/{{ $album->id }}" method="POST">
@@ -62,7 +64,7 @@
             </div>
             @if (session('user')->admin == 1)
                 <div class="d-flex justify-content-center">
-                    <a id="backButton" href="/admin" class="border border-dark d-flex justify-content-center p-2 w-25">Back</a>
+                    <a href="/admin" class="back-button border border-dark d-flex justify-content-center p-2 w-25">Back</a>
                 </div>
             @endif
         </main>

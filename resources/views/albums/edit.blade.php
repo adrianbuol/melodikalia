@@ -1,3 +1,5 @@
+@vite(['resources/css/form.css'])
+@vite(['resources/css/register.css'])
 <!DOCTYPE html>
 <html>
 
@@ -20,19 +22,21 @@
                 <input type="text" name="name" value="{{ $album->name }}">
 
                 <label for="cover">Album Cover</label>
-                <img class="h-25" src="{{ $coverPath }}" alt="{{ $album->name }} album cover" />
+                <label for="cover"><img id="img-modify" src="{{ $coverPath }}"
+                        alt="{{ $album->name }} album cover" /></label>
                 <input type="file" name="cover" accept="image/png, image/jpeg" value="{{ $album->cover }}">
 
-                <div class="d-flex">
-                    <button type="submit" name="submit">Actualizar</button>
-                    <button type="reset">Reiniciar</button>
+                <div id="div8" class="d-flex justify-content-center">
+                    <button type="submit" name="submit"
+                        class="border border-dark d-flex justify-content-center px-5 py-2 m-2 w-25">Actualizar</button>
+                    <button type="reset"
+                        class="border border-dark d-flex justify-content-center px-5 py-2 m-2 w-25">Reiniciar</button>
                 </div>
             </form>
-            @if (session('user')->admin == 1)
-                <div class="d-flex justify-content-center">
-                    <a href="/admin" class="border border-dark d-flex justify-content-center px-3 w-25">Back</a>
-                </div>
-            @endif
+            <div class="back-button d-flex justify-content-center">
+                <a href="/albums/{{ $album->id }}" class="border border-dark d-flex justify-content-center p-2 w-25">
+                    Back </a>
+            </div>
         </main>
     @endsection
 </body>

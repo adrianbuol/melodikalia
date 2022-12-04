@@ -21,7 +21,8 @@ img {
     grid-area: 1 / 4 / 4 / 6;
 }
 
-#buttons {
+#buttons,
+#back-buttons {
     grid-area: 4 / 4 / 5 / 6;
 }
 
@@ -81,4 +82,8 @@ a:hover {
     color: white;
     display: inline-block;
     border: none;
+}
+
+#title {
+    width: fit-content;
 }

@@ -48,7 +48,6 @@
                     <label>Avatar</label>
                     <label for="avatar"><i id="iconUpload" class="bi bi-cloud-upload"></i></label>
                     <input id="imgFileUsr" type="file" name="avatar" accept="image/png, image/jpeg">
-
                 </div>
                 <div id="div6">
                     <label for="name">Nombre</label>
@@ -65,10 +64,9 @@
                         class="border border-dark d-flex justify-content-center px-5 py-2 m-2 w-25">Reiniciar</button>
                 </div>
             </form>
-            <div id="backButton" class="d-flex justify-content-center">
+            <div class="back-button d-flex justify-content-center">
                 <a href="/" class="border border-dark d-flex justify-content-center px-5 py-2 w-25">Back</a>
             </div>
-
         </main>
     @endsection
 </body>

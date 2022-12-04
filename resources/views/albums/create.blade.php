@@ -37,10 +37,11 @@
             {{-- Añadir si admin, boton visible --}}
             @if (session('user')->admin)
                 <div id="backButton" class="d-flex justify-content-center">
-                    <a href="/admin" class="border border-dark d-flex justify-content-center px-5 py-2 w-25">Back</a>
+                    <a href="/admin" class="border border-dark d-flex justify-content-center px-5 py-2 w-25">Back to
+                        Crud</a>
                 </div>
             @else
-                <div id="backButton" class="d-flex justify-content-center">
+                <div class="back-button d-flex justify-content-center">
                     <a href="/users/{{ session('user')->id }}"
                         class="border border-dark d-flex justify-content-center p-2 w-25">Back</a>
                 </div>

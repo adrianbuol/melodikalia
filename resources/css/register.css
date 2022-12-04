@@ -71,3 +71,8 @@
         0 0 102px rgb(224, 233, 230),
         0 0 151px rgb(236, 241, 240);
 }
+
+#img-modify {
+    height: 200px;
+    border: 1px solid black;
+}

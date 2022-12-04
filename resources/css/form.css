@@ -99,7 +99,7 @@ option {
 }
 
 form {
-    width: 40%;
+    width: 80%;
     background-color: #754f7d;
     padding: 30px;
     border-radius: 25px;
@@ -109,6 +109,19 @@ form {
 
 form>* {
     margin: 10px 0;
+}
+
+form>div>label {
+    width: 50%;
+}
+
+#div5>label {
+    width: fit-content;
+    margin: 10px 0;
+}
+
+#div8 {
+    margin-top: 20px;
 }
 
 form>button {

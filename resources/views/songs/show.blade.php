@@ -1,4 +1,5 @@
 @vite(['resources/css/song.css'])
+@vite(['resources/css/profile.css'])
 @vite(['resources/js/song.js'])
 <!DOCTYPE html>
 <html>
@@ -35,7 +36,7 @@
                 </div>
             </div>
             <div id="buttons" class="d-flex m-2 p-2 border border-dark">
-                <button id="add-to-album" data-user-id="{{ $author->id }}">Añadir al Album</button>
+                <button class="m-1" id="add-to-album" data-user-id="{{ $author->id }}">Añadir a un Album</button>
 
                 <form class="m-1" action="/songs/{{ $song->id }}/edit" method="GET">
                     @csrf
@@ -48,12 +49,17 @@
                 </form>
             </div>
         </div>
-        @if (session('user')->admin)
-            <div class="d-flex justify-content-center">
-                <a href="/admin" class="border border-dark d-flex justify-content-center p-2 w-25">Back</a>
+        <div id="back-buttons" class="d-flex m-2 p-2 border border-dark">
+            <div class="back-button d-flex justify-content-center">
+                <a href="/users/{{ $song->user_id }}"
+                    class="border border-dark d-flex justify-content-center p-2 w-25">Back</a>
             </div>
-        @endif
-
+            @if (session('user')->admin)
+                <div class="back-button d-flex justify-content-center">
+                    <a href="/songs" class="border border-dark d-flex justify-content-center p-2 w-25">Back to crud</a>
+                </div>
+            @endif
+        </div>
         <div id="add-to-album-modal">
             <h2>Añadir canción al Album</h2>
             <select id="lista-albumes"></select>

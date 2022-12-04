@@ -28,8 +28,8 @@
                 </div>
             </form>
 
-            <div id="backButton" class="d-flex justify-content-center">
-                <a href="/admin" class="border border-dark d-flex justify-content-center px-5 py-2 w-25">Back</a>
+            <div class="back-button d-flex justify-content-center">
+                <a href="/genres" class="border border-dark d-flex justify-content-center px-5 py-2 w-25">Back</a>
             </div>
         </main>
     @endsection

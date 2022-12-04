@@ -1,7 +1,12 @@
-@import url(profile.css);
-
 #song {
     grid-area: 1 / 1 / 5 / 4;
+}
+
+#add-to-album {
+    padding: 0;
+    width: 100px;
+    border: 1px solid rgb(199, 180, 180);
+    box-shadow: 10px 5px 5px rgb(201, 200, 200);
 }
 
 #add-to-album-modal {

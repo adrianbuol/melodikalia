@@ -1,18 +1,19 @@
+@vite(['resources/css/song.css'])
+@vite(['resources/css/profile.css'])
 <!DOCTYPE html>
 <html>
 
 <head>
-    <link href="{{ asset('/css/song.css') }}" rel="stylesheet">
 </head>
 
 <body>
     @extends('layouts.app')
 
     @section('content')
-        <h5>Canciones del Genero</h5>
+        <h5>{{ $genre->name }}</h5>
         <div id="parent">
             <div id="song"
-                class="m-2 p-2 border border-dark d-flex flex-column justify-content-center align-items-center">
+                class="m-2 p-2 border border-dark d-flex flex-column 22align-items-center">
                 <table class="m-4">
                     <tr>
                         <td class="col-4">Name</td>
@@ -39,6 +40,14 @@
                     <h6>Nombre del Genero: </h6>
                     <p> {{ $genre->name }}</p>
                 </div>
+                <div class="campo">
+                    <h6>Creado: </h6>
+                    <p> {{ $genre->created_at }}</p>
+                </div>
+                <div class="campo">
+                    <h6>Ultima Modificacion: </h6>
+                    <p> {{ $genre->updated_at }}</p>
+                </div>
             </div>
             <div id="buttons" class="d-flex m-2 p-2 border border-dark">
                 <form class="m-1" action="/genres/{{ $genre->id }}/edit" method="GET">
@@ -52,9 +61,9 @@
                 </form>
             </div>
         </div>
-        @if (session('user')->admin == 1)
+        @if (session('user')->admin)
             <div class="d-flex justify-content-center">
-                <a href="/admin" class="border border-dark d-flex justify-content-center p-2 w-25">Back</a>
+                <a href="/genres" class="back-button border border-dark d-flex justify-content-center p-2 w-25">Back</a>
             </div>
         @endif
     @endsection

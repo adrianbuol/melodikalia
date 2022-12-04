@@ -1,30 +1,26 @@
+@vite(['resources/css/song.css'])
+@vite(['resources/css/profile.css'])
 <!DOCTYPE html>
 <html>
-
-<head>
-    <link href="{{ asset('/css/song.css') }}" rel="stylesheet">
-</head>
 
 <body>
     @extends('layouts.app')
 
     @section('content')
-        <h5>{{ $album->name }}</h5>
-        <h6>Por {{ $album->user_id }}</h6>
+        <h5 id="title" class="border-bottom border-dark">{{ $album->name }}</h5>
+        <h6>Por {{ $author }}</h6>
         <div id="parent">
             <div id="song"
                 class="m-2 p-2 border border-dark d-flex flex-column justify-content-center align-items-center">
                 <img src="{{ $coverPath }}" alt="{{ $album->name }} album cover">
             </div>
             <div id="info" class="m-2 p-2 border border-dark">
-                <div class="campo">
-                    <h6>01 - </h6>
-                    <p>Pista</p>
-                </div>
-                <div class="campo">
-                    <h6>02 - </h6>
-                    <p>Pista</p>
-                </div>
+                @foreach ($albumSongs as $song)
+                    <div class="campo">
+                        <h6>0{{ $trackNum++ }} - </h6>
+                        <h6><a href="/songs/{{ $song->id }}">{{ $song->name }}</a></h6>
+                    </div>
+                @endforeach
             </div>
             <div id="buttons" class="d-flex m-2 p-2 border border-dark">
                 <form class="m-1" action="/albums/{{ $album->id }}/edit" method="GET">
@@ -38,11 +34,17 @@
                 </form>
             </div>
         </div>
-        @if (session('user')->admin == 1)
-            <div class="d-flex justify-content-center">
-                <a href="/admin" class="border border-dark d-flex justify-content-center p-2 w-25">Back</a>
+        <div id="back-buttons" class="d-flex m-2 p-2 border border-dark">
+            <div class="back-button d-flex justify-content-center">
+                <a href="/users/{{ $album->user_id }}"
+                    class="border border-dark d-flex justify-content-center p-2 w-25">Back</a>
             </div>
-        @endif
+            @if (session('user')->admin)
+                <div class="back-button d-flex justify-content-center">
+                    <a href="/albums" class="border border-dark d-flex justify-content-center p-2 w-25">Back to Crud</a>
+                </div>
+            @endif
+        </div>
     @endsection
 
 </body>

@@ -63,8 +63,10 @@ class AlbumController extends Controller
     public function show(Album $album)
     {
         $coverPath = Storage::url($album->cover);
-
-        return view('albums.show', compact('album', 'coverPath'));
+        $albumSongs = $album->songs;
+        $author = User::get()->where('id', $album->user_id)->value('username');
+        $trackNum = 1;
+        return view('albums.show', compact('album', 'coverPath', 'albumSongs', 'author', 'trackNum'));
     }
 
     /**

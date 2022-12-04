@@ -1,4 +1,5 @@
 @vite(['resources/css/app.css'])
+@vite(['resources/css/list.css'])
 <!DOCTYPE html>
 <html>
 
@@ -14,12 +15,13 @@
             <div class="d-flex flex-column justify-content-center align-items-center">
                 <h3>CRUD - SONGS</h3>
                 <div class="d-flex justify-content-md-between align-items-center p-3 w-75">
-                    <a href="/songs/create" class="border border-dark col-2 d-flex justify-content-center">Create</a>
+                    <a id="btn-create" href="/songs/create"
+                        class="border border-dark col-2 d-flex justify-content-center">Create</a>
 
                 </div>
                 <div class="d-flex justify-content-center align-items-center ">
                     <table class="m-4">
-                        <tr>
+                        <tr class="tableRow">
                             <td>ID</td>
                             <td>Name</td>
                             <td>Autor</td>
@@ -30,7 +32,7 @@
                             <td colspan="2"></td>
                         </tr>
                         @foreach ($allSongs as $song)
-                            <tr>
+                            <tr class="tableRow">
                                 <td>{{ $song->id }}</td>
                                 <td><a href="/songs/{{ $song->id }}">{{ $song->name }}</a></td>
                                 <td>
@@ -55,27 +57,24 @@
                                 <td>{{ $song->created_at }}</td>
                                 <td>{{ $song->updated_at }}</td>
                                 <td>
-                                    {{-- <form action="/songs/{{ $song->id }}/edit" method="GET">
-                                        @csrf
-                                        <input type="submit" value="Update">
-                                    </form> --}}
-                                    <a href="/songs/{{ $song->id }}/edit"><i class="bi bi-pencil-square"></i></a>
+                                    <a href="/songs/{{ $song->id }}/edit" id="edit"><i
+                                            class="bi bi-pencil-square"></i></a>
                                 </td>
                                 <td>
                                     <form action="/songs/{{ $song->id }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button id="destroy" type="submit"><i class="bi bi-trash"></i></button>
-                                        {{-- <input type="submit" value="Delete"> --}}
                                     </form>
                                 </td>
                             </tr>
                         @endforeach
                     </table>
                 </div>
-                <a href="/admin" class="border border-dark col-2 d-flex justify-content-center">Back</a>
             </div>
-
+            <div class="d-flex justify-content-center">
+                <a href="/admin" class="back-button border border-dark d-flex justify-content-center p-2 w-25">Back</a>
+            </div>
         </main>
     @endsection
 </body>

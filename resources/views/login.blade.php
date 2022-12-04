@@ -1,3 +1,5 @@
+@vite(['resources/css/form.css'])
+@vite(['resources/css/register.css'])
 <!DOCTYPE html>
 <html>
 
@@ -21,9 +23,11 @@
                     <label for="password">Contraseña</label>
                     <input type="password" name="password">
 
-                    <button type="submit" name="submit">Entrar</button>
+                    <button type="submit" name="submit" class="mt-4">Entrar</button>
                 </form>
-                <a href="/" class="border border-dark col-2 d-flex justify-content-center">Back</a>
+                <div class="d-flex justify-content-center">
+                    <a href="/" class="back-button border border-dark d-flex justify-content-center p-2">Back</a>
+                </div>
             </div>
 
         </main>

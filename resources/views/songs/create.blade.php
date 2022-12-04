@@ -40,12 +40,12 @@
                     Audio</button>
             </form>
             @if (session('user')->admin)
-                <div id="backButton" class="d-flex justify-content-center">
-                    <a href="/admin" class="border border-dark d-flex justify-content-center p-2 w-25">Back</a>
+                <div class="back-button d-flex justify-content-center">
+                    <a href="/songs" class="border border-dark d-flex justify-content-center p-2 w-25">Back to Crud</a>
                 </div>
             @else
-                <div id="backButton" class="d-flex justify-content-center">
-                    <a href="/" class="border border-dark d-flex justify-content-center p-2 w-25">Back</a>
+                <div class="back-button d-flex justify-content-center">
+                    <a href="/" class=" border border-dark d-flex justify-content-center p-2 w-25">Back</a>
                 </div>
             @endif
         </main>

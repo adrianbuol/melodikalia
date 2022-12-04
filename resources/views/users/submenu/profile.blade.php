@@ -77,13 +77,13 @@
             </tr>
             @if ($userSongs->isEmpty())
                 <tr class="tableRow">
-                    <td>N/A</td>
-                    <td>N/A</td>
-                    <td>N/A</td>
-                    <td>N/A</td>
-                    <td>N/A</td>
-                    <td>N/A</td>
-                    <td>N/A</td>
+                    <td>⠀⠀</td>
+                    <td>⠀⠀</td>
+                    <td>⠀⠀</td>
+                    <td>⠀⠀</td>
+                    <td>⠀⠀</td>
+                    <td>⠀⠀</td>
+                    <td>⠀⠀</td>
                     <td><a href=""><i class="bi bi-pencil-square"></i></a></td>
                     <td><a href=""><i class="bi bi-trash"></i></a></td>
                 </tr>
@@ -136,11 +136,11 @@
             </tr>
             @if ($userAlbums->isEmpty())
                 <tr class="tableRow">
-                    <td>N/A</td>
-                    <td>N/A</td>
-                    <td>N/A</td>
-                    <td>N/A</td>
-                    <td>N/A</td>
+                    <td>⠀⠀</td>
+                    <td>⠀⠀</td>
+                    <td>⠀⠀</td>
+                    <td>⠀⠀</td>
+                    <td>⠀⠀</td>
                     <td><a href=""><i class="bi bi-pencil-square"></i></a></td>
                     <td><a href=""><i class="bi bi-trash"></i></a></td>
                 </tr>
@@ -173,8 +173,8 @@
         </table>
 
         @if (session('user')->admin)
-            <div class="d-flex justify-content-center mt-5">
-                <a href="/admin" class="border border-dark d-flex justify-content-center p-2 w-25">Back</a>
+            <div class="d-flex justify-content-center">
+                <a href="/users" class="back-button border border-dark d-flex justify-content-center p-2 w-25">Back to Crud</a>
             </div>
         @endif
     @endsection
