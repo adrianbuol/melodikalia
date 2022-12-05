@@ -45,20 +45,21 @@
                 </div>
             </div>
             <div id="buttons" class="d-flex m-2 p-2 border border-dark">
-                <button class="m-1" id="add-to-album" data-user-id="{{ $author->id }}">
+                <button class="m-1" id="add-to-album" data-user-id="{{ session('user')->id }}">
                     <i class="bi bi-plus-circle mr-2"></i>
                     <span>Album</span>
                 </button>
-
-                <form class="m-1" action="/songs/{{ $song->id }}/edit" method="GET">
-                    @csrf
-                    <input type="submit" value="Editar">
-                </form>
-                <form class="m-1" action="/songs/{{ $song->id }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <input type="submit" value="Eliminar">
-                </form>
+                @if (session('user')->id == $song->user_id || session('user')->admin)
+                    <form class="m-1" action="/songs/{{ $song->id }}/edit" method="GET">
+                        @csrf
+                        <input type="submit" value="Editar">
+                    </form>
+                    <form class="m-1" action="/songs/{{ $song->id }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" value="Eliminar">
+                    </form>
+                @endif
             </div>
         </div>
         <div id="back-buttons" class="d-flex m-2 p-2 border border-dark">

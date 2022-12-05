@@ -143,4 +143,19 @@ class UserController extends Controller
         $user->delete();
         return redirect('/');
     }
+
+    public function like()
+    {
+        return view('/users/submenu/like');
+    }
+
+    public function following()
+    {
+        return view('/users/submenu/following');
+    }
+
+    public function followers()
+    {
+        return view('/users/submenu/followers');
+    }
 }

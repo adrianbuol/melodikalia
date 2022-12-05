@@ -32,7 +32,9 @@
                 </select>
 
                 <!-- De momento solo archivos ".mp3" -->
-                <label id="label-music-file" for="musicFile"><i id="iconUpload" class="bi bi-cloud-upload"></i></label>
+                <label id="label-music-file" for="musicFile">
+                    <i id="iconUpload" class="bi bi-cloud-upload"></i>
+                </label>
                 <input type="file" id="musicFile" name="musicFile" accept="audio/mp3" required>
 
                 <input type="hidden" name="userId" value="{{ session('user')->id }}">

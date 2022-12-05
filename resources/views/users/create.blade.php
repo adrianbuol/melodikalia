@@ -47,7 +47,7 @@
                 <div id="div5">
                     <label>Avatar</label>
                     <label for="avatar"><i id="iconUpload" class="bi bi-cloud-upload"></i></label>
-                    <input id="imgFileUsr" type="file" name="avatar" accept="image/png, image/jpeg">
+                    <input id="imgFileUsr" type="file" name="avatar" accept="image/png, image/jpeg" required>
                 </div>
                 <div id="div6">
                     <label for="name">Nombre</label>

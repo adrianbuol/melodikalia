@@ -21,11 +21,7 @@
             </div>
             <div id="info" class="m-2 p-2 border border-dark">
                 <div class="campo">
-                    <h6>ID: </h6>
-                    <p> {{ $user->id }}</p>
-                </div>
-                <div class="campo">
-                    <h6>Username: </h6>
+                    <h6>Nombre de Usuario: </h6>
                     <p> {{ $user->username }}</p>
                 </div>
                 <div class="campo">
@@ -33,11 +29,11 @@
                     <p> {{ $user->email }}</p>
                 </div>
                 <div class="campo">
-                    <h6>Name: </h6>
+                    <h6>Nombre: </h6>
                     <p>{{ $user->name }}</p>
                 </div>
                 <div class="campo">
-                    <h6>Surname: </h6>
+                    <h6>Apellidos: </h6>
                     <p>{{ $user->surname }}</p>
                 </div>
             </div>
@@ -54,13 +50,30 @@
                     </form>
                 @endif
             </div>
+            <div id="follows" class="d-flex justify-content-left align-items-center border border-dark m-2">
+                <div class="d-flex">
+                    <h4 class="m-3">Seguidores: <span>666</span></h4>
+                    <h4 class="m-3">Seguidos: <span>666</span></h4>
+                </div>
+                <div class="d-flex justify-content-left align-items-center">
+                    @if (session('user')->id == $user->id)
+                    @endif
+                    @if (session('user')->id != $user->id)
+                        <a class="follow" id="do-follow">Seguir</a>
+                        {{-- <a class="unfollow follow" href="">Dejar de Seguir</a> --}}
+                    @endif
+                </div>
+            </div>
         </div>
 
         <div id="buttons-songs-albums">
             <button id="song-list" class="mr-2">Canciones</button>
             <button id="album-list" class="mr-2">Albums</button>
-            <a id="btnCreateAlbum" href="/albums/create" class="border border-dark d-flex justify-content-center">Nuevo
-                Album</a>
+
+            @if (session('user')->id == $user->id)
+                <a id="btnCreateAlbum" href="/albums/create" class="border border-dark d-flex justify-content-center">Nuevo
+                    Album</a>
+            @endif
         </div>
 
         {{-- Canciones User --}}
@@ -72,12 +85,10 @@
                 <td>Song</td>
                 <td>Genre</td>
                 <td>Created At</td>
-                <td>Updated At</td>
                 <td colspan="2"></td>
             </tr>
             @if ($userSongs->isEmpty())
                 <tr class="tableRow">
-                    <td>⠀⠀</td>
                     <td>⠀⠀</td>
                     <td>⠀⠀</td>
                     <td>⠀⠀</td>
@@ -93,7 +104,7 @@
                     <td>{{ $song->id }}</td>
                     <td><a href="/songs/{{ $song->id }}">{{ $song->name }}</a></td>
                     <td>
-                        {{ $user->username }}
+                        <a href="/users/{{ $user->id }}">{{ $user->username }}</a>
                     </td>
                     <td>
                         <audio controls>
@@ -108,7 +119,6 @@
                         @endforeach
                     </td>
                     <td>{{ $song->created_at }}</td>
-                    <td>{{ $song->updated_at }}</td>
                     <td>
                         <a id="edit" href="/songs/{{ $song->id }}/edit"><i class="bi bi-pencil-square"></i></a>
                     </td>
@@ -131,12 +141,10 @@
                 <td>Autor</td>
                 <td>Cover</td>
                 <td>Created At</td>
-                <td>Updated At</td>
                 <td colspan="2"></td>
             </tr>
             @if ($userAlbums->isEmpty())
                 <tr class="tableRow">
-                    <td>⠀⠀</td>
                     <td>⠀⠀</td>
                     <td>⠀⠀</td>
                     <td>⠀⠀</td>
@@ -157,7 +165,6 @@
                             alt="{{ $album->name }} image cover" />
                     </td>
                     <td>{{ $album->created_at }}</td>
-                    <td>{{ $album->updated_at }}</td>
                     <td>
                         <a id="edit" href="/albums/{{ $album->id }}/edit"><i class="bi bi-pencil-square"></i></a>
                     </td>
@@ -174,7 +181,8 @@
 
         @if (session('user')->admin)
             <div class="d-flex justify-content-center">
-                <a href="/users" class="back-button border border-dark d-flex justify-content-center p-2 w-25">Back to Crud</a>
+                <a href="/users" class="back-button border border-dark d-flex justify-content-center p-2 w-25">Back to
+                    Crud</a>
             </div>
         @endif
     @endsection

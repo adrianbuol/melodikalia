@@ -23,15 +23,18 @@
                 @endforeach
             </div>
             <div id="buttons" class="d-flex m-2 p-2 border border-dark">
-                <form class="m-1" action="/albums/{{ $album->id }}/edit" method="GET">
-                    @csrf
-                    <input type="submit" value="Editar">
-                </form>
-                <form class="m-1" action="/genres/{{ $album->id }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <input type="submit" value="Eliminar">
-                </form>
+
+                @if (session('user')->id == $album->user_id || session('user')->admin)
+                    <form class="m-1" action="/albums/{{ $album->id }}/edit" method="GET">
+                        @csrf
+                        <input type="submit" value="Editar">
+                    </form>
+                    <form class="m-1" action="/genres/{{ $album->id }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" value="Eliminar">
+                    </form>
+                @endif
             </div>
         </div>
         <div id="back-buttons" class="d-flex m-2 p-2 border border-dark">

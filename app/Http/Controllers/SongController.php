@@ -138,6 +138,7 @@ class SongController extends Controller
 
     public function addToAlbum(Request $request)
     {
+        
         $song = Song::find($request->song_id);
         $song->albums()->attach($request->album_id);
     }
