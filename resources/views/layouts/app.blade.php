@@ -42,9 +42,9 @@
 
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <a class="dropdown-item border-bottom" href="/users/{{ $user->id }}">Perfil</a>
-                            <a class="dropdown-item border-bottom" href="/like">Me gusta</a>
-                            <a class="dropdown-item border-bottom" href="/following">Sigo</a>
-                            <a class="dropdown-item border-bottom" href="/followers">Me siguen</a>
+                            <a class="dropdown-item border-bottom" href="/like/{{ $user->id }}">Me gusta</a>
+                            <a class="dropdown-item border-bottom" href="/following/{{ $user->id }}">Sigo</a>
+                            <a class="dropdown-item border-bottom" href="/followers/{{ $user->id }}">Me siguen</a>
                         </div>
                     </div>
                     <a href="/logout" class="border border-dark col-2 d-flex justify-content-center">Cerrar Sesion</a>

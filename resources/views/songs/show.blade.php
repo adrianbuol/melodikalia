@@ -29,7 +29,8 @@
                 </div>
                 <div class="campo">
                     <h6>Autor: </h6>
-                    <p> {{ $author->username }}</p>
+                    <a href="/users/{{ $song->user_id }}"
+                        class="border border-dark d-flex justify-content-center p-2 w-25">{{ $author->username }}</a>
                 </div>
                 <div class="campo">
                     <h6>Genero: </h6>
@@ -37,41 +38,65 @@
                 </div>
                 <div class="campo">
                     <h6>Nº Likes:</h6>
-                    <p>666</p>
+                    <p>{{ $numLikes }}</p>
                 </div>
+
+                {{-- Boton Like --}}
                 <div id="campo-likes">
-                    <a href="#" id="like"><i class="bi bi-heart"></i></a>
-                    <a href="#" id="remove-like"><i class="bi bi-heart-fill"></i></a>
+                    @if (session('user'))
+                        @if (!$likes)
+                            <a href="/songs/like/{{ $song->id }}" id="like"><i class="bi bi-heart"></i></a>
+                        @else
+                            <a href="/songs/dislike/{{ $song->id }}" id="remove-like"><i
+                                    class="bi bi-heart-fill"></i></a>
+                        @endif
+                    @else
+                        <a href="" id="like"><i class="bi bi-heart"></i></a>
+                    @endif
                 </div>
             </div>
+
+            {{-- Añadir Album --}}
             <div id="buttons" class="d-flex m-2 p-2 border border-dark">
-                <button class="m-1" id="add-to-album" data-user-id="{{ session('user')->id }}">
-                    <i class="bi bi-plus-circle mr-2"></i>
-                    <span>Album</span>
-                </button>
-                @if (session('user')->id == $song->user_id || session('user')->admin)
-                    <form class="m-1" action="/songs/{{ $song->id }}/edit" method="GET">
-                        @csrf
-                        <input type="submit" value="Editar">
-                    </form>
-                    <form class="m-1" action="/songs/{{ $song->id }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <input type="submit" value="Eliminar">
-                    </form>
+                @if (session('user'))
+                    <button class="m-1" id="add-to-album">
+                        <i class="bi bi-plus-circle mr-2"></i>
+                        <span>Album</span>
+                    </button>
+                @endif
+
+                {{-- Botones Usuario/Admin --}}
+                @if (session('user'))
+                    @if (session('user')->id == $song->user_id || session('user')->admin)
+                        <form class="m-1" action="/songs/{{ $song->id }}/edit" method="GET">
+                            @csrf
+                            <input type="submit" value="Editar">
+                        </form>
+                        <form class="m-1" action="/songs/{{ $song->id }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" value="Eliminar">
+                        </form>
+                    @endif
                 @endif
             </div>
         </div>
+        {{-- Boton Back to User --}}
         <div id="back-buttons" class="d-flex m-2 p-2 border border-dark">
             <div class="back-button d-flex justify-content-center">
                 <a href="/users/{{ $song->user_id }}"
-                    class="border border-dark d-flex justify-content-center p-2 w-25">Back</a>
+                    class="border border-dark d-flex justify-content-center p-2 w-25">Back to User</a>
             </div>
-            @if (session('user')->admin)
-                <div class="back-button d-flex justify-content-center">
-                    <a href="/songs" class="border border-dark d-flex justify-content-center p-2 w-25">Back to crud</a>
-                </div>
+
+            {{-- Boton Admin->Crud --}}
+            @if (session('user'))
+                @if (session('user')->admin)
+                    <div class="back-button d-flex justify-content-center">
+                        <a href="/songs" class="border border-dark d-flex justify-content-center p-2 w-25">Back to crud</a>
+                    </div>
+                @endif
             @endif
+
         </div>
         <div id="add-to-album-modal">
             <h2>Añadir canción al Album</h2>
@@ -80,7 +105,6 @@
                 <button id="cerrar-album-modal" class="mr-2">Cancelar</button>
                 <button id="aceptar-album-modal" class="mr-2" data-song-id="{{ $song->id }}">Añadir</button>
             </div>
-
         </div>
     @endsection
 

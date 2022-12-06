@@ -38,30 +38,40 @@
                 </div>
             </div>
             <div id="buttons" class="d-flex justify-content-left align-items-center border border-dark m-2">
-                @if (session('user')->id == $user->id || session('user')->admin)
-                    <form class="m-1" action="/users/{{ $user->id }}/edit" method="GET">
-                        @csrf
-                        <input type="submit" value="Editar">
-                    </form>
-                    <form class="m-1" action="/users/{{ $user->id }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <input type="submit" value="Eliminar">
-                    </form>
+                @if (session('user'))
+                    @if (session('user')->id == $user->id || session('user')->admin)
+                        <form class="m-1" action="/users/{{ $user->id }}/edit" method="GET">
+                            @csrf
+                            <input type="submit" value="Editar">
+                        </form>
+                        <form class="m-1" action="/users/{{ $user->id }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" value="Eliminar">
+                        </form>
+                    @endif
                 @endif
+
             </div>
             <div id="follows" class="d-flex justify-content-left align-items-center border border-dark m-2">
                 <div class="d-flex">
-                    <h4 class="m-3">Seguidores: <span>666</span></h4>
-                    <h4 class="m-3">Seguidos: <span>666</span></h4>
+                    <h4 class="m-3">Seguidores: <span>{{ $numFollowers }}</span></h4>
+                    <h4 class="m-3">Seguidos: <span>{{ $numFollows }}</span></h4>
                 </div>
+
                 <div class="d-flex justify-content-left align-items-center">
-                    @if (session('user')->id == $user->id)
+                    @if (session('user'))
+                        @if (session('user')->id == $user->id)
+                        @endif
+                        @if (session('user')->id != $user->id)
+                            @if (!$follows)
+                                <a href="/users/follow/{{ $user->id }}" class="follow" id="do-follow">Seguir</a>
+                            @else
+                                <a href="/users/unfollow/{{ $user->id }}" class="unfollow follow">Dejar de Seguir</a>
+                            @endif
+                        @endif
                     @endif
-                    @if (session('user')->id != $user->id)
-                        <a class="follow" id="do-follow">Seguir</a>
-                        {{-- <a class="unfollow follow" href="">Dejar de Seguir</a> --}}
-                    @endif
+
                 </div>
             </div>
         </div>
@@ -70,10 +80,15 @@
             <button id="song-list" class="mr-2">Canciones</button>
             <button id="album-list" class="mr-2">Albums</button>
 
-            @if (session('user')->id == $user->id)
-                <a id="btnCreateAlbum" href="/albums/create" class="border border-dark d-flex justify-content-center">Nuevo
-                    Album</a>
+
+            @if (session('user'))
+                @if (session('user')->id == $user->id)
+                    <a id="btnCreateAlbum" href="/albums/create"
+                        class="border border-dark d-flex justify-content-center">Nuevo
+                        Album</a>
+                @endif
             @endif
+
         </div>
 
         {{-- Canciones User --}}
@@ -119,16 +134,21 @@
                         @endforeach
                     </td>
                     <td>{{ $song->created_at }}</td>
-                    <td>
-                        <a id="edit" href="/songs/{{ $song->id }}/edit"><i class="bi bi-pencil-square"></i></a>
-                    </td>
-                    <td>
-                        <form action="/songs/{{ $song->id }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button id="destroy" type="submit"><i class="bi bi-trash"></i></button>
-                        </form>
-                    </td>
+                    @if (session('user'))
+                        @if (session('user')->id == $user->id || session('user')->admin)
+                            <td>
+                                <a id="edit" href="/songs/{{ $song->id }}/edit"><i
+                                        class="bi bi-pencil-square"></i></a>
+                            </td>
+                            <td>
+                                <form action="/songs/{{ $song->id }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button id="destroy" type="submit"><i class="bi bi-trash"></i></button>
+                                </form>
+                            </td>
+                        @endif
+                    @endif
                 </tr>
             @endforeach
         </table>
@@ -165,25 +185,33 @@
                             alt="{{ $album->name }} image cover" />
                     </td>
                     <td>{{ $album->created_at }}</td>
-                    <td>
-                        <a id="edit" href="/albums/{{ $album->id }}/edit"><i class="bi bi-pencil-square"></i></a>
-                    </td>
-                    <td>
-                        <form action="/albums/{{ $album->id }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button id="destroy" type="submit"><i class="bi bi-trash"></i></button>
-                        </form>
-                    </td>
+
+                    @if (session('user'))
+                        @if (session('user')->id == $user->id || session('user')->admin)
+                            <td>
+                                <a id="edit" href="/albums/{{ $album->id }}/edit"><i
+                                        class="bi bi-pencil-square"></i></a>
+                            </td>
+                            <td>
+                                <form action="/albums/{{ $album->id }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button id="destroy" type="submit"><i class="bi bi-trash"></i></button>
+                                </form>
+                            </td>
+                        @endif
+                    @endif
                 </tr>
             @endforeach
         </table>
 
-        @if (session('user')->admin)
-            <div class="d-flex justify-content-center">
-                <a href="/users" class="back-button border border-dark d-flex justify-content-center p-2 w-25">Back to
-                    Crud</a>
-            </div>
+        @if (session('user'))
+            @if (session('user')->admin)
+                <div class="d-flex justify-content-center">
+                    <a href="/users" class="back-button border border-dark d-flex justify-content-center p-2 w-25">Back to
+                        Crud</a>
+                </div>
+            @endif
         @endif
     @endsection
 

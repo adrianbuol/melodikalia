@@ -24,6 +24,11 @@ class LoginController extends Controller
         }
     }
 
+    public function showLogin()
+    {
+        return view('/login');
+    }
+
     public function logout()
     {
         session()->forget('user');

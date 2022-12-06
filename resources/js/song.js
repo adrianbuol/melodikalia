@@ -1,9 +1,6 @@
 $("#add-to-album").on("click", function () {
-    let elemento = $(this);
-    let userID = elemento.attr("data-user-id");
-
     $.ajax({
-        url: "/albums/user-albums/" + userID,
+        url: "/albums/user-albums",
         type: "GET",
         success: function (res) {
             res.forEach(album => {

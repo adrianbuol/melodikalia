@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Song;
+use App\Models\User;
+
 
 class AdminController extends Controller
 {
@@ -11,7 +14,13 @@ class AdminController extends Controller
      */
     public function landing()
     {
-        return view('child');
+        $latestSongs = Song::latest('created_at')->take(5)->get();
+
+        $songs = Song::all();
+        // $numLikes = $songs->likes->count();
+        $allSongs = $songs->take(5);
+
+        return view('child', compact('latestSongs', 'allSongs'));
     }
 
     /**
@@ -20,6 +29,10 @@ class AdminController extends Controller
      */
     public function admin()
     {
-        return view('/admin/admin');
+        if (session('user')->admin) {
+            return view('/admin/admin');
+        } else {
+            abort(404);
+        }
     }
 }

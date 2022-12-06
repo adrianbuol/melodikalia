@@ -23,21 +23,16 @@ use App\Http\Controllers\UserController;
 Route::get('/', [AdminController::class, 'landing']);
 
 //Login/Logout
-Route::get('/login', [LoginController::class, 'login']);
+Route::get('/login', [LoginController::class, 'showLogin']);
+Route::post('/login', [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout']);
 
 // Admin - Menu CRUD
 Route::get('/admin', [AdminController::class, 'admin']);
 
-// Crud
-Route::resource('users', UserController::class);
-Route::resource('songs', SongController::class);
-Route::resource('genres', GenreController::class);
-Route::resource('albums', AlbumController::class);
-
 // Crud Albumes
 Route::get('/admin/album', [AlbumController::class, 'index']);
-Route::get('/albums/user-albums/{user}', [AlbumController::class, 'list']);
+Route::get('/albums/user-albums', [AlbumController::class, 'list']);
 
 // Crud Generos
 Route::get('/admin/genre', [GenreController::class, 'index']);
@@ -45,11 +40,22 @@ Route::get('/admin/genre', [GenreController::class, 'index']);
 // Crud Canciones
 Route::get('/admin/song', [SongController::class, 'index']);
 Route::post('/songs/add-to-album', [SongController::class, 'addToAlbum']);
+Route::get('/songs/like/{song}', [SongController::class, 'doLike']);
+Route::get('/songs/dislike/{song}', [SongController::class, 'doDislike']);
+
 
 // Usuarios => Sub menu
 Route::get('/admin/user', [UserController::class, 'index']);
-Route::get('/like', [UserController::class, 'like']);
+Route::get('/users/follow/{user}', [UserController::class, 'follow']);
+Route::get('/users/unfollow/{user}', [UserController::class, 'unfollow']);
+Route::get('/like/{user}', [UserController::class, 'like']);
 
 // Usuarios -> Follows
-Route::get('/following', [UserController::class, 'following']);
-Route::get('/followers', [UserController::class, 'followers']);
+Route::get('/following/{user}', [UserController::class, 'following']);
+Route::get('/followers/{user}', [UserController::class, 'followers']);
+
+// Crud
+Route::resource('users', UserController::class);
+Route::resource('songs', SongController::class);
+Route::resource('genres', GenreController::class);
+Route::resource('albums', AlbumController::class);

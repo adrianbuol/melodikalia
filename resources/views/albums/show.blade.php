@@ -24,17 +24,20 @@
             </div>
             <div id="buttons" class="d-flex m-2 p-2 border border-dark">
 
-                @if (session('user')->id == $album->user_id || session('user')->admin)
-                    <form class="m-1" action="/albums/{{ $album->id }}/edit" method="GET">
-                        @csrf
-                        <input type="submit" value="Editar">
-                    </form>
-                    <form class="m-1" action="/genres/{{ $album->id }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <input type="submit" value="Eliminar">
-                    </form>
+                @if (session('user'))
+                    @if (session('user')->id == $album->user_id || session('user')->admin)
+                        <form class="m-1" action="/albums/{{ $album->id }}/edit" method="GET">
+                            @csrf
+                            <input type="submit" value="Editar">
+                        </form>
+                        <form class="m-1" action="/genres/{{ $album->id }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" value="Eliminar">
+                        </form>
+                    @endif
                 @endif
+
             </div>
         </div>
         <div id="back-buttons" class="d-flex m-2 p-2 border border-dark">
@@ -42,11 +45,15 @@
                 <a href="/users/{{ $album->user_id }}"
                     class="border border-dark d-flex justify-content-center p-2 w-25">Back</a>
             </div>
-            @if (session('user')->admin)
-                <div class="back-button d-flex justify-content-center">
-                    <a href="/albums" class="border border-dark d-flex justify-content-center p-2 w-25">Back to Crud</a>
-                </div>
+
+            @if (session('user'))
+                @if (session('user')->admin)
+                    <div class="back-button d-flex justify-content-center">
+                        <a href="/albums" class="border border-dark d-flex justify-content-center p-2 w-25">Back to Crud</a>
+                    </div>
+                @endif
             @endif
+
         </div>
     @endsection
 

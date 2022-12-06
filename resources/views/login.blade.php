@@ -15,7 +15,7 @@
                         {!! $message !!}
                     </div>
                 @endisset
-                <form action="/login" class="d-flex flex-column align-items-center" method="get"
+                <form action="/login" class="d-flex flex-column align-items-center" method="post"
                     enctype="multipart/form-data">
                     @csrf
                     <label for="username">Usuario</label>

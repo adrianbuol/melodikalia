@@ -71,12 +71,20 @@ class UserController extends Controller
     {
         $imgPath = Storage::url($user->profile_pic);
 
+        $sessionUser = session('user');
         $userSongs = Song::get()->where('user_id', $user->id);
         $userAlbums = Album::get()->where('user_id', $user->id);
         $genres = Genre::all();
 
+        $numFollowers = $user->followers->count();
+        $numFollows = $user->following->count();
+        if (session('user') == null) {
+            return view('users.submenu.profile', compact('user', 'imgPath', 'userSongs', 'userAlbums', 'genres', 'numFollows', 'numFollowers'));
+        } else {
+            $follows = $user->followers->find($sessionUser->id) ? true : false;
 
-        return view('users.submenu.profile', compact('user', 'imgPath', 'userSongs', 'userAlbums', 'genres'));
+            return view('users.submenu.profile', compact('user', 'imgPath', 'userSongs', 'userAlbums', 'genres', 'follows', 'numFollows', 'numFollowers'));
+        }
     }
 
     /**
@@ -144,18 +152,37 @@ class UserController extends Controller
         return redirect('/');
     }
 
-    public function like()
+    public function like(User $user)
     {
-        return view('/users/submenu/like');
+        $like = $user->likes;
+
+        $allGenres = Genre::all();
+        $allUsers = User::all();
+
+        return view('/users/submenu/like', compact('like', 'allGenres', 'allUsers'));
     }
 
-    public function following()
+    public function follow(User $user)
     {
-        return view('/users/submenu/following');
+        $sessionUser = session('user');
+        $user->followers()->attach($sessionUser->id);
+        return redirect("users/$user->id");
+    }
+    public function unfollow(User $user)
+    {
+        $sessionUser = session('user');
+        $user->followers()->detach($sessionUser->id);
+        return redirect("users/$user->id");
+    }
+    public function following(User $user)
+    {
+        $following = $user->following;
+        return view('/users/submenu/following', compact('following'));
     }
 
-    public function followers()
+    public function followers(User $user)
     {
-        return view('/users/submenu/followers');
+        $follower = $user->followers;
+        return view('/users/submenu/followers', compact('follower'));
     }
 }

@@ -42,13 +42,13 @@ class AlbumController extends Controller
             $album = new Album;
             $album->user_id = session('user')->id;
             $album->name = $request->name;
-            $path = $request->file('cover')->store('/images/covers', 'public');
+            $path = $request->file('imgFile')->store('/images/covers', 'public');
             $album->cover = $path;
             $album->save();
             return redirect('/');
         } catch (\Throwable $th) {
             $errorMessage = $th->getMessage();
-            $message = "<p class='text-danger'>Error creando canción: $errorMessage</p>";
+            $message = "<p class='text-danger'>Error creando album: $errorMessage</p>";
 
             return view('albums.create', compact(['message']));
         }
@@ -126,8 +126,13 @@ class AlbumController extends Controller
      * Lista todos los albumes por usuario
      *
      */
-    public function list(User $user)
+    public function list()
     {
-        return $user->albums;
+        try {
+            $user = session('user');
+            return $user->albums;
+        } catch (\Throwable $th) {
+            return $th;
+        }
     }
 }

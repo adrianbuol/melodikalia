@@ -73,7 +73,15 @@ class SongController extends Controller
         $songName = $song->name;
         $genre = Genre::get()->where('id', $song->genre_id)->value('name');
 
-        return view('songs.show', compact('song', 'songPath', 'songName', 'author', 'genre'));
+        $numLikes = $song->likes->count();
+        $likes = false;
+        if (session('user') == null) {
+            return view('songs.show', compact('song', 'songPath', 'songName', 'author', 'genre', 'likes', 'numLikes'));
+        } else {
+            $sessionUser = session('user');
+            $likes = $song->likes->find($sessionUser->id) ? true : false;
+            return view('songs.show', compact('song', 'songPath', 'songName', 'author', 'genre', 'likes', 'numLikes'));
+        }
     }
 
     /**
@@ -112,12 +120,7 @@ class SongController extends Controller
         $song->genre_id = $request->genre;
         $song->save();
 
-        $songPath = Storage::url($song->song_path);
-        $author = User::get()->where('id', $song->user_id)->value('username');
-        $songName = $song->name;
-        $genre = Genre::get()->where('id', $song->genre_id)->value('name');
-
-        return view('songs.show', compact('song', 'songPath', 'songName', 'author', 'genre'));
+        return redirect("songs/$song->id");
     }
 
     /**
@@ -138,8 +141,21 @@ class SongController extends Controller
 
     public function addToAlbum(Request $request)
     {
-        
         $song = Song::find($request->song_id);
         $song->albums()->attach($request->album_id);
+    }
+
+    public function doLike(Song $song)
+    {
+        $sessionUser = session('user');
+        $song->likes()->attach($sessionUser->id);
+        return redirect("songs/$song->id");
+    }
+
+    public function doDislike(Song $song)
+    {
+        $sessionUser = session('user');
+        $song->likes()->detach($sessionUser->id);
+        return redirect("songs/$song->id");
     }
 }
