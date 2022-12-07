@@ -1,0 +1,26 @@
+#parent {
+    grid-template-columns: repeat(3, 1fr) !important;
+    grid-template-rows: repeat(2, 1fr) 0.75fr !important;
+}
+
+#album-cover {
+    grid-area: 1 / 1 / 4 / 2 !important;
+}
+
+#songs-list {
+    grid-area: 1 / 2 / 3 / 4 !important;
+    max-height: 350px;
+    overflow: scroll;
+    overflow-x: hidden;
+
+
+}
+
+
+.campo>h6 {
+    min-width: 40px !important;
+}
+
+#buttons {
+    grid-area: 3 / 2 / 4 / 4 !important;
+}

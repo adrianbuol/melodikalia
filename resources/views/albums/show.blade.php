@@ -1,4 +1,4 @@
-@vite(['resources/css/song.css'])
+@vite(['resources/css/album.css'])
 @vite(['resources/css/profile.css'])
 <!DOCTYPE html>
 <html>
@@ -10,14 +10,21 @@
         <h5 id="title" class="border-bottom border-dark">{{ $album->name }}</h5>
         <h6>Por {{ $author }}</h6>
         <div id="parent">
-            <div id="song"
+            <div id="album-cover"
                 class="m-2 p-2 border border-dark d-flex flex-column justify-content-center align-items-center">
                 <img src="{{ $coverPath }}" alt="{{ $album->name }} album cover">
             </div>
-            <div id="info" class="m-2 p-2 border border-dark">
+            <div id="songs-list" class="m-2 p-2 border border-dark">
                 @foreach ($albumSongs as $song)
                     <div class="campo">
-                        <h6>0{{ $trackNum++ }} - </h6>
+                        <h6>
+                            @if ($trackNum >= 10)
+                                {{ $trackNum++ }}
+                            @else
+                                0{{ $trackNum++ }}
+                            @endif
+                            -
+                        </h6>
                         <h6><a href="/songs/{{ $song->id }}">{{ $song->name }}</a></h6>
                     </div>
                 @endforeach

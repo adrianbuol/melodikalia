@@ -1,3 +1,18 @@
+.container {
+    border-radius: 35px;
+}
+
+body {
+    min-height: 100% !important;
+    background-image: linear-gradient(to right bottom, #ffd6ff, #f7cfff, #eec9fe, #e4c3ff, #d9bdff, #d1bdff, #cabdff, #c2bdff, #bfc2ff, #bcc7ff, #bbccff, #bbd0ff);
+    background-size: 100vw 150vh;
+}
+
+.container {
+    background-color: #e8e8f152;
+    backdrop-filter: blur(5px);
+}
+
 a:hover {
     color: rgb(255, 255, 255);
     text-shadow:
@@ -12,6 +27,11 @@ a:hover {
 
     background: rgb(34, 36, 41);
     background: linear-gradient(149deg, rgba(34, 36, 41, 1) 24%, rgb(69, 69, 73) 100%);
+}
+
+#songs-list {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(42, 42, 43) rgba(255, 255, 255, 0.192);
 }
 
 table {
@@ -60,4 +80,8 @@ td>img {
     width: 100% !important;
     text-decoration: none;
     color: white;
+}
+
+.col-2 {
+    width: 18% !important;
 }

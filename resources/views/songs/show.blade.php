@@ -1,6 +1,9 @@
 @vite(['resources/css/song.css'])
 @vite(['resources/css/profile.css'])
 @vite(['resources/js/song.js'])
+@vite(['resources/js/reproductor.js'])
+@vite(['resources/css/reproductor.css'])
+
 <!DOCTYPE html>
 <html>
 
@@ -15,22 +18,34 @@
     @section('content')
         <h4>Canción</h4>
         <div id="parent">
+
             <div id="song"
                 class="m-2 p-2 border border-dark d-flex flex-column justify-content-center align-items-center">
-                <h6>{{ $songName }} </h6>
+                <div id="audio-player-container">
+                    <audio src="{{ $songPath }}" preload="metadata" loop></audio>
+                    <p>{{ $songName }}</p>
+
+                    <button id="play-icon"></button>
+                    <span id="current-time" class="time">0:00</span>
+                    <input type="range" id="seek-slider" max="100" value="0">
+                    <span id="duration" class="time">0:00</span>
+
+                    <output id="volume-output">100</output>
+                    <input type="range" id="volume-slider" max="100" value="100">
+                    <button id="mute-icon"></button>
+                </div>
+
+                {{-- Viejo --}}
+                {{-- <h6>{{ $songName }} </h6>
                 <audio controls>
                     <source src="{{ $songPath }}" type="audio/mp3">
-                </audio>
+                </audio> --}}
             </div>
+
             <div id="info" class="m-2 p-2 border border-dark">
                 <div class="campo">
-                    <h6>Nombre de Pista: </h6>
-                    <p> {{ $songName }}</p>
-                </div>
-                <div class="campo">
                     <h6>Autor: </h6>
-                    <a href="/users/{{ $song->user_id }}"
-                        class="border border-dark d-flex justify-content-center p-2 w-25">{{ $author->username }}</a>
+                    <a href="/users/{{ $song->user_id }}">{{ $author->username }}</a>
                 </div>
                 <div class="campo">
                     <h6>Genero: </h6>
@@ -39,21 +54,21 @@
                 <div class="campo">
                     <h6>Nº Likes:</h6>
                     <p>{{ $numLikes }}</p>
+                    {{-- Boton Like --}}
+                    <div id="campo-likes">
+                        @if (session('user'))
+                            @if (!$likes)
+                                <a href="/songs/like/{{ $song->id }}" id="like"><i class="bi bi-heart"></i></a>
+                            @else
+                                <a href="/songs/dislike/{{ $song->id }}" id="remove-like"><i
+                                        class="bi bi-heart-fill"></i></a>
+                            @endif
+                        @else
+                            <a href="" id="like"><i class="bi bi-heart"></i></a>
+                        @endif
+                    </div>
                 </div>
 
-                {{-- Boton Like --}}
-                <div id="campo-likes">
-                    @if (session('user'))
-                        @if (!$likes)
-                            <a href="/songs/like/{{ $song->id }}" id="like"><i class="bi bi-heart"></i></a>
-                        @else
-                            <a href="/songs/dislike/{{ $song->id }}" id="remove-like"><i
-                                    class="bi bi-heart-fill"></i></a>
-                        @endif
-                    @else
-                        <a href="" id="like"><i class="bi bi-heart"></i></a>
-                    @endif
-                </div>
             </div>
 
             {{-- Añadir Album --}}

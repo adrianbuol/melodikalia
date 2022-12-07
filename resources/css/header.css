@@ -2,6 +2,10 @@ header {
     height: 40px;
     background-color: #222429;
     color: rgb(233, 229, 229);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1;
 }
 
 nav {
@@ -42,7 +46,6 @@ nav {
 #home>* {
     width: 150px;
     height: 100%;
-    margin-right: 5px;
 }
 
 #dropdownMenuLink {

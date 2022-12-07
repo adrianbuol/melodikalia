@@ -1,5 +1,14 @@
-#song {
-    grid-area: 1 / 1 / 5 / 4;
+.campo>p {
+    margin-right: 20px;
+}
+
+.campo>a {
+    margin-top: 0;
+    margin-bottom: .5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    text-decoration: none;
+    color: black;
 }
 
 #add-to-album {
@@ -52,4 +61,21 @@ select {
 
 option {
     color: black !important;
+}
+
+/* Grid */
+#parent {
+    grid-template-rows: repeat(2, 1fr) !important;
+}
+
+#song {
+    grid-area: 1 / 1 / 2 / 6 !important;
+}
+
+#info {
+    grid-area: 2 / 3 / 3 / 6 !important;
+}
+
+#buttons {
+    grid-area: 2 / 1 / 3 / 3 !important;
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Genre;
 use App\Models\Song;
 use App\Models\User;
 
@@ -17,10 +18,12 @@ class AdminController extends Controller
         $latestSongs = Song::latest('created_at')->take(5)->get();
 
         $songs = Song::all();
-        // $numLikes = $songs->likes->count();
+        $allGenres = Genre::all();
+        $allUsers = User::all();
+        // $numLikes = $songs->likes;
         $allSongs = $songs->take(5);
 
-        return view('child', compact('latestSongs', 'allSongs'));
+        return view('child', compact('latestSongs', 'allSongs', 'allGenres', 'allUsers'));
     }
 
     /**
