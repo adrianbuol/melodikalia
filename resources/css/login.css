@@ -1,0 +1,275 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    font-weight: 300;
+}
+
+body {
+    color: white;
+    font-weight: 300;
+}
+
+.wrapper {
+    background: #6650a3;
+    /* Mate */
+    /* background: -webkit-linear-gradient(top left, #6650a3 0%, #c9a2db 100%); */
+    /* background: -moz-linear-gradient(top left, #6650a3 0%, #c9a2db 100%); */
+    /* background: -o-linear-gradient(top left, #6650a3 0%, #c9a2db 100%); */
+    /* background: linear-gradient(to bottom right, #6650a3 0%, #c9a2db 100%); */
+
+    /* Baja opacidad */
+    background: -webkit-linear-gradient(top left, #6650a31f 0%, #c9a2db91 100%);
+    background: -moz-linear-gradient(top left, #6650a31f 0%, #c9a2db91 100%);
+    background: -o-linear-gradient(top left, #6650a31f 0%, #c9a2db91 100%);
+    background: linear-gradient(to bottom right, #6650a31f 0%, #c9a2db91 100%);
+
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 400px;
+    margin-top: -200px;
+    overflow: hidden;
+}
+
+.form-success .container h1 {
+    transform: translateY(85px);
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 80px 0;
+    height: 400px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 40px;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-put;
+    font-weight: 200;
+}
+
+form {
+    padding: 20px 0;
+    position: relative;
+    z-index: 2;
+}
+
+button {
+    appearance: none;
+    outline: 0;
+    background-color: white;
+    border: 0;
+    padding: 10px 15px;
+    border-radius: 3px;
+    width: 250px;
+    cursor: pointer;
+    font-size: 18px;
+    transition-duration: 0.25s;
+}
+
+button:hover {
+    background-color: #6650a3;
+    color: rgb(255, 255, 255);
+    text-shadow:
+        0 0 7px rgb(255, 255, 255),
+        0 0 10px rgb(255, 255, 255),
+        0 0 21px rgb(255, 255, 255),
+        0 0 42px rgb(236, 240, 239),
+        0 0 82px rgb(233, 240, 238),
+        0 0 92px rgb(239, 241, 241),
+        0 0 102px rgb(224, 233, 230),
+        0 0 151px rgb(236, 241, 240);
+}
+
+input {
+    display: block;
+    appearance: none;
+    outline: 0;
+    border: 1px solid fade(white, 40%);
+    background-color: fade(white, 20%);
+    width: 250px;
+
+    border-radius: 3px;
+    padding: 10px 15px;
+    margin: 0 auto 10px auto;
+    display: block;
+    text-align: center;
+    font-size: 18px;
+
+    transition-duration: 0.25s;
+    font-weight: 300;
+
+    margin-top: 0 !important;
+    margin-right: auto !important;
+    margin-bottom: 10px !important;
+    margin-left: auto !important;
+}
+
+input:hover {
+    background-color: fade(white, 40%);
+}
+
+input:focus {
+    background-color: white;
+    width: 300px;
+
+    /* color: @prim; */
+}
+
+
+@-webkit-keyframes square {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-700px) rotate(600deg);
+    }
+}
+
+@keyframes square {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-700px) rotate(600deg);
+    }
+}
+
+
+
+/*  */
+
+button {
+    margin: 10px
+}
+
+a {
+    height: 100%;
+    width: 100%;
+    display: block;
+}
+
+#label-file {
+    margin-top: 20px;
+}
+
+label {
+    color: white;
+    font-weight: bold;
+}
+
+#iconUpload {
+    border: 10px solid black;
+    padding: 0 20px;
+    border-radius: 50%;
+    font-size: 100px;
+    cursor: pointer;
+
+    background: none;
+}
+
+#iconUploadHover {
+    border: 10px solid black;
+    padding: 0 20px;
+    border-radius: 50%;
+    font-size: 100px;
+    cursor: pointer;
+
+    color: rgb(255, 255, 255);
+    text-shadow:
+        0 0 7px rgb(255, 255, 255),
+        0 0 10px rgb(255, 255, 255),
+        0 0 21px rgb(255, 255, 255),
+        0 0 42px rgb(236, 240, 239),
+        0 0 82px rgb(233, 240, 238),
+        0 0 92px rgb(239, 241, 241),
+        0 0 102px rgb(224, 233, 230),
+        0 0 151px rgb(236, 241, 240);
+
+    background: rgb(34, 36, 41);
+    background: linear-gradient(149deg, rgba(34, 36, 41, 1) 24%, rgb(69, 69, 73) 100%);
+}
+
+/* #musicFile,
+#imgFile,
+#imgFileUsr {
+    opacity: 0;
+    position: relative;
+    top: -150px;
+    height: 160px;
+    width: 160px;
+    margin-bottom: -160px;
+    cursor: pointer;
+} */
+
+select {
+    border: 3px solid black;
+    border-radius: 10px 5px;
+    cursor: pointer;
+    width: 200px;
+
+    text-align: center;
+    color: rgb(255, 255, 255);
+
+
+    background: rgb(34, 36, 41);
+    background: linear-gradient(149deg, rgba(34, 36, 41, 1) 24%, rgb(69, 69, 73) 100%);
+}
+
+option {
+    color: black !important;
+}
+
+
+form>div>label {
+    width: 50%;
+}
+
+#div5>label {
+    width: fit-content;
+    margin: 10px 0;
+}
+
+#div8 {
+    margin-top: 20px;
+}
+
+#backButton {
+    margin-top: 10px;
+    height: 40px;
+    background-color: #222429;
+    width: 100px;
+    cursor: pointer;
+
+    border: 1px solid rgb(199, 180, 180);
+    box-shadow: 10px 5px 5px rgb(201, 200, 200);
+}
+
+#backButton>a {
+    text-decoration: none;
+    color: rgb(233, 229, 229);
+    width: 100% !important;
+}
+
+#backButton>a:hover {
+    color: rgb(255, 255, 255);
+    text-shadow:
+        0 0 7px rgb(255, 255, 255),
+        0 0 10px rgb(255, 255, 255),
+        0 0 21px rgb(255, 255, 255),
+        0 0 42px rgb(236, 240, 239),
+        0 0 82px rgb(233, 240, 238),
+        0 0 92px rgb(239, 241, 241),
+        0 0 102px rgb(224, 233, 230),
+        0 0 151px rgb(236, 241, 240);
+
+    background: rgb(34, 36, 41);
+    background: linear-gradient(149deg, rgba(34, 36, 41, 1) 24%, rgb(69, 69, 73) 100%);
+}

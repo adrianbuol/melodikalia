@@ -31,7 +31,7 @@ class SongController extends Controller
     public function create()
     {
         $genres = Genre::all();
-        return view('songs.create', compact(["genres"]));
+        return view('songs.create', compact('genres'));
     }
 
     /**
@@ -42,6 +42,7 @@ class SongController extends Controller
      */
     public function store(Request $request)
     {
+        $genres = Genre::all();
         try {
             $song = new Song;
             $song->name = $request->songName;
@@ -51,13 +52,13 @@ class SongController extends Controller
             $song->genre_id = $request->genre;
             $song->save();
 
-            return redirect('/');
+            $message = "<div id='msgOk' class='msg alert alert-success w-50 mt-4'>
+            <p>¡Canción subida correctamente!</p></div>";
         } catch (\Throwable $th) {
-            $errorMessage = $th->getMessage();
-            $message = "<p class='text-danger'>Error creando canción: $errorMessage</p>";
-
-            return view('songs.create', compact(['message']));
+            $message = "<div id='msgError' class='msg alert alert-danger w-50 mt-4'>
+                <p>Error creando canción: Introduce un nombre correcto.</p></div>";
         }
+        return view('songs.create', compact(['message', 'genres']));
     }
 
     /**
@@ -106,20 +107,27 @@ class SongController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $song = Song::find($id);
-        $song->name = $request->songName;
-        if ($request->hasFile('musicFile')) {
-            // Borrar imagen vieja
-            $oldPath = $song->song_path;
-            Storage::disk('public')->delete($oldPath);
+        $genres = Genre::all();
+        try {
+            $song = Song::find($id);
+            $songPath = $song->song_path;
+            $song->name = $request->songName;
+            if ($request->hasFile('musicFile')) {
+                // Borrar imagen vieja
+                $oldPath = $song->song_path;
+                Storage::disk('public')->delete($oldPath);
 
-            // Actualizar imagen
-            $path = $request->file('musicFile')->store('/songs', 'public');
-            $song->song_path = $path;
+                // Actualizar imagen
+                $path = $request->file('musicFile')->store('/songs', 'public');
+                $songPath = $path;
+            }
+            $song->genre_id = $request->genre;
+            $song->save();
+        } catch (\Throwable $th) {
+            $message = "<div id='msgError' class='msg alert alert-danger w-50 mt-4'>
+                <p>Error creando canción: Introduce un nombre correcto.</p></div>";
+            return view('songs.edit', compact('song', 'songPath', 'genres'));
         }
-        $song->genre_id = $request->genre;
-        $song->save();
-
         return redirect("songs/$song->id");
     }
 

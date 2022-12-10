@@ -28,24 +28,17 @@
 
                 <label>Cover</label>
                 <label id="label-file" for="imgFile"><i id="iconUpload" class="bi bi-cloud-upload"></i></label>
-                <input type="file" id="imgFile" name="imgFile" accept="image/png, image/jpeg">
+                <input type="file" id="imgFile" name="imgFile" accept="image/png, image/jpeg" required>
 
 
                 <button id="buttonSub" type="submit" name="submit">Registrar</button>
             </form>
 
             {{-- Añadir si admin, boton visible --}}
-            @if (session('user')->admin)
-                <div id="backButton" class="d-flex justify-content-center">
-                    <a href="/admin" class="border border-dark d-flex justify-content-center px-5 py-2 w-25">Back to
-                        Crud</a>
-                </div>
-            @else
-                <div class="back-button d-flex justify-content-center">
-                    <a href="/users/{{ session('user')->id }}"
-                        class="border border-dark d-flex justify-content-center p-2 w-25">Back</a>
-                </div>
-            @endif
+            <div class="back-button d-flex justify-content-center">
+                <a href="/users/{{ session('user')->id }}"
+                    class="border border-dark d-flex justify-content-center p-2 w-25">Back</a>
+            </div>
         </main>
     @endsection
 </body>

@@ -1,3 +1,51 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
+
+body {
+    font-family: 'Source Sans Pro', sans-serif !important;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    background-image: url(/public/images/troy-t-dX76Mts-LVM-unsplash.jpg);
+}
+
+.p-5 {
+    background-color: #1d1b1ef0;
+    color: white;
+    height: 100%;
+    width: 75%;
+}
+
+#msgError {
+    position: fixed;
+    background-color: #282828;
+    backdrop-filter: blur(8px);
+    top: 50px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+    border: 4px solid black;
+    padding: 20px;
+    font-size: x-large;
+    color: white;
+    text-align: center;
+}
+
+#msgOk {
+    position: fixed;
+    background-color: #00ff404f;
+    backdrop-filter: blur(8px);
+    top: 50px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+    border: 4px solid black;
+    padding: 20px;
+    font-size: x-large;
+    color: white;
+    text-align: center;
+}
+
+/*
 .container {
     border-radius: 35px;
 }
@@ -84,4 +132,4 @@ td>img {
 
 .col-2 {
     width: 18% !important;
-}
+} */

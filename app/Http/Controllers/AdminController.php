@@ -22,8 +22,9 @@ class AdminController extends Controller
         $allUsers = User::all();
         // $numLikes = $songs->likes;
         $allSongs = $songs->take(5);
+        $songPageNum = 1;
 
-        return view('child', compact('latestSongs', 'allSongs', 'allGenres', 'allUsers'));
+        return view('child', compact('latestSongs', 'allSongs', 'allGenres', 'allUsers', 'songPageNum'));
     }
 
     /**

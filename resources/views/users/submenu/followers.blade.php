@@ -5,7 +5,7 @@
     @extends('layouts.app')
 
     @section('content')
-        <h4>Quien me sigue</h4>
+        <h4>Usuarios que siguen a {{ $user->username }}.</h4>
 
         <table>
             <tr class="border-bottom border-dark">

@@ -1,5 +1,6 @@
 @vite(['resources/css/header.css'])
 @vite(['resources/css/app.css'])
+@vite(['resources/js/app.js'])
 <!DOCTYPE html>
 <html>
 
@@ -15,7 +16,7 @@
         <nav class="d-flex justify-content-center align-items-center">
             <div id="home">
                 <a href="/" class="border border-dark col-2 d-flex justify-content-center">Home</a>
-
+                {{-- <a href="/" class="border border-dark col-2 d-flex justify-content-center">Feed</a> --}}
                 @if (session('user'))
                     @php
                         $user = session('user');
@@ -60,7 +61,8 @@
     </header>
 
 
-    <div class="container container border border-dark mt-5 mb-2 p-5">
+    {{-- <div class="container container border border-dark mt-5 mb-2 p-5"> --}}
+    <div class="p-5">
 
         @yield('content')
     </div>

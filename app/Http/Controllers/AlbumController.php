@@ -45,13 +45,15 @@ class AlbumController extends Controller
             $path = $request->file('imgFile')->store('/images/covers', 'public');
             $album->cover = $path;
             $album->save();
-            return redirect('/');
-        } catch (\Throwable $th) {
-            $errorMessage = $th->getMessage();
-            $message = "<p class='text-danger'>Error creando album: $errorMessage</p>";
 
-            return view('albums.create', compact(['message']));
+            $message = "<div id='msgOk' class='msg alert alert-success w-50 mt-4'>
+            <p>¡Álbum añadido correctamente!</p></div>";
+        } catch (\Throwable $th) {
+            $message = "<div id='msgError' class='msg alert alert-danger w-50 mt-4'>
+            <p>Error creando album: introduce un nombre por favor.</p>
+            </div>";
         }
+        return view('albums.create', compact(['message']));
     }
 
     /**
@@ -103,7 +105,8 @@ class AlbumController extends Controller
         $album->save();
         $coverPath = Storage::url($album->cover);
 
-        return view('albums.show', compact('album', 'coverPath'));
+        return redirect("albums/$album->id");
+        // return view('albums.show', compact('album', 'coverPath'));
     }
 
     /**
@@ -119,7 +122,8 @@ class AlbumController extends Controller
         Storage::disk('public')->delete($path);
         // Borrar Album
         $album->delete();
-        return redirect('/');
+
+        return back();
     }
 
     /**

@@ -18,6 +18,7 @@ export default defineConfig({
             'resources/css/register.css',
             'resources/css/song.css',
             'resources/css/list.css',
+            'resources/css/login.css',
             'resources/js/landing.js',
             'resources/js/app.js',
             'resources/js/form.js',

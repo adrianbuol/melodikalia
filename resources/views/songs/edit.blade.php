@@ -32,7 +32,11 @@
 
                 <label for="musicFile">Archivo de audio</label>
                 <!-- De momento solo archivos ".mp3" -->
-                <input type="file" name="musicFile" accept="audio/mp3">
+                {{-- <input type="file" name="musicFile" accept="audio/mp3"> --}}
+                <label id="label-music-file" for="musicFile">
+                    <i id="iconUpload" class="bi bi-cloud-upload"></i>
+                </label>
+                <input type="file" id="musicFile" name="musicFile" accept="audio/mp3">
 
                 <div id="div8" class="d-flex justify-content-center">
                     <button type="submit" name="submit"

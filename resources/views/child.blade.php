@@ -11,7 +11,7 @@
     <div class="row d-flex justify-content-center align-items-center">
         @foreach ($allSongs as $song)
             <div
-                class="cancion-landing d-flex flex-column justify-content-center align-items-center col-2 border border-dark p-3 m-2">
+                class="cancion-landing cancion{{ $songPageNum++ }} d-flex flex-column justify-content-center align-items-center col-2 border border-dark p-3 m-2">
                 <h4>
                     <a href="/songs/{{ $song->id }}">{{ $song->name }}</a>
                 </h4>
@@ -39,7 +39,7 @@
     <div class="row d-flex justify-content-center align-items-center">
         @foreach ($latestSongs as $song)
             <div
-                class="cancion-landing d-flex flex-column justify-content-center align-items-center col-2 border border-dark p-3 m-2">
+                class="cancion-landing cancion{{ $songPageNum++ }} d-flex flex-column justify-content-center align-items-center col-2 border border-dark p-3 m-2">
                 <h4>
                     <a href="/songs/{{ $song->id }}">{{ $song->name }}</a>
                 </h4>

@@ -35,6 +35,11 @@
     flex-direction: column;
 }
 
+#div5>* {
+    height: 100%;
+    width: 100%;
+}
+
 #div6 {
     grid-area: 4 / 1 / 5 / 3;
 }
@@ -72,7 +77,10 @@
         0 0 151px rgb(236, 241, 240);
 }
 
-#img-modify {
+/* #img-modify {
     height: 200px;
     border: 1px solid black;
+} */
+.container {
+    padding: 9px !important;
 }

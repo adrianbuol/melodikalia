@@ -55,8 +55,12 @@
             </div>
             <div id="follows" class="d-flex justify-content-left align-items-center border border-dark m-2">
                 <div class="d-flex">
-                    <h4 class="m-3">Seguidores: <span>{{ $numFollowers }}</span></h4>
-                    <h4 class="m-3">Seguidos: <span>{{ $numFollows }}</span></h4>
+                    <a href="/followers/{{ $user->id }}">
+                        <h4 class="m-3">Seguidores: <span>{{ $numFollowers }}</span></h4>
+                    </a>
+                    <a href="/following/{{ $user->id }}">
+                        <h4 class="m-3">Seguidos: <span>{{ $numFollows }}</span></h4>
+                    </a>
                 </div>
 
                 <div class="d-flex justify-content-left align-items-center">
@@ -94,7 +98,6 @@
         {{-- Canciones User --}}
         <table id="songs-user" class="w-100">
             <tr>
-                <td>ID</td>
                 <td>Name</td>
                 <td>Autor</td>
                 <td>Song</td>
@@ -109,14 +112,12 @@
                     <td>⠀⠀</td>
                     <td>⠀⠀</td>
                     <td>⠀⠀</td>
-                    <td>⠀⠀</td>
                     <td><a href=""><i class="bi bi-pencil-square"></i></a></td>
                     <td><a href=""><i class="bi bi-trash"></i></a></td>
                 </tr>
             @endif
             @foreach ($userSongs as $song)
                 <tr class="tableRow">
-                    <td>{{ $song->id }}</td>
                     <td><a href="/songs/{{ $song->id }}">{{ $song->name }}</a></td>
                     <td>
                         <a href="/users/{{ $user->id }}">{{ $user->username }}</a>
@@ -156,7 +157,6 @@
         {{-- Albums User --}}
         <table id="albums-user" class="w-100">
             <tr>
-                <td>ID</td>
                 <td>Name</td>
                 <td>Autor</td>
                 <td>Cover</td>
@@ -168,14 +168,12 @@
                     <td>⠀⠀</td>
                     <td>⠀⠀</td>
                     <td>⠀⠀</td>
-                    <td>⠀⠀</td>
                     <td><a href=""><i class="bi bi-pencil-square"></i></a></td>
                     <td><a href=""><i class="bi bi-trash"></i></a></td>
                 </tr>
             @endif
             @foreach ($userAlbums as $album)
                 <tr class="tableRow">
-                    <td>{{ $album->id }}</td>
                     <td><a href="/albums/{{ $album->id }}">{{ $album->name }}</a></td>
                     <td>
                         {{ $user->username }}
