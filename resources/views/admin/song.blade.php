@@ -1,11 +1,8 @@
 @vite(['resources/css/app.css'])
 @vite(['resources/css/list.css'])
+@vite(['resources/js/profile.js'])
 <!DOCTYPE html>
 <html>
-
-<head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-</head>
 
 <body>
     @extends('layouts.app')
@@ -25,7 +22,7 @@
                             <td>ID</td>
                             <td>Name</td>
                             <td>Autor</td>
-                            <td>Song</td>
+                            {{-- <td>Song</td> --}}
                             <td>Genre</td>
                             <td>Created At</td>
                             <td>Updated At</td>
@@ -42,11 +39,12 @@
                                         @endif
                                     @endforeach
                                 </td>
-                                <td>
+                                {{-- Comentado porque consume muchos recursos cargar todas las canciones --}}
+                                {{-- <td class="music-player">
                                     <audio controls>
                                         <source src="/storage/{{ $song->song_path }}" type="audio/mp3">
                                     </audio>
-                                </td>
+                                </td> --}}
                                 <td>
                                     @foreach ($allGenres as $genre)
                                         @if ($genre->id == $song->genre_id)

@@ -33,6 +33,9 @@ nav {
 #home>a {
     padding: 6px 12px 6px 12px;
     text-decoration: none;
+    font-weight: bold;
+    font-size: large;
+    background-color: #222429;
 }
 
 #menu {
@@ -52,8 +55,9 @@ nav {
     background-color: #222429;
     border: none;
     width: 100%;
+    font-weight: 700;
+    font-size: large;
 }
-
 
 .dropdown-menu {
     background-color: rgb(241, 239, 239);
@@ -67,7 +71,7 @@ nav {
 }
 
 a.dropdown-item {
-    color: black;
+    color: black !important;
 }
 
 #menu>a,
@@ -81,7 +85,7 @@ a.dropdown-item {
 #home>a:hover,
 .dropdown:hover,
 #dropdownMenuLink>a:hover {
-    color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255) !important;
     text-shadow:
         0 0 7px rgb(255, 255, 255),
         0 0 10px rgb(255, 255, 255),

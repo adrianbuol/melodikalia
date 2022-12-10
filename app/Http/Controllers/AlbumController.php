@@ -46,10 +46,10 @@ class AlbumController extends Controller
             $album->cover = $path;
             $album->save();
 
-            $message = "<div id='msgOk' class='msg alert alert-success w-50 mt-4'>
+            $message = "<div id='msg-ok' class='msg alert alert-success w-50 mt-4'>
             <p>¡Álbum añadido correctamente!</p></div>";
         } catch (\Throwable $th) {
-            $message = "<div id='msgError' class='msg alert alert-danger w-50 mt-4'>
+            $message = "<div id='msg-error' class='msg alert alert-danger w-50 mt-4'>
             <p>Error creando album: introduce un nombre por favor.</p>
             </div>";
         }

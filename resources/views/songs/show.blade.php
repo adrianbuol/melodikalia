@@ -8,7 +8,6 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 </head>
 
@@ -18,7 +17,6 @@
     @section('content')
         <h4>Canción</h4>
         <div id="parent">
-
             <div id="song"
                 class="m-2 p-2 border border-dark d-flex flex-column justify-content-center align-items-center">
                 <div id="audio-player-container">
@@ -99,15 +97,15 @@
         {{-- Boton Back to User --}}
         <div id="back-buttons" class="d-flex m-2 p-2 border border-dark">
             <div class="back-button d-flex justify-content-center">
-                <a href="/users/{{ $song->user_id }}"
-                    class="border border-dark d-flex justify-content-center p-2 w-25">Back to User</a>
+                <a href="/users/{{ $song->user_id }}" class="border border-dark d-flex justify-content-center p-3 m-3">Back
+                    to User</a>
             </div>
 
             {{-- Boton Admin->Crud --}}
             @if (session('user'))
                 @if (session('user')->admin)
                     <div class="back-button d-flex justify-content-center">
-                        <a href="/songs" class="border border-dark d-flex justify-content-center p-2 w-25">Back to crud</a>
+                        <a href="/songs" class="border border-dark d-flex justify-content-center p-3 m-3">Back to crud</a>
                     </div>
                 @endif
             @endif

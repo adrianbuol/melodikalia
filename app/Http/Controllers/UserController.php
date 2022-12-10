@@ -55,7 +55,11 @@ class UserController extends Controller
             $user->email = $request->email;
             $user->name = $request->name;
             $user->surname = $request->surname;
-            $path = $request->file('avatar')->store('/images/avatars', 'public');
+            if (!$request->hasFile('avatar')) {
+                $path = "images/icons/generic_avatar.png";
+            } else {
+                $path = $request->file('avatar')->store('/images/avatars', 'public');
+            }
             $user->profile_pic = $path;
             $user->save();
 
@@ -65,7 +69,7 @@ class UserController extends Controller
         } catch (\Throwable $th) {
             $errorMessage = $th->getMessage();
             // $message = "<p class='text-danger'>Error creando un nuevo usuario: $errorMessage</p>";
-            $message = "<div id='msgError' class='msg alert alert-danger w-50 mt-4'>
+            $message = "<div id='msg-error' class='msg alert alert-danger w-50 mt-4'>
             <p>Error creando un nuevo usuario.</p></div>";
 
             return view('users.create', compact('message'));
@@ -138,7 +142,7 @@ class UserController extends Controller
         }
 
         $user->save();
-        $message = "<div id='msgOk' class='msg alert alert-success w-50 mt-4'>
+        $message = "<div id='msg-ok' class='msg alert alert-success w-50 mt-4'>
                 <p>Usuario actualizado correctamente.</p></div>";
 
         $imgPath = Storage::url($user->profile_pic);

@@ -1,13 +1,30 @@
 img {
-    height: 35vh;
+    /* height: 35vh;
     width: 35vw;
-    object-fit: contain;
+    object-fit: contain; */
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+#album-cover {
+    width: 500px;
+    height: 500px;
 }
 
 #parent {
     /* margin-bottom: -80px; */
     display: grid;
     grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+#parent-profile {
+    /* margin-bottom: -80px; */
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(5, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
@@ -21,6 +38,9 @@ img {
     grid-area: 1 / 4 / 4 / 6;
 }
 
+#info-profile {
+    grid-area: 1 / 4 / 4 / 7;
+}
 
 #buttons,
 #back-buttons {
@@ -40,6 +60,27 @@ img {
     width: 30%;
 }
 
+.follow-link {
+    background: none;
+    font-weight: 700;
+    text-shadow: 2px 2px 5px rgb(189, 187, 187);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.follow-link:hover {
+    text-shadow:
+        0 0 7px rgb(255, 255, 255),
+        0 0 10px rgb(255, 255, 255),
+        0 0 21px rgb(255, 255, 255),
+        0 0 42px rgb(236, 240, 239),
+        0 0 82px rgb(233, 240, 238),
+        0 0 92px rgb(239, 241, 241),
+        0 0 102px rgb(224, 233, 230),
+        0 0 151px rgb(236, 241, 240);
+}
+
 .follow {
     width: 100%;
     height: 50px;
@@ -52,7 +93,7 @@ img {
     align-items: center;
 
     border: 2px black solid;
-    color: black;
+    color: black !important;
     background-color: white;
     cursor: pointer;
 }
@@ -64,7 +105,7 @@ img {
 
 .unfollow {
     border: 2px white solid;
-    color: white;
+    color: white !important;
     background-color: black;
 }
 
@@ -107,26 +148,6 @@ a:hover {
     margin: 10px 0;
 }
 
-#campo-likes {
-    font-size: xx-large;
-}
-
-#campo-likes>a {
-    color: red;
-}
-
-#campo-likes>a:hover {
-    background: none !important;
-    text-shadow:
-        0 0 7px rgb(255, 0, 0),
-        0 0 10px rgb(255, 0, 0),
-        0 0 21px rgb(255, 0, 0),
-        0 0 42px rgb(226, 0, 0),
-        0 0 82px rgb(226, 0, 0),
-        0 0 92px rgb(226, 0, 0),
-        0 0 102px rgb(207, 14, 14),
-        0 0 151px rgb(214, 17, 17);
-}
 
 #avatar>h6 {
     font-weight: bold;
@@ -143,13 +164,30 @@ a:hover {
 }
 
 .campo>h6>a {
-    width: 100%;
+    /* width: 100%;
     height: 100%;
     text-decoration: none;
     background: rgb(34, 36, 41);
     color: #fff;
-    display: block;
+    display: block; */
+    background: none;
+    font-weight: 700;
+    text-shadow: 2px 2px 5px black;
 }
+
+.campo>h6>a:hover {
+    text-shadow:
+        0 0 7px rgb(255, 255, 255),
+        0 0 10px rgb(255, 255, 255),
+        0 0 21px rgb(255, 255, 255),
+        0 0 42px rgb(236, 240, 239),
+        0 0 82px rgb(233, 240, 238),
+        0 0 92px rgb(239, 241, 241),
+        0 0 102px rgb(224, 233, 230),
+        0 0 151px rgb(236, 241, 240);
+    color: white;
+}
+
 
 .campo>p {
     font-weight: normal;
@@ -173,3 +211,8 @@ a:hover {
 #title {
     width: fit-content;
 }
+
+/*
+.p-5 {
+    height: auto !important;
+} */

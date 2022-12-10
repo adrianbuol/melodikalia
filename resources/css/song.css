@@ -11,16 +11,24 @@
     color: black;
 }
 
-#add-to-album {
-    padding: 0;
+.p-5 {
+    background-color: #1d1b1ef0 !important;
+}
+
+#buttons>form>input {
+    padding: 12px;
     border: 1px solid rgb(199, 180, 180);
-    box-shadow: 10px 5px 5px rgb(201, 200, 200);
+}
+
+#add-to-album {
+    padding: 12px;
+    border: 1px solid rgb(199, 180, 180);
 }
 
 #add-to-album-modal {
     display: none;
     position: fixed;
-    background-color: #0000004f;
+    background: linear-gradient(to bottom right, #000000e8 0%, #cd60ff91 100%);
     backdrop-filter: blur(8px);
     top: 50%;
     left: 50%;

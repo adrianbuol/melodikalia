@@ -6,20 +6,47 @@ body {
     justify-content: center;
     height: 100%;
     background-image: url(/public/images/troy-t-dX76Mts-LVM-unsplash.jpg);
+    background-attachment: fixed;
+}
+
+main a {
+    font-size: x-large;
+}
+
+button,
+a {
+    background-color: black;
+    color: white !important;
+    text-decoration: none !important;
+}
+
+button:hover,
+a:hover {
+    text-shadow:
+        0 0 7px rgb(255, 255, 255),
+        0 0 10px rgb(255, 255, 255),
+        0 0 21px rgb(255, 255, 255),
+        0 0 42px rgb(236, 240, 239),
+        0 0 82px rgb(233, 240, 238),
+        0 0 92px rgb(239, 241, 241),
+        0 0 102px rgb(224, 233, 230),
+        0 0 151px rgb(236, 241, 240);
+    color: white;
 }
 
 .p-5 {
-    background-color: #1d1b1ef0;
+    /* background-color: #1d1b1ef0; */
+    background-color: #2a282ba3;
     color: white;
-    height: 100%;
+    height: fit-content;
     width: 75%;
 }
 
-#msgError {
+#msg-error {
     position: fixed;
     background-color: #282828;
     backdrop-filter: blur(8px);
-    top: 50px;
+    top: 140px;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 20px;
@@ -30,11 +57,11 @@ body {
     text-align: center;
 }
 
-#msgOk {
+#msg-ok {
     position: fixed;
     background-color: #00ff404f;
     backdrop-filter: blur(8px);
-    top: 50px;
+    top: 90px;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 20px;

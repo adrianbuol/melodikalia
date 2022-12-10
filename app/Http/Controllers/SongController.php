@@ -52,13 +52,14 @@ class SongController extends Controller
             $song->genre_id = $request->genre;
             $song->save();
 
-            $message = "<div id='msgOk' class='msg alert alert-success w-50 mt-4'>
+            $message = "<div id='msg-ok' class='msg alert alert-success w-50 mt-4'>
             <p>¡Canción subida correctamente!</p></div>";
+            return view('songs.create', compact('message', 'genres'));
         } catch (\Throwable $th) {
-            $message = "<div id='msgError' class='msg alert alert-danger w-50 mt-4'>
-                <p>Error creando canción: Introduce un nombre correcto.</p></div>";
+            $message = "<div id='msg-error' class='msg alert alert-danger w-50 mt-4'>
+            <p class='text-danger'>Error creando canción: Introduce un nombre correcto.</p></div>";
+            return view('songs.create', compact('message', 'genres'));
         }
-        return view('songs.create', compact(['message', 'genres']));
     }
 
     /**
@@ -119,12 +120,12 @@ class SongController extends Controller
 
                 // Actualizar imagen
                 $path = $request->file('musicFile')->store('/songs', 'public');
-                $songPath = $path;
-            }
+                $song->song_path = $path;
+            } 
             $song->genre_id = $request->genre;
             $song->save();
         } catch (\Throwable $th) {
-            $message = "<div id='msgError' class='msg alert alert-danger w-50 mt-4'>
+            $message = "<div id='msg-error' class='msg alert alert-danger w-50 mt-4'>
                 <p>Error creando canción: Introduce un nombre correcto.</p></div>";
             return view('songs.edit', compact('song', 'songPath', 'genres'));
         }

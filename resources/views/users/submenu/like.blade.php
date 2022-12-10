@@ -1,3 +1,5 @@
+@vite(['resources/css/app.css'])
+@vite(['resources/css/list.css'])
 <!DOCTYPE html>
 <html>
 
@@ -5,17 +7,17 @@
     @extends('layouts.app')
 
     @section('content')
-        <h4>Canciones que me gustan</h4>
+        <h1>Canciones que me gustan</h1>
 
-        <table>
-            <tr class="border-bottom border-dark">
+        <table class="d-flex flex-column justify-content-center align-items-center">
+            <tr class="tableRow">
                 <td>Name</td>
                 <td>Autor</td>
                 <td>Song</td>
                 <td>Genre</td>
             </tr>
             @foreach ($like as $song)
-                <tr>
+                <tr class="tableRow">
                     <td><a href="/songs/{{ $song->id }}">{{ $song->name }}</a></td>
                     <td>
                         @foreach ($allUsers as $user)

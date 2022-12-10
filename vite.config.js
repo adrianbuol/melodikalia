@@ -21,7 +21,6 @@ export default defineConfig({
             'resources/css/login.css',
             'resources/js/landing.js',
             'resources/js/app.js',
-            'resources/js/form.js',
             'resources/js/profile.js',
             'resources/js/register.js',
             'resources/js/song.js',

@@ -3,7 +3,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row border-bottom border-dark w-50 mb-3">
+    <div class="row border-bottom w-50 mb-3">
         <h2>TOP - 5</h2>
     </div>
 
@@ -29,9 +29,9 @@
     </div>
 
 
-    <div class="row border-bottom border-dark mt-5 mb-5"></div>
+    <div class="row border-bottom mt-5 mb-5"></div>
 
-    <div class="row border-bottom border-dark w-50 mb-3">
+    <div class="row border-bottom w-50 mb-3">
         <h2>Ultimas Subidas</h2>
     </div>
 
@@ -56,5 +56,5 @@
             </div>
         @endforeach
     </div>
-    <div class="row border-bottom border-dark mt-5"></div>
+    <div class="row border-bottom mt-5"></div>
 @endsection

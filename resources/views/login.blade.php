@@ -38,8 +38,8 @@
                     @endisset
                     <form action="/login" method="post" class="form" enctype="multipart/form-data">
                         @csrf
-                        <input type="text" name="username" placeholder="Username">
-                        <input type="password" name="password" placeholder="Password">
+                        <input type="text" name="username" placeholder="Nombre de Usuario">
+                        <input type="password" name="password" placeholder="Contraseña">
 
                         <button type="submit" name="submit" id="login-button">Entrar</button>
                     </form>

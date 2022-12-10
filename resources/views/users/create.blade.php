@@ -1,13 +1,8 @@
 @vite(['resources/css/register.css'])
 @vite(['resources/css/login.css'])
 @vite(['resources/js/register.js'])
-@vite(['resources/js/form.js'])
 <!DOCTYPE html>
 <html>
-
-<head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-</head>
 
 <body>
     @extends('layouts.app')
@@ -26,31 +21,38 @@
                     <form id="form-reg" action="/users" class="form" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div id="div1">
+                            <label for="userName">Nombre de Usuario</label>
                             <input type="text" name="userName" placeholder="User">
                         </div>
                         <div id="div2">
+                            <label for="email">Correo Electronico</label>
                             <input type="email" name="email" placeholder="Email">
                         </div>
                         <div id="div3">
+                            <label for="password">Contraseña</label>
                             <input type="password" name="password" id="password" placeholder="Password">
                         </div>
                         <div id="div4">
-                            <input type="password" name="confirmPassword" id="confirmPassword"
+                            <label for="confirmPassword">Repite la Contraseña</label>
+                            <input type="password" name="confirmPassword" id="confirm-password"
                                 placeholder="Confirm Password">
                         </div>
                         <div id="div5">
-                            <input id="imgFileUsr" type="file" name="avatar" accept="image/png, image/jpeg" required>
+                            <label for="avatar">Imagen de Perfil</label>
+                            <input id="img-file-usr" type="file" name="avatar" accept="image/png, image/jpeg">
                         </div>
                         <div id="div6">
+                            <label for="name">Nombre</label>
                             <input type="text" name="name" placeholder="Name">
                         </div>
                         <div id="div7">
+                            <label for="surname">Apellidos</label>
                             <input type="text" name="surname" placeholder="Surnames">
                         </div>
                         <div id="div8" class="d-flex justify-content-center">
-                            <button id="buttonSub" type="submit" name="submit"
+                            <button id="button-sub" type="submit" name="submit"
                                 class="border border-dark d-flex justify-content-center px-5 py-2 m-2 w-25">Registro</button>
-                            <button id="buttonRes" type="reset"
+                            <button id="button-res" type="reset"
                                 class="border border-dark d-flex justify-content-center px-5 py-2 m-2 w-25">Reiniciar</button>
                         </div>
                     </form>

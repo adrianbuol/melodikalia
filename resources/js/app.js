@@ -6,6 +6,6 @@ $(document).ready(function () {
 
 
 $(document).ready(function () {
-    $("#msgError").delay(5000).fadeOut('slow');
-    $("#msgOk").delay(5000).fadeOut('slow');
+    $("#msg-error").delay(5000).fadeOut('slow');
+    $("#msg-ok").delay(5000).fadeOut('slow');
 });

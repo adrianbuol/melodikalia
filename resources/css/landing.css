@@ -1,14 +1,12 @@
 .cancion-landing {
     border-radius: 4px;
 
-    /* Foto de Guillaume TECHER</a> en Unsplash */
-    background-image: url(/public/images/guillaume-techer-Jm9P0mDPo6A-unsplash.jpg);
-    background-size: cover;
+
     color: white;
 }
 
 .cancion-landing>* {
-    background-color: #00000038;
+    background-color: #000000c4;
     width: 100%;
     text-align: center;
     border-radius: 8px;
@@ -26,90 +24,84 @@
 }
 
 .cancion-landing>h4>a {
-    text-decoration: none;
-}
+    width: 100%;
+    height: 100%;
+    background: none;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px black;
 
-audio {
-    border-radius: 10px;
-}
-
-
-.audio-player {
-    --player-button-width: 3em;
-    --sound-button-width: 2em;
-    --space: .5em;
-    --player-button-width: 2em;
-    font-size: xx-large;
-    text-align: center;
-    background-color: white;
-    border: 2px solid black;
-    border-radius: 45px;
-}
-
-.controls {
     display: flex;
-    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    margin-top: 10px;
 }
 
-.player-button {
-    background-color: transparent;
-    border: 0;
-    width: var(--player-button-width);
-    height: var(--player-button-width);
-    cursor: pointer;
-    padding: 0;
-}
-
-.timeline {
-    width: calc(100% - (var(--player-button-width) + var(--sound-button-width) + var(--space)));
-    margin-right: var(--space);
-    -webkit-appearance: none;
-    width: calc(100% - var(--player-button-width));
-    height: .5em;
-    background-color: #e5e5e5;
-    border-radius: 5px;
-    background-size: 0% 100%;
-    background-image: linear-gradient(#DE5E97, #DE5E97);
-    background-repeat: no-repeat;
-}
-
-.timeline::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 1em;
-    height: 1em;
-    border-radius: 50%;
-    cursor: pointer;
-    opacity: 0;
-    transition: all .1s;
-    background-color: #a94672;
-}
-
-.timeline::-webkit-slider-thumb:hover {
-    background-color: #943f65;
-}
-
-.timeline:hover::-webkit-slider-thumb {
-    opacity: 1;
-}
-
-.timeline::-webkit-slider-runnable-track {
-    -webkit-appearance: none;
-    box-shadow: none;
-    border: none;
-    background: transparent;
-}
-
-.sound-button {
-    background-color: transparent;
-    border: 0;
-    width: var(--sound-button-width);
-    height: var(--sound-button-width);
-    cursor: pointer;
-    padding: 0;
+.cancion-landing>h4>a:hover {
+    text-shadow:
+        0 0 7px rgb(255, 255, 255),
+        0 0 10px rgb(255, 255, 255),
+        0 0 21px rgb(255, 255, 255),
+        0 0 42px rgb(236, 240, 239),
+        0 0 82px rgb(233, 240, 238),
+        0 0 92px rgb(239, 241, 241),
+        0 0 102px rgb(224, 233, 230),
+        0 0 151px rgb(236, 241, 240);
 }
 
 div>input {
     width: 80% !important;
+}
+
+.p-5 {
+    height: auto !important;
+}
+
+.cancion1 {
+    background-image: url(/public/images/guillaume-techer-Jm9P0mDPo6A-unsplash.jpg);
+    background-size: cover;
+
+}
+
+.cancion2 {
+    background-image: url(/public/images/bogomil-mihaylov-ekHSHvgr27k-unsplash.jpg);
+    background-size: cover;
+}
+
+.cancion3 {
+    background-image: url(/public/images/freestocks-Fx5rrxSaUtI-unsplash.jpg);
+    background-size: cover;
+}
+
+.cancion4 {
+    background-image: url(/public/images/isaac-ibbott-Hlo8ucqYL14-unsplash.jpg);
+    background-size: cover;
+}
+
+.cancion5 {
+    background-image: url(/public/images/mink-mingle-HRyjETL87Gg-unsplash.jpg);
+    background-size: cover;
+}
+
+.cancion6 {
+    background-image: url(/public/images/nick-moore-5zWN8DTNeVA-unsplash.jpg);
+    background-size: cover;
+}
+
+.cancion7 {
+    background-image: url(/public/images/paulette-wooten-FMiczIq8orU-unsplash.jpg);
+    background-size: cover;
+}
+
+.cancion8 {
+    background-image: url(/public/images/saso-tusar-QtgGYlug6Cw-unsplash.jpg);
+    background-size: cover;
+}
+
+.cancion9 {
+    background-image: url(/public/images/tijs-van-leur-So6YckShOVA-unsplash.jpg);
+    background-size: cover;
+}
+
+.cancion10 {
+    background-image: url(/public/images/taylor-hernandez-JMvgllFBMhk-unsplash.jpg);
+    background-size: cover;
 }

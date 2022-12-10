@@ -41,10 +41,18 @@ class GenreController extends Controller
             $genre = new Genre;
             $genre->name = $request->name;
             $genre->save();
-            $message = "<p class='text-success'>¡Nuevo genero creado correctamente!</p>";
+            $message = "<div id='msg-ok' class='msg alert alert-success w-50 mt-4'>
+            <p>¡Nuevo genero creado correctamente!</p></div>
+            ";
         } catch (\Throwable $th) {
             $errorMessage = $th->getMessage();
-            $message = "<p class='text-danger'>Error creando un nuevo genero: $errorMessage</p>";
+            if (session('user')->admin) {
+                $message = "<div id='msg-error' class='msg alert alert-danger w-50 mt-4'>
+            <p class='text-danger'>Error creando un nuevo genero: $errorMessage</p></div>";
+            } else {
+                $message = "<div id='msg-error' class='msg alert alert-danger w-50 mt-4'>
+            <p class='text-danger'>Error creando un nuevo genero, el nombre ya existe.</p></div>";
+            }
         }
         return view('genres.create', compact('message'));
     }
@@ -83,12 +91,25 @@ class GenreController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $genre = Genre::find($id);
-        $genre->name = $request->genreName;
-        $genre->save();
-        $message = "<p class='text-success'>¡Genero actualizado correctamente!</p>";
+        try {
+            $genre = Genre::find($id);
+            $genre->name = $request->genreName;
+            $genre->save();
 
-        return view('admin.admin');
+            $message = "<div id='msg-ok' class='msg alert alert-success w-50 mt-4'>
+        <p>¡Genero actualizado correctamente!</p></div>";
+        } catch (\Throwable $th) {
+            $errorMessage = $th->getMessage();
+            if (session('user')->admin) {
+                $message = "<div id='msg-error' class='msg alert alert-danger w-50 mt-4'>
+        <p class='text-danger'>Error actualizando el genero: $errorMessage</p></div>";
+            } else {
+                $message = "<div id='msg-error' class='msg alert alert-danger w-50 mt-4'>
+        <p class='text-danger'>Error actualizando el genero, el nombre ya existe.</p></div>";
+            }
+        }
+
+        return view('genres.edit', compact('genre', 'message'));
     }
 
     /**

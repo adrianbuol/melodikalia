@@ -3,10 +3,6 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-</head>
-
 <body>
     @extends('layouts.app')
 
@@ -16,7 +12,7 @@
                 $user = session('user');
             @endphp
             <div class="d-flex flex-column justify-content-center align-items-center">
-                <h3>CRUD - ALBUMS</h3>
+                <h1>CRUD - ALBUMS</h1>
                 <div class="d-flex justify-content-md-between align-items-center p-3 w-75">
                     <a id="btn-create" href="/albums/create"
                         class="border border-dark col-2 d-flex justify-content-center">Create</a>

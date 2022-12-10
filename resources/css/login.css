@@ -11,6 +11,11 @@ body {
     font-weight: 300;
 }
 
+.p-5 {
+    background-color: #1d1b1ef0 !important;
+    height: auto !important;
+}
+
 .wrapper {
     background: #6650a3;
     /* Mate */
@@ -272,4 +277,8 @@ form>div>label {
 
     background: rgb(34, 36, 41);
     background: linear-gradient(149deg, rgba(34, 36, 41, 1) 24%, rgb(69, 69, 73) 100%);
+}
+
+#login-button {
+    background-color: #c9a2db91 !important;
 }

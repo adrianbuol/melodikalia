@@ -18,8 +18,8 @@ class LoginController extends Controller
             session(['user' => $user]);
             return redirect('/');
         } catch (\Throwable $th) {
-            $message = "<p class='text-danger'>Error de inicio de sesion: El nombre de usuario o la contraseña son incorrectos.</p>";
-
+            $message = "<div id='msg-error' class='msg alert alert-danger w-50 mt-4'>
+            <p>Error de inicio de sesion: El nombre de usuario o la contraseña son incorrectos.</p></div>";
             return view('/login', compact(['message']));
         }
     }
