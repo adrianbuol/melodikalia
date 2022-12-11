@@ -16,8 +16,12 @@ class AlbumController extends Controller
      */
     public function index()
     {
-        $allAlbums = Album::all();
-        return view('admin.album', compact('allAlbums'));
+        if (session('user')->admin) {
+            $allAlbums = Album::all();
+            return view('admin.album', compact('allAlbums'));
+        } else {
+            abort(404);
+        }
     }
 
     /**

@@ -1,4 +1,4 @@
-@vite(['resources/css/song.css'])
+@vite(['resources/css/album.css'])
 @vite(['resources/css/profile.css'])
 <!DOCTYPE html>
 <html>
@@ -10,10 +10,11 @@
     @extends('layouts.app')
 
     @section('content')
-        <h5>{{ $genre->name }}</h5>
+        <h1>{{ $genre->name }}</h1>
         <div id="parent">
-            <div id="song"
-                class="m-2 p-2 border border-dark d-flex flex-column 22align-items-center">
+
+            <div id="songs-genre"
+                class="m-2 p-2 border border-dark d-flex flex-column align-items-center">
                 <table class="m-4">
                     <tr>
                         <td class="col-4">Name</td>
@@ -35,7 +36,7 @@
 
 
             </div>
-            <div id="info" class="m-2 p-2 border border-dark">
+            <div id="info-genre" class="m-2 p-2 border border-dark">
                 <div class="campo">
                     <h6>Nombre del Genero: </h6>
                     <p> {{ $genre->name }}</p>
@@ -49,7 +50,7 @@
                     <p> {{ $genre->updated_at }}</p>
                 </div>
             </div>
-            <div id="buttons" class="d-flex m-2 p-2 border border-dark">
+            <div id="buttons-genre" class="d-flex m-2 p-2 border border-dark">
                 <form class="m-1" action="/genres/{{ $genre->id }}/edit" method="GET">
                     @csrf
                     <input type="submit" value="Editar">

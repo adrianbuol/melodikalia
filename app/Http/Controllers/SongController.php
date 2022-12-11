@@ -17,10 +17,14 @@ class SongController extends Controller
      */
     public function index()
     {
-        $allSongs = Song::all();
-        $allUsers = User::all();
-        $allGenres = Genre::all();
-        return view('admin.song', compact('allSongs', 'allGenres', 'allUsers'));
+        if (session('user')->admin) {
+            $allSongs = Song::all();
+            $allUsers = User::all();
+            $allGenres = Genre::all();
+            return view('admin.song', compact('allSongs', 'allGenres', 'allUsers'));
+        } else {
+            abort(404);
+        }
     }
 
     /**
@@ -94,9 +98,13 @@ class SongController extends Controller
      */
     public function edit(Song $song)
     {
-        $songPath = Storage::url($song->song_path);
-        $genres = Genre::all();
-        return view('songs.edit', compact('song', 'songPath', 'genres'));
+        if (session('user')->id == $song->user_id || session('user')->admin) {
+            $songPath = Storage::url($song->song_path);
+            $genres = Genre::all();
+            return view('songs.edit', compact('song', 'songPath', 'genres'));
+        } else {
+            return redirect('/');
+        }
     }
 
     /**
@@ -121,7 +129,7 @@ class SongController extends Controller
                 // Actualizar imagen
                 $path = $request->file('musicFile')->store('/songs', 'public');
                 $song->song_path = $path;
-            } 
+            }
             $song->genre_id = $request->genre;
             $song->save();
         } catch (\Throwable $th) {

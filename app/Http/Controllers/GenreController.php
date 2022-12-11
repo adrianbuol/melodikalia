@@ -15,8 +15,12 @@ class GenreController extends Controller
      */
     public function index()
     {
-        $allGenres = Genre::all();
-        return view('admin.genre', compact('allGenres'));
+        if (session('user')->admin) {
+            $allGenres = Genre::all();
+            return view('admin.genre', compact('allGenres'));
+        } else {
+            abort(404);
+        }
     }
 
     /**
@@ -26,7 +30,11 @@ class GenreController extends Controller
      */
     public function create()
     {
-        return view('genres.create');
+        if (session('user')->admin) {
+            return view('genres.create');
+        } else {
+            abort(404);
+        }
     }
 
     /**
@@ -65,9 +73,13 @@ class GenreController extends Controller
      */
     public function show(Genre $genre)
     {
-        $allSongs = Song::all();
-        // $author = User::get()->where('id', $song->user_id)->value('username');
-        return view('genres.show', compact('genre', 'allSongs'));
+        if (session('user')->admin) {
+            $allSongs = Song::all();
+            // $author = User::get()->where('id', $song->user_id)->value('username');
+            return view('genres.show', compact('genre', 'allSongs'));
+        } else {
+            abort(404);
+        }
     }
 
     /**
@@ -78,8 +90,13 @@ class GenreController extends Controller
      */
     public function edit(Genre $genre)
     {
-        return view('genres.edit', compact('genre'));
+        if (session('user')->admin) {
+            return view('genres.edit', compact('genre'));
+        } else {
+            abort(404);
+        }
     }
+
 
 
     /**

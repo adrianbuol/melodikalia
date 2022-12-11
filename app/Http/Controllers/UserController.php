@@ -18,8 +18,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        $allUsers = User::all();
-        return view('admin.user', compact('allUsers'));
+        if (session('user')->admin) {
+            $allUsers = User::all();
+            return view('admin.user', compact('allUsers'));
+        } else {
+            abort(404);
+        }
     }
 
     /**
@@ -110,8 +114,12 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        $imgPath = Storage::url($user->profile_pic);
-        return view('users.edit', compact('user', 'imgPath'));
+        if (session('user')->id == $user->id || session('user')->admin) {
+            $imgPath = Storage::url($user->profile_pic);
+            return view('users.edit', compact('user', 'imgPath'));
+        } else {
+            return redirect('/');
+        }
     }
 
     /**
@@ -166,6 +174,8 @@ class UserController extends Controller
         if (!session('user')->admin) {
             $loginController = new LoginController;
             $loginController->logout();
+        } else if (!session('user')->id != $user->id) {
+            return redirect('/');
         }
         // Borrar avatar
         $path = $user->profile_pic;
