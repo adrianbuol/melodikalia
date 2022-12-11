@@ -10,9 +10,7 @@
     @section('content')
         <h4>Perfil</h4>
         <div id="parent-profile">
-            <div id="avatar"
-                class="m-2 p-2 d-flex flex-column justify-content-center align-items-center">
-                <h6>Avatar: </h6>
+            <div id="avatar" class="m-2 p-2 d-flex flex-column justify-content-center align-items-center">
                 <img src="{{ $imgPath }}" alt="{{ $user->username }} avatar" />
             </div>
             <div id="info-profile" class="m-2 p-2">
@@ -90,114 +88,116 @@
             @endif
 
         </div>
-
-        {{-- Canciones User --}}
-        <table id="songs-user" class="w-100">
-            <tr>
-                <td>Name</td>
-                <td>Autor</td>
-                {{-- <td>Song</td> --}}
-                <td>Genre</td>
-                <td>Created At</td>
-                <td colspan="2"></td>
-            </tr>
-            @if ($userSongs->isEmpty())
-                <tr class="tableRow">
-                    <td>⠀⠀</td>
-                    <td>⠀⠀</td>
-                    {{-- <td>⠀⠀</td> --}}
-                    <td>⠀⠀</td>
-                    <td>⠀⠀</td>
-                    <td><a href=""><i class="bi bi-pencil-square"></i></a></td>
-                    <td><a href=""><i class="bi bi-trash"></i></a></td>
+        <div class="container-table">
+            {{-- Canciones User --}}
+            <table id="songs-user" class="w-100">
+                <tr>
+                    <td>Name</td>
+                    <td>Autor</td>
+                    <td>Genero</td>
+                    <td>Fecha Creación</td>
+                    <td colspan="2"></td>
                 </tr>
-            @endif
-            @foreach ($userSongs as $song)
-                <tr class="tableRow">
-                    <td><a href="/songs/{{ $song->id }}">{{ $song->name }}</a></td>
-                    <td>
-                        <a href="/users/{{ $user->id }}">{{ $user->username }}</a>
-                    </td>
-                    {{-- <td>
+                @if ($userSongs->isEmpty())
+                    <tr class="tableRow">
+                        <td>⠀⠀</td>
+                        <td>⠀⠀</td>
+                        <td>⠀⠀</td>
+                        <td>⠀⠀</td>
+                        <td>⠀⠀</td>
+                        <td>⠀⠀</td>
+                    </tr>
+                @endif
+                @foreach ($userSongs as $song)
+                    <tr class="tableRow">
+                        <td><a href="/songs/{{ $song->id }}">{{ $song->name }}</a></td>
+                        <td>
+                            <a href="/users/{{ $user->id }}">{{ $user->username }}</a>
+                        </td>
+                        {{-- <td>
                         <audio controls>
                             <source src="/storage/{{ $song->song_path }}" type="audio/mp3">
                         </audio>
                     </td> --}}
-                    <td>
-                        @foreach ($genres as $genre)
-                            @if ($genre->id == $song->genre_id)
-                                {{ $genre->name }}
+                        <td>
+                            @foreach ($genres as $genre)
+                                @if ($genre->id == $song->genre_id)
+                                    {{ $genre->name }}
+                                @endif
+                            @endforeach
+                        </td>
+                        <td>{{ $song->created_at }}</td>
+                        @if (session('user'))
+                            @if (session('user')->id == $user->id || session('user')->admin)
+                                <td>
+                                    <a id="edit" href="/songs/{{ $song->id }}/edit"><i
+                                            class="bi bi-pencil-square"></i></a>
+                                </td>
+                                <td>
+                                    <form action="/songs/{{ $song->id }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button id="destroy" type="submit"><i class="bi bi-trash"></i></button>
+                                    </form>
+                                </td>
                             @endif
-                        @endforeach
-                    </td>
-                    <td>{{ $song->created_at }}</td>
-                    @if (session('user'))
-                        @if (session('user')->id == $user->id || session('user')->admin)
-                            <td>
-                                <a id="edit" href="/songs/{{ $song->id }}/edit"><i
-                                        class="bi bi-pencil-square"></i></a>
-                            </td>
-                            <td>
-                                <form action="/songs/{{ $song->id }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button id="destroy" type="submit"><i class="bi bi-trash"></i></button>
-                                </form>
-                            </td>
                         @endif
-                    @endif
-                </tr>
-            @endforeach
-        </table>
+                    </tr>
+                @endforeach
+            </table>
+        </div>
 
-        {{-- Albums User --}}
-        <table id="albums-user" class="w-100">
-            <tr>
-                <td>Name</td>
-                <td>Autor</td>
-                <td>Cover</td>
-                <td>Created At</td>
-                <td colspan="2"></td>
-            </tr>
-            @if ($userAlbums->isEmpty())
-                <tr class="tableRow">
-                    <td>⠀⠀</td>
-                    <td>⠀⠀</td>
-                    <td>⠀⠀</td>
-                    <td><a href=""><i class="bi bi-pencil-square"></i></a></td>
-                    <td><a href=""><i class="bi bi-trash"></i></a></td>
+        <div class="container-table">
+            {{-- Albums User --}}
+            <table id="albums-user" class="w-100">
+                <tr>
+                    <td>Nombre</td>
+                    <td>Autor</td>
+                    <td>Caratula</td>
+                    <td>Fecha Creación</td>
+                    <td colspan="2"></td>
                 </tr>
-            @endif
-            @foreach ($userAlbums as $album)
-                <tr class="tableRow">
-                    <td><a href="/albums/{{ $album->id }}">{{ $album->name }}</a></td>
-                    <td>
-                        {{ $user->username }}
-                    </td>
-                    <td>
-                        <img class="border border-dark" src="/storage/{{ $album->cover }}"
-                            alt="{{ $album->name }} image cover" />
-                    </td>
-                    <td>{{ $album->created_at }}</td>
+                @if ($userAlbums->isEmpty())
+                    <tr class="tableRow">
+                        <td>⠀⠀</td>
+                        <td>⠀⠀</td>
+                        <td>⠀⠀</td>
+                        <td>⠀⠀</td>
+                        <td>⠀⠀</td>
+                        <td>⠀⠀</td>
+                    </tr>
+                @endif
+                @foreach ($userAlbums as $album)
+                    <tr class="tableRow">
+                        <td><a href="/albums/{{ $album->id }}">{{ $album->name }}</a></td>
+                        <td>
+                            {{ $user->username }}
+                        </td>
+                        <td>
+                            <img class="border border-dark" src="/storage/{{ $album->cover }}"
+                                alt="{{ $album->name }} image cover" />
+                        </td>
+                        <td>{{ $album->created_at }}</td>
 
-                    @if (session('user'))
-                        @if (session('user')->id == $user->id || session('user')->admin)
-                            <td>
-                                <a id="edit" href="/albums/{{ $album->id }}/edit"><i
-                                        class="bi bi-pencil-square"></i></a>
-                            </td>
-                            <td>
-                                <form action="/albums/{{ $album->id }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button id="destroy" type="submit"><i class="bi bi-trash"></i></button>
-                                </form>
-                            </td>
+                        @if (session('user'))
+                            @if (session('user')->id == $user->id || session('user')->admin)
+                                <td>
+                                    <a id="edit" href="/albums/{{ $album->id }}/edit"><i
+                                            class="bi bi-pencil-square"></i></a>
+                                </td>
+                                <td>
+                                    <form action="/albums/{{ $album->id }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button id="destroy" type="submit"><i class="bi bi-trash"></i></button>
+                                    </form>
+                                </td>
+                            @endif
                         @endif
-                    @endif
-                </tr>
-            @endforeach
-        </table>
+                    </tr>
+                @endforeach
+            </table>
+        </div>
 
         @if (session('user'))
             @if (session('user')->admin)

@@ -64,6 +64,12 @@ class UserController extends Controller
             } else {
                 $path = $request->file('avatar')->store('/images/avatars', 'public');
             }
+            if ($request->name == null || $request->name == "") {
+                $user->name = " ";
+            }
+            if ($request->surname == null || $request->surname == "") {
+                $user->surname = " ";
+            }
             $user->profile_pic = $path;
             $user->save();
 
@@ -131,36 +137,35 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::find($id);
-        $user->username = $request->userName;
-        $user->password = $request->password;
-        $user->email = $request->email;
-        $user->name = $request->name;
-        $user->surname = $request->surname;
 
-        // Si el input tiene imagen
-        if ($request->hasFile('avatar')) {
-            // Borrar imagen vieja
-            $oldPath = $user->profile_pic;
-            Storage::disk('public')->delete($oldPath);
+        try {
+            $user = User::find($id);
+            $user->username = $request->userName;
+            $user->password = $request->password;
+            $user->email = $request->email;
+            $user->name = $request->name;
+            $user->surname = $request->surname;
 
-            // Actualizar imagen
-            $path = $request->file('avatar')->store('/images/avatars', 'public');
-            $user->profile_pic = $path;
+            // Si el input tiene imagen
+            if ($request->hasFile('avatar')) {
+                // Borrar imagen vieja
+                $oldPath = $user->profile_pic;
+                Storage::disk('public')->delete($oldPath);
+
+                // Actualizar imagen
+                $path = $request->file('avatar')->store('/images/avatars', 'public');
+                $user->profile_pic = $path;
+            }
+
+            $user->save();
+            $message = "<div id='msg-ok' class='msg alert alert-success w-50 mt-4'>
+                <p>Usuario actualizado correctamente.</p></div>";
+        } catch (\Throwable $th) {
+            $message = "<div id='msg-error' class='msg alert alert-danger w-50 mt-4'>
+            <p>Error editando el usuario.</p></div>";
         }
 
-        $user->save();
-        $message = "<div id='msg-ok' class='msg alert alert-success w-50 mt-4'>
-                <p>Usuario actualizado correctamente.</p></div>";
-
-        $imgPath = Storage::url($user->profile_pic);
-        $numFollowers = $user->followers->count();
-        $numFollows = $user->following->count();
-        $genres = Genre::all();
-        $userSongs = Song::get()->where('user_id', $user->id);
-        $userAlbums = Album::get()->where('user_id', $user->id);
-
-        return view('users.submenu.profile', compact('user', 'imgPath', 'genres', 'userSongs', 'userAlbums', 'numFollowers', 'numFollows'));
+        return back()->with('message', $message);
     }
 
     /**
@@ -174,7 +179,7 @@ class UserController extends Controller
         if (!session('user')->admin) {
             $loginController = new LoginController;
             $loginController->logout();
-        } else if (!session('user')->id != $user->id) {
+        } else if (session('user')->id != $user->id) {
             return redirect('/');
         }
         // Borrar avatar

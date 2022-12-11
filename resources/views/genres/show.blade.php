@@ -11,10 +11,13 @@
 
     @section('content')
         <h1>{{ $genre->name }}</h1>
+        @if (session('message'))
+            <div class="p-3">
+                {!! session('message') !!}
+            </div>
+        @endif
         <div id="parent">
-
-            <div id="songs-genre"
-                class="m-2 p-2 border border-dark d-flex flex-column align-items-center">
+            <div id="songs-genre" class="m-2 p-2 border border-dark d-flex flex-column align-items-center">
                 <table class="m-4">
                     <tr>
                         <td class="col-4">Name</td>

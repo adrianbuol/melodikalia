@@ -5,7 +5,7 @@ $("#song-list").on("click", function () {
     $("#albums-user").hide();
 
     // btn hide
-    $("#btnCreateAlbumShow").attr("id", "btnCreateAlbum");
+    $("#btn-create-album-show").attr("id", "btnCreateAlbum");
 });
 $("#album-list").on("click", function () {
     $("#album-list").css("background-color", "#6C0F8E");
@@ -14,7 +14,7 @@ $("#album-list").on("click", function () {
     $("#songs-user").hide();
 
     // btn show
-    $("#btnCreateAlbum").attr("id", "btnCreateAlbumShow");
+    $("#btnCreateAlbum").attr("id", "btn-create-album-show");
 });
 
 // Pausar resto de audio

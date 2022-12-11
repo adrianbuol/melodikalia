@@ -9,22 +9,7 @@ use App\Models\User;
 
 class AdminController extends Controller
 {
-    /**
-     *
-     * Devuelve la vista de página landing
-     */
-    public function landing()
-    {
-        $latestSongs = Song::latest('created_at')->take(5)->get();
-        $songs = Song::all();
-        $allGenres = Genre::all();
-        $allUsers = User::all();
-        // $numLikes = $songs->likes;
-        $allSongs = $songs->take(5);
-        $songPageNum = 1;
 
-        return view('child', compact('latestSongs', 'allSongs', 'allGenres', 'allUsers', 'songPageNum'));
-    }
 
     /**
      *

@@ -7,7 +7,7 @@
 
     @section('content')
         <h1>Usuarios que {{ $user->username }} sigue.</h1>
-        <div class="d-flex justify-content-center align-items-center">
+        <div>
             <table>
                 <tr class="tableRow">
                     <td>Avatar</td>

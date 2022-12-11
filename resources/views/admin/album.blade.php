@@ -1,4 +1,3 @@
-@vite(['resources/css/app.css'])
 @vite(['resources/css/list.css'])
 <!DOCTYPE html>
 <html>
@@ -8,17 +7,20 @@
 
     @section('content')
         <main>
-            @php
-                $user = session('user');
-            @endphp
+            @if (session('message'))
+                <div id="message" class="p-3">
+                    {!! session('message') !!}
+                </div>
+            @endif
             <div class="d-flex flex-column justify-content-center align-items-center">
-                <h1>CRUD - ALBUMS</h1>
+                <h1>Administrador - Albums</h1>
                 <div class="d-flex justify-content-md-between align-items-center p-3 w-75">
                     <a id="btn-create" href="/albums/create"
                         class="border border-dark col-2 d-flex justify-content-center">Create</a>
                 </div>
             </div>
-            <div class="d-flex justify-content-center align-items-center ">
+
+            <div>
                 <table class="m-4">
                     <tr class="tableRow">
                         <td>ID</td>

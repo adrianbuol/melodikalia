@@ -17,6 +17,11 @@
                             {!! $message !!}
                         </div>
                     @endisset
+                    @if (session('message'))
+                        <div id="message" class="p-3">
+                            {!! session('message') !!}
+                        </div>
+                    @endif
 
                     <form id="form-reg" action="/users/{{ $user->id }}" method="POST" enctype="multipart/form-data">
                         @csrf

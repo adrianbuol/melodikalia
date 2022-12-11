@@ -25,7 +25,7 @@
                         <input type="text" name="name">
 
                         <label>Cover</label>
-                        <input type="file" id="img-file" name="img-file" accept="image/png, image/jpeg" required>
+                        <input type="file" id="img-file" name="img-file" accept="image/png, image/jpeg">
 
 
                         <button id="buttonSub" type="submit" name="submit">Registrar</button>

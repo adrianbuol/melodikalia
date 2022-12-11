@@ -129,3 +129,15 @@
 .wrapper {
     top: 40% !important;
 }
+
+@media screen and (max-width: 850px) {
+
+    .wrapper {
+        top: 60% !important;
+    }
+
+    #form-reg {
+        display: flex;
+        flex-direction: column;
+    }
+}

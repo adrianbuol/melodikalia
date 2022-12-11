@@ -22,20 +22,20 @@
                         @csrf
                         <div id="div1">
                             <label for="userName">Nombre de Usuario</label>
-                            <input type="text" name="userName" placeholder="User">
+                            <input type="text" name="userName" placeholder="Nombre de Usuario">
                         </div>
                         <div id="div2">
                             <label for="email">Correo Electronico</label>
-                            <input type="email" name="email" placeholder="Email">
+                            <input type="email" name="email" placeholder="Correo Electronico">
                         </div>
                         <div id="div3">
                             <label for="password">Contraseña</label>
-                            <input type="password" name="password" id="password" placeholder="Password">
+                            <input type="password" name="password" id="password" placeholder="Contraseña">
                         </div>
                         <div id="div4">
                             <label for="confirmPassword">Repite la Contraseña</label>
                             <input type="password" name="confirmPassword" id="confirm-password"
-                                placeholder="Confirm Password">
+                                placeholder="Repite la Contraseña">
                         </div>
                         <div id="div5">
                             <label for="avatar">Imagen de Perfil</label>
@@ -43,11 +43,11 @@
                         </div>
                         <div id="div6">
                             <label for="name">Nombre</label>
-                            <input type="text" name="name" placeholder="Name">
+                            <input type="text" name="name" placeholder="Nombre">
                         </div>
                         <div id="div7">
                             <label for="surname">Apellidos</label>
-                            <input type="text" name="surname" placeholder="Surnames">
+                            <input type="text" name="surname" placeholder="Apellidos">
                         </div>
                         <div id="div8" class="d-flex justify-content-center">
                             <button id="button-sub" type="submit" name="submit"

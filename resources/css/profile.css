@@ -1,7 +1,4 @@
 img {
-    /* height: 35vh;
-    width: 35vw;
-    object-fit: contain; */
     height: 100%;
     width: 100%;
     object-fit: cover;
@@ -13,7 +10,6 @@ img {
 }
 
 #parent {
-    /* margin-bottom: -80px; */
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(5, 1fr);
@@ -22,7 +18,6 @@ img {
 }
 
 #parent-profile {
-    /* margin-bottom: -80px; */
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(5, 1fr);
@@ -31,7 +26,14 @@ img {
 }
 
 #avatar {
+    height: 300px;
+    width: 300px;
     grid-area: 1 / 1 / 5 / 4;
+}
+
+#avatar>img {
+    height: 100%;
+    width: 100%;
 }
 
 #info {
@@ -44,7 +46,7 @@ img {
 
 #buttons,
 #back-buttons {
-    grid-area: 4 / 4 / 5 / 6;
+    grid-area: 4 / 7 / 5 / 4;
     overflow: auto;
 }
 
@@ -164,12 +166,6 @@ a:hover {
 }
 
 .campo>h6>a {
-    /* width: 100%;
-    height: 100%;
-    text-decoration: none;
-    background: rgb(34, 36, 41);
-    color: #fff;
-    display: block; */
     background: none;
     font-weight: 700;
     text-shadow: 2px 2px 5px black;
@@ -196,7 +192,8 @@ a:hover {
     line-height: 1.2;
 }
 
-#buttons>form>* {
+#buttons>form>*,
+#buttons-genre>form>* {
     background-color: black;
     color: white;
     display: inline-block;
@@ -204,7 +201,8 @@ a:hover {
 }
 
 #buttons>form>*,
-#add-to-album {
+#add-to-album,
+#buttons-genre>form>* {
     height: 50px !important;
 }
 
@@ -212,10 +210,6 @@ a:hover {
     width: fit-content;
 }
 
-/*
-.p-5 {
-    height: auto !important;
-} */
 
 #songs-genre {
     grid-area: 1 / 1 / 5 / 4;
@@ -260,4 +254,52 @@ tr:first-of-type {
         0 0 92px rgb(239, 241, 241),
         0 0 102px rgb(224, 233, 230),
         0 0 151px rgb(236, 241, 240);
+}
+
+
+@media screen and (max-width: 850px) {
+
+    #parent-profile {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: none;
+    }
+
+    #avatar {
+        width: 100%;
+        grid-area: 1 / 1 / 3 / 3;
+    }
+
+    #info-profile {
+        grid-area: 3 / 1 / 3 / 3;
+    }
+
+    #follows {
+        grid-area: 4 / 1 / 6 / 3;
+        flex-wrap: wrap;
+    }
+
+    #follows>* {
+        width: auto !important;
+    }
+
+    #buttons {
+        grid-area: 6 / 1 / 6 / 3;
+    }
+
+    .follow,
+    .unfollow {
+        padding: 10px;
+    }
+
+    .container-table {
+        overflow: scroll;
+    }
+
+    #buttons-songs-albums {
+        display: flex;
+    }
+
+    #btn-create-album-show {
+        width: auto !important;
+    }
 }

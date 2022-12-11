@@ -1,8 +1,8 @@
 @vite(['resources/css/song.css'])
 @vite(['resources/css/profile.css'])
+@vite(['resources/css/reproductor.css'])
 @vite(['resources/js/song.js'])
 @vite(['resources/js/reproductor.js'])
-@vite(['resources/css/reproductor.css'])
 
 <!DOCTYPE html>
 <html>
@@ -34,10 +34,12 @@
                 </div>
 
                 {{-- Viejo --}}
-                {{-- <h6>{{ $songName }} </h6>
-                <audio controls>
-                    <source src="{{ $songPath }}" type="audio/mp3">
-                </audio> --}}
+                <div id="audio-player-mobile">
+                    <h6>{{ $songName }} </h6>
+                    <audio controls>
+                        <source src="{{ $songPath }}" type="audio/mp3">
+                    </audio>
+                </div>
             </div>
 
             <div id="info" class="m-2 p-2 border border-dark">

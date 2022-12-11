@@ -105,3 +105,14 @@ div>input {
     background-image: url(/public/images/taylor-hernandez-JMvgllFBMhk-unsplash.jpg);
     background-size: cover;
 }
+
+@media screen and (max-width: 850px) {
+    .p-5>* {
+        flex-direction: column;
+    }
+
+    .cancion-landing {
+        width: 100% !important;
+        height: 300px;
+    }
+}

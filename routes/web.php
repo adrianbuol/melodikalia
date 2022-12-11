@@ -20,14 +20,14 @@ use App\Http\Controllers\UserController;
 */
 
 // Landing
-Route::get('/', [AdminController::class, 'landing']);
+Route::get('/', [SongController::class, 'landing']);
 
 //Login/Logout
 Route::get('/login', [LoginController::class, 'showLogin']);
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout']);
 
-// Admin - Menu CRUD
+// Admin - Menu Administrador
 Route::get('/admin', [AdminController::class, 'admin']);
 
 // Crud Albumes

@@ -4,6 +4,8 @@
 }
 
 #album-cover {
+    height: 300px;
+    width: 300px;
     grid-area: 1 / 1 / 4 / 2 !important;
 }
 
@@ -12,8 +14,6 @@
     max-height: 350px;
     overflow: scroll;
     overflow-x: hidden;
-
-
 }
 
 .campo>h6 {
@@ -22,4 +22,22 @@
 
 #buttons {
     grid-area: 3 / 2 / 4 / 4 !important;
+}
+
+@media screen and (max-width: 850px) {
+
+    #album-cover {
+        height: 300px !important;
+        width: 300px !important;
+    }
+
+    #parent {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    #songs-list {
+        scrollbar-color: rgb(255, 255, 255) rgb(0, 0, 0);
+        scrollbar-width: thin;
+    }
 }

@@ -6,6 +6,7 @@ use App\Models\Song;
 use App\Models\Genre;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class SongController extends Controller
@@ -154,6 +155,21 @@ class SongController extends Controller
         // Borrar Cancion
         $song->delete();
         return redirect('/');
+    }
+
+    /**
+     *
+     * Devuelve la vista de página landing
+     */
+    public function landing()
+    {
+        $topSongs = Song::withcount('likes')->take(5)->orderBy('likes_count', 'DESC')->get();
+        $latestSongs = Song::latest('created_at')->take(5)->get();
+        $allGenres = Genre::all();
+        $allUsers = User::all();
+        $songPageNum = 1;
+
+        return view('child', compact('latestSongs', 'allGenres', 'allUsers', 'songPageNum', 'topSongs'));
     }
 
     public function addToAlbum(Request $request)

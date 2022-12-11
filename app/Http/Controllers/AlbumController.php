@@ -46,7 +46,13 @@ class AlbumController extends Controller
             $album = new Album;
             $album->user_id = session('user')->id;
             $album->name = $request->name;
-            $path = $request->file('imgFile')->store('/images/covers', 'public');
+
+            if (!$request->hasFile('img-file')) {
+                $path = "images/icons/generic_cover.png";
+            } else {
+                $path = $request->file('img-file')->store('/images/covers', 'public');
+            }
+
             $album->cover = $path;
             $album->save();
 

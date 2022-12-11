@@ -115,3 +115,44 @@ a.dropdown-item {
     background: rgb(34, 36, 41);
     background: linear-gradient(149deg, rgba(34, 36, 41, 1) 24%, rgb(69, 69, 73) 100%);
 }
+
+@media screen and (max-width: 850px) {
+    body {
+        display: block !important;
+    }
+
+    header {
+        position: static;
+        height: auto !important;
+        min-width: 100vw;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        height: auto !important;
+    }
+
+    #home,
+    #menu {
+        height: auto !important;
+        width: auto !important;
+        height: auto !important;
+        width: auto !important;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    #home>h5 {
+        width: fit-content;
+    }
+
+    #home>a,
+    #menu>a {
+        height: auto !important;
+    }
+
+    .p-5 {
+        background-color: #0000 !important;
+    }
+}

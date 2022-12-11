@@ -137,7 +137,15 @@ class GenreController extends Controller
      */
     public function destroy(Genre $genre)
     {
-        $genre->delete();
+        try {
+            $genre->delete();
+        } catch (\Throwable $th) {
+            $message = "<div id='msg-error' class='msg alert alert-danger w-50 mt-4'>
+            <p class='text-danger'>Error de Borrado.</p>
+            <p class='text-danger'>No se pueden eliminar géneros que contengan una o mas canciones.</p>
+            </div>";
+            return back()->with('message', $message);
+        }
         return redirect('/');
     }
 }

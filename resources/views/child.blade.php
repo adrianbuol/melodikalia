@@ -9,20 +9,26 @@
 
     {{-- Canciones top --}}
     <div class="row d-flex justify-content-center align-items-center">
-        @foreach ($allSongs as $song)
+        @foreach ($topSongs as $song)
             <div
                 class="cancion-landing cancion{{ $songPageNum++ }} d-flex flex-column justify-content-center align-items-center col-2 border border-dark p-3 m-2">
                 <h4>
                     <a href="/songs/{{ $song->id }}">{{ $song->name }}</a>
                 </h4>
-                <h5>Por: @foreach ($allUsers as $user)
+                <h5>@foreach ($allUsers as $user)
                         @if ($user->id == $song->user_id)
                             {{ $user->username }}
                         @endif
                     @endforeach
                 </h5>
 
-                <h6>{{ $song->genre_id }}</h6>
+                <h6>
+                    @foreach ($allGenres as $genre)
+                        @if ($genre->id == $song->genre_id)
+                            {{ $genre->name }}
+                        @endif
+                    @endforeach
+                </h6>
                 <p>Likes - <span>{{ $song->likes->count() }}</span></p>
             </div>
         @endforeach
@@ -43,7 +49,7 @@
                 <h4>
                     <a href="/songs/{{ $song->id }}">{{ $song->name }}</a>
                 </h4>
-                <h5>Por:
+                <h5>
                     @foreach ($allUsers as $user)
                         @if ($user->id == $song->user_id)
                             {{ $user->username }}
@@ -51,7 +57,13 @@
                     @endforeach
                 </h5>
 
-                <h6>{{ $song->genre_id }}</h6>
+                <h6>
+                    @foreach ($allGenres as $genre)
+                        @if ($genre->id == $song->genre_id)
+                            {{ $genre->name }}
+                        @endif
+                    @endforeach
+                </h6>
                 <p>Likes - <span>{{ $song->likes->count() }}</span></p>
             </div>
         @endforeach

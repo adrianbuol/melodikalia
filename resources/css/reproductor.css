@@ -1,3 +1,7 @@
+#audio-player-mobile {
+    display: none;
+}
+
 #audio-player-container>button {
     padding: 0;
     border: 0;
@@ -234,4 +238,44 @@ input[type="range"]:active::-ms-thumb {
         0 0 92px rgb(226, 0, 0),
         0 0 102px rgb(207, 14, 14),
         0 0 151px rgb(214, 17, 17);
+}
+
+
+
+@media screen and (max-width: 850px) {
+    #audio-player-mobile {
+        display: contents;
+    }
+
+    #audio-player-container {
+        display: none;
+    }
+
+    input[type="range"] {
+        width: 40% !important;
+    }
+
+    #info {
+        grid-area: 2 / 4 / 3 / 6 !important;
+    }
+
+    #info>* {
+        flex-wrap: wrap;
+    }
+
+    #buttons {
+        flex-direction: column;
+        grid-area: 2 / 1 / 2 / 4 !important;
+        align-items: center;
+        overflow: hidden !important;
+    }
+
+    #buttons>* {
+        height: auto !important;
+        width: 100%;
+    }
+
+    #buttons>form>input {
+        width: 100%;
+    }
 }
