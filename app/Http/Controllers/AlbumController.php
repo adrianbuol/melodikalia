@@ -48,7 +48,7 @@ class AlbumController extends Controller
             $album->name = $request->name;
 
             if (!$request->hasFile('img-file')) {
-                $path = "images/icons/generic_cover.png";
+                $path = "icons/generic_cover.png";
             } else {
                 $path = $request->file('img-file')->store('/images/covers', 'public');
             }
@@ -74,7 +74,8 @@ class AlbumController extends Controller
      */
     public function show(Album $album)
     {
-        $coverPath = Storage::url($album->cover);
+        // $coverPath = Storage::url($album->cover);
+        $coverPath = "/uploads/$album->cover";
         $albumSongs = $album->songs->sortBy('created_at');
         $author = User::get()->where('id', $album->user_id)->value('username');
         $trackNum = 1;
@@ -89,7 +90,8 @@ class AlbumController extends Controller
      */
     public function edit(Album $album)
     {
-        $coverPath = Storage::url($album->cover);
+        // $coverPath = Storage::url($album->cover);
+        $coverPath = "/uploads/$album->cover";
         return view('albums.edit', compact('album', 'coverPath'));
     }
 
@@ -113,7 +115,6 @@ class AlbumController extends Controller
             $album->cover = $path;
         }
         $album->save();
-        $coverPath = Storage::url($album->cover);
 
         return redirect("albums/$album->id");
         // return view('albums.show', compact('album', 'coverPath'));

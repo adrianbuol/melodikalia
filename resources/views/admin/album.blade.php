@@ -39,7 +39,7 @@
                                 <a href="/albums/{{ $album->id }}"> {{ $album->name }}</a>
                             </td>
                             <td>
-                                <img class="border border-dark" src="/storage/{{ $album->cover }}"
+                                <img class="border border-dark" src="/uploads/{{ $album->cover }}"
                                     alt="{{ $album->name }} image cover" />
                             </td>
                             <td>{{ $album->created_at }}</td>

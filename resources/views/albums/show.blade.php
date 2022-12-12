@@ -25,7 +25,11 @@
                             @endif
                             -
                         </h6>
-                        <h6><a href="/songs/{{ $song->id }}">{{ $song->name }}</a></h6>
+                        <h6><a href="/songs/{{ $song->id }}">{{ $song->name }}</a>
+                            <a id="remove-from-album-link"
+                                href="/songs/remove-from-album?song_id={{ $song->id }}&album_id={{ $album->id }}"><i
+                                    class="bi bi-trash"></i></a>
+                        </h6>
                     </div>
                 @endforeach
             </div>

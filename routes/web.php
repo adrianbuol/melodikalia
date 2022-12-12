@@ -40,6 +40,7 @@ Route::get('/admin/genre', [GenreController::class, 'index']);
 // Crud Canciones
 Route::get('/admin/song', [SongController::class, 'index']);
 Route::post('/songs/add-to-album', [SongController::class, 'addToAlbum']);
+Route::get('/songs/remove-from-album', [SongController::class, 'removeFromAlbum']);
 Route::get('/songs/like/{song}', [SongController::class, 'doLike']);
 Route::get('/songs/dislike/{song}', [SongController::class, 'doDislike']);
 

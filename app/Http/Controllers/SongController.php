@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Album;
 use App\Models\Song;
 use App\Models\Genre;
 use App\Models\User;
@@ -75,7 +76,7 @@ class SongController extends Controller
      */
     public function show(Song $song)
     {
-        $songPath = Storage::url($song->song_path);
+        $songPath = "/uploads/$song->song_path";
         $author = $song->user;
         $songName = $song->name;
         $genre = Genre::get()->where('id', $song->genre_id)->value('name');
@@ -176,6 +177,14 @@ class SongController extends Controller
     {
         $song = Song::find($request->song_id);
         $song->albums()->attach($request->album_id);
+    }
+
+    public function removeFromAlbum(Request $request)
+    {
+        $song = Song::find($request->song_id);
+
+        $song->albums()->detach($request->album_id);
+        return back();
     }
 
     public function doLike(Song $song)

@@ -27,7 +27,7 @@
                         </td>
                         <td>
                             <audio controls>
-                                <source src="/storage/{{ $song->song_path }}" type="audio/mp3">
+                                <source src="/uploads/{{ $song->song_path }}" type="audio/mp3">
                             </audio>
                         </td>
                         <td>

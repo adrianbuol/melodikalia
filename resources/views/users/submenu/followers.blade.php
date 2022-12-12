@@ -19,7 +19,7 @@
                 @foreach ($follower as $user)
                     <tr class="tableRow">
                         <td>
-                            <img src="/storage/{{ $user->profile_pic }}" alt="{{ $user->username }} avatar">
+                            <img src="/uploads/{{ $user->profile_pic }}" alt="{{ $user->username }} avatar">
                         </td>
                         <td>
                             <a href="/users/{{ $user->id }}">{{ $user->username }}</a>

@@ -24,6 +24,9 @@
     grid-area: 3 / 2 / 4 / 4 !important;
 }
 
+#remove-from-album-link {
+    float: right;
+}
 
 @media screen and (max-width: 800px) {
 

@@ -60,7 +60,7 @@ class UserController extends Controller
             $user->name = $request->name;
             $user->surname = $request->surname;
             if (!$request->hasFile('avatar')) {
-                $path = "images/icons/generic_avatar.png";
+                $path = "icons/generic_avatar.png";
             } else {
                 $path = $request->file('avatar')->store('/images/avatars', 'public');
             }
@@ -94,7 +94,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        $imgPath = Storage::url($user->profile_pic);
+        // $imgPath = Storage::url($user->profile_pic);
+        $imgPath = "/uploads/$user->profile_pic";
 
         $sessionUser = session('user');
         $userSongs = Song::get()->where('user_id', $user->id);
@@ -121,7 +122,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         if (session('user')->id == $user->id || session('user')->admin) {
-            $imgPath = Storage::url($user->profile_pic);
+            $imgPath = "/uploads/$user->profile_pic";
             return view('users.edit', compact('user', 'imgPath'));
         } else {
             return redirect('/');
