@@ -179,7 +179,7 @@ class UserController extends Controller
         if (!session('user')->admin) {
             $loginController = new LoginController;
             $loginController->logout();
-        } else if (session('user')->id != $user->id) {
+        } else if (session('user')->id != $user->id && !session('user')->admin) {
             return redirect('/');
         }
         // Borrar avatar
