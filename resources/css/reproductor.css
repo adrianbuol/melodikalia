@@ -242,7 +242,7 @@ input[type="range"]:active::-ms-thumb {
 
 
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 1280px) {
     #audio-player-mobile {
         display: contents;
     }

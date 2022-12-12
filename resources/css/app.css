@@ -72,7 +72,7 @@ a:hover {
     text-align: center;
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 1280px) {
     .p-5 {
         width: 100% !important;
         padding: 1rem !important;
@@ -98,4 +98,8 @@ a:hover {
         padding: 5px;
     }
 
+}
+
+img[src*="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"] {
+    display: none;
 }

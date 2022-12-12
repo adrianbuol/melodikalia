@@ -116,10 +116,11 @@ audio {
     background-color: #1d1b1ef0 !important;
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 1280px) {
 
     .p-5 {
         overflow: scroll;
+        overflow-y: hidden;
     }
 
     #btn-create {
