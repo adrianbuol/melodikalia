@@ -72,7 +72,24 @@ a:hover {
     text-align: center;
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (min-width: 900px) and (max-width: 1280px) {
+    .p-5 {
+        width: 100% !important;
+        background-color: #2a282ba3 !important;
+    }
+
+    .p-5>* {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+    }
+
+    .cancion-landing {
+        width: 400px !important;
+    }
+}
+
+
+@media screen and (max-width: 900px) {
     .p-5 {
         width: 100% !important;
         padding: 1rem !important;

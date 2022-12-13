@@ -189,6 +189,21 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
+    // public function destroy(User $user)
+    // {
+    //     if (!session('user')->admin) {
+    //         $loginController = new LoginController;
+    //         $loginController->logout();
+    //     } else if (session('user')->id != $user->id && !session('user')->admin) {
+    //         return redirect('/');
+    //     }
+    //     // Borrar avatar
+    //     $path = $user->profile_pic;
+    //     Storage::disk('public')->delete($path);
+    //     // Borrar User
+    //     $user->delete();
+    //     return redirect('/');
+    // }
     public function destroy(User $user)
     {
         if (!session('user')->admin) {
@@ -197,13 +212,20 @@ class UserController extends Controller
         } else if (session('user')->id != $user->id && !session('user')->admin) {
             return redirect('/');
         }
-        // Borrar avatar
-        $path = $user->profile_pic;
-        Storage::disk('public')->delete($path);
-        // Borrar User
-        $user->delete();
+
+        if ($user->profile_pic == "icons/generic_avatar.png") {
+            $user->delete();
+        } else {
+            // Borrar avatar
+            $path = $user->profile_pic;
+            Storage::disk('public')->delete($path);
+            // Borrar User
+            $user->delete();
+        }
+
         return redirect('/');
     }
+
 
     public function like(User $user)
     {

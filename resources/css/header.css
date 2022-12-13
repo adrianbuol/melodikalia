@@ -116,7 +116,14 @@ a.dropdown-item {
     background: linear-gradient(149deg, rgba(34, 36, 41, 1) 24%, rgb(69, 69, 73) 100%);
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (min-width: 900px) and (max-width: 1280px) {
+    body {
+        display: flex;
+    }
+}
+
+
+@media screen and (max-width: 900px) {
     body {
         display: block !important;
     }
