@@ -61,6 +61,7 @@ class UserController extends Controller
             $user->surname = $request->surname;
             if (!$request->hasFile('avatar')) {
                 $path = "icons/generic_avatar.png";
+                // $path = $request->file('icons/generic_avatar.png')->store('/images/avatars', 'public');
             } else {
                 $path = $request->file('avatar')->store('/images/avatars', 'public');
             }
@@ -149,13 +150,26 @@ class UserController extends Controller
 
             // Si el input tiene imagen
             if ($request->hasFile('avatar')) {
-                // Borrar imagen vieja
-                $oldPath = $user->profile_pic;
-                Storage::disk('public')->delete($oldPath);
 
-                // Actualizar imagen
-                $path = $request->file('avatar')->store('/images/avatars', 'public');
-                $user->profile_pic = $path;
+                if ($user->profile_pic == "icons/generic_avatar.png") {
+                    // Actualizar imagen
+                    $path = $request->file('avatar')->store('/images/avatars', 'public');
+                    $user->profile_pic = $path;
+                } else {
+                    // Borrar imagen vieja
+                    $oldPath = $user->profile_pic;
+                    Storage::disk('public')->delete($oldPath);
+
+                    // Actualizar imagen
+                    $path = $request->file('avatar')->store('/images/avatars', 'public');
+                    $user->profile_pic = $path;
+                }
+            }
+            if ($request->name == null || $request->name == "") {
+                $user->name = " ";
+            }
+            if ($request->surname == null || $request->surname == "") {
+                $user->surname = " ";
             }
 
             $user->save();
